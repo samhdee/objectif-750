@@ -18,3 +18,4 @@
 /web/uploads/
 sftp-config.json
 index.html
+.htaccess
