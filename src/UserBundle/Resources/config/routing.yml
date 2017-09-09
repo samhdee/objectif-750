@@ -1,0 +1,3 @@
+user_test:
+    path:     /user_test
+    defaults: { _controller: UserBundle:User:index}

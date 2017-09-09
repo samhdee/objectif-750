@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+
+    <meta name="description" content="Ecrire tous les jours">
+    <meta name="author" content="Clara Dhaleine">
+    <meta name="keywords" content="quota mots journalier ecriture nanowrimo" />
+    <meta name="category" content="Ecriture mots quotidiens" />
+    <meta name="language" content="fr" />
+    <meta name="identifier-url" content="https://objectif750.fr" />
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Open+Sans+Condensed:300,700|Lato|Merriweather" rel="stylesheet">
+
+	  {% block stylesheets %}
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		  {% stylesheets filter='cssrewrite'
+		    'bundles/core/css/main.css' %}
+		    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+		  {% endstylesheets %}
+	  {% endblock %}
+
+		<title>
+			{% block title %} - Objectif 750{% endblock %}
+		</title>
+	<body>
+		{% include 'CoreBundle::header.html.twig' %}
+		{# {{ render(controller('CoreBundle:Core:menu')) }} #}
+
+		<div class="container">
+			{% for status in app.session.flashbag.get('status') %}
+				<p class="message status_message">{{ status }}</p>
+			{% endfor %}
+			{% for error in app.session.flashbag.get('error') %}
+				<p class="message error_message">{{ error }}</p>
+			{% endfor %}
+
+      <div id="content" class="col-md-10 col-lg-offset-1">
+				{% block body %}
+				{% endblock %}
+			</div>
+		</div>
+
+		{% block javascripts %}
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+			<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+	  {% endblock %}
+	</body>
+	<footer>
+		<p>Responsable du site : {{ webmaster }}</p>
+		<p>Suivez-nous sur <a target="_blank" href="{{ twitter }}">Twitter</a>
+	</footer>
+</html>

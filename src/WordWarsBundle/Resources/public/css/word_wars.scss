@@ -1,0 +1,81 @@
+#wordwars_wrapper {
+  margin-top: 20px;
+
+  #mywordwar_wrapper {
+    #words_header {
+      font-size: 12px;
+      margin-bottom: 20px;
+
+      span#date_end_ww {
+        display: none;
+      }
+
+      a#clickme, span#word_counter, span#progression_status {
+        display: inline-block;
+      }
+
+      span#progression_status {
+        margin-left: 10px;
+      }
+
+      a#clickme {
+        color: #2E3136;
+        float: right;
+      }
+
+      a#clickme:hover {
+        color: #4A4C50;
+        text-decoration: none;
+      }
+
+      #progression_status {
+        display: none;
+      }
+
+      #progression_status.ok {
+        color: #37A36C;
+      }
+
+      #progression_status.ko {
+        color: orange;
+      }
+    }
+
+    textarea {
+      border: none;
+      width: 100%;
+      min-height: 300px;
+      clip:rect(0,189px, 50px, 0);
+      z-index: -1;
+      resize: none;
+      background-color: #F1F1F1;
+    }
+  }
+
+  #mywordwar_wrapper.distraction_free {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #F1F1F1;
+    z-index: 10;
+    padding: 50px 20%;
+  }
+
+  #new_wordwar_wrapper {
+    .form-horizontal {
+      margin-top: 30px;
+
+      select#wordwarsbundle_wordwar_start_hour,
+      select#wordwarsbundle_wordwar_end_hour {
+        margin-right: 5px;
+      }
+
+      select#wordwarsbundle_wordwar_start_minute,
+      select#wordwarsbundle_wordwar_end_minute {
+        margin-left: 5px;
+      }
+    }
+  }
+}

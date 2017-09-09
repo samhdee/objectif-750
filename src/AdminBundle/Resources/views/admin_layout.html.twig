@@ -1,0 +1,14 @@
+{# src/OC/PlatformBundle/Resources/views/layout.html.twig #}
+
+{% extends "CoreBundle::core_layout.html.twig" %}
+
+{% block title %}
+  Admin {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+  {% block admin_body %}
+  {% endblock %}
+
+{% endblock %}

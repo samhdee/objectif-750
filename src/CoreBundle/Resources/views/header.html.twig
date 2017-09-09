@@ -1,0 +1,45 @@
+<header id="header" class="jumbotron">
+  <h1><a href="{{ path('core_homepage') }}">Objectif 750</a></h1>
+  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <div id="user_ribbon">
+      Connecté en tant que <a href="{{path('fos_user_profile_show')}}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+      <nav class="navbar">
+        <ul class="inline_list">
+          <li>
+            <a
+              {% if app.request.get('_route') == 'my_words_homepage' %}
+                class="current_location"
+              {% endif %}
+              href="{{ path('my_words_homepage') }}">
+              mots d'aujourd'hui
+            </a>
+          </li>
+          <li><a
+              {% if app.request.get('_route') == 'word_wars_new' %}
+                class="current_location"
+              {% endif %}
+              href="{{ path('word_wars_new') }}">
+              word wars
+            </a>
+          </li>
+          <li>
+            <a
+              {% if app.request.get('_route') == 'my_stats_homepage' %}
+                class="current_location"
+              {% endif %}
+              href="{{ path('my_stats_homepage') }}">
+              mes stats
+            </a>
+          </li>
+          {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('admin_homepage') }}">administration</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  {% else %}
+    <div id="user_ribbon">
+      <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+    </div>
+  {% endif %}
+</header>

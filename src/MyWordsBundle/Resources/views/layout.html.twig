@@ -1,0 +1,32 @@
+{% extends "CoreBundle::core_layout.html.twig" %}
+
+{% block title %}
+  My Words {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets filter='cssrewrite'
+    'bundles/mywords/css/mywords.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+  <div id="mywords_wrapper">
+    <h2>{% block title_page %}{% endblock %}</h2>
+
+    {% block mywords_body %}
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+    'bundles/mywords/js/main.js'
+    'bundles/mywords/js/jquery.autogrow-textarea.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+{% endblock %}

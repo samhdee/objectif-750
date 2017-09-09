@@ -1,0 +1,9 @@
+services:
+    mywords.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [ MyWordsBundle\Entity\DailyWords ]
+
+    my_words.todayswordcount:
+        class: MyWordsBundle\TodaysWordCount
+        arguments: [ "@mywords.repository" ]

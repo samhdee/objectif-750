@@ -1,0 +1,31 @@
+{% extends "CoreBundle::core_layout.html.twig" %}
+
+{% block title %}
+  Word Wars {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets filter='cssrewrite'
+    'bundles/wordwars/css/word_wars.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+  <div id="wordwars_wrapper">
+    <h2>{% block title_page %}{% endblock %}</h2>
+
+    {% block wordwars_body %}{% endblock %}
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+    'bundles/wordwars/js/word_wars.js'
+    'bundles/mywords/js/jquery.autogrow-textarea.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+{% endblock %}

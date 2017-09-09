@@ -1,0 +1,11 @@
+my_words_homepage:
+    path:     /mywords
+    defaults: { _controller: MyWordsBundle:MyWords:index }
+
+save_my_words:
+    path:     /mywords/save
+    defaults: { _controller: MyWordsBundle:MyWords:save }
+    requirements:
+        _method: POST
+    options:
+        expose: true

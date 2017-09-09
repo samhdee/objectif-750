@@ -1,0 +1,21 @@
+{% extends "MyWordsBundle::layout.html.twig" %}
+
+{% block title_page %}My Words{% endblock %}
+
+{% block mywords_body %}
+  <div id="daily_words_wrapper" class="content_wrapper">
+    <form>
+      {# <button id="test_button">Je suis un bouton</button> #}
+      <div id="words_header">
+        <input type="hidden" id="todays_goal" value="{{ todays_goal }}">
+        <span id="word_counter"{% if word_count >= todays_goal %} class="quota_reached" title="Félicitations ! Vous avez atteint votre quota journalier. Mais vous pouvez continuer sur votre lancée si vous voulez."{% endif %}>
+          {{ word_count }}
+        </span>
+        <span id="progression_status"></span>
+        <button id="clickme" href="#">focus</a>
+        <button id="saveme">sauvegarder</button>
+      </div>
+      <textarea id="my_daily_words">{{ saved_words }}</textarea>
+    </form>
+  </div>
+{% endblock %}

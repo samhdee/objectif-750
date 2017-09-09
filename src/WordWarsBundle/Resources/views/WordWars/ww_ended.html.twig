@@ -1,0 +1,9 @@
+{% extends "WordWarsBundle::layout.html.twig" %}
+
+{% block title_page %}C'est fini !{% endblock %}
+
+{% block wordwars_body %}
+  <div id="mywordwar_wrapper" class="content_wrapper">
+    <p>La WW à laquelle vous tentez d'accéder a pris fin. Vous pouvez toutefois en créer une nouvelle en cliquant sur <a href="{{ path('word_wars_new') }}">ce lien</a>.</p>
+  </div>
+{% endblock %}

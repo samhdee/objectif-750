@@ -1,0 +1,10 @@
+{% extends "AdminBundle::admin_layout.html.twig" %}
+
+{% block title_page %}Admin{% endblock %}
+
+{% block admin_body %}
+  <p>Hello World!</p>
+  <ul>
+    <li><a href="{{ path('admin_users')}}">Gérer les users</a></li>
+  </ul>
+{% endblock %}

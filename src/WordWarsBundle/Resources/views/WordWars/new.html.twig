@@ -1,0 +1,60 @@
+{% trans_default_domain 'wordwars' %}
+{% extends "WordWarsBundle::layout.html.twig" %}
+
+{% block title_page %}Créer votre WW{% endblock %}
+
+{% block wordwars_body %}
+  <div id="new_wordwar_wrapper" class="content_wrapper">
+    <div class="introduction">
+      <p>Une Word War (plus communément appelée WW) est une session où les participants se livrent à une course au plus grand nombre de mots en un temps donné (15 à 30 minutes en général).</p>
+      <p>Après avoir créé votre WW, il vous suffira de transmettre le lien aux participants et ils pourront participer directement. <strong>Notez qu'il leur faudra toutefois être connecté à leur compte (ou en créer un s'ils n'en ont pas).</strong></p>
+    </div>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Erreurs générales du formulaire #}
+    {{ form_errors(form) }}
+
+    {# Champ Titre #}
+    <div class="form-group">
+      {{ form_label(form.title, 'ww.title'|trans, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {{ form_errors(form.title) }}
+
+      <div class="col-sm-7">
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    {# Champ Début #}
+    <div class="form-group">
+      {{ form_label(form.start, 'ww.start'|trans, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {{ form_errors(form.start) }}
+
+      <div class="col-sm-7">
+        {{ form_widget(form.start) }}
+      </div>
+    </div>
+
+    {# Champ Fin #}
+    <div class="form-group">
+      {{ form_label(form.end, 'ww.end'|trans, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+      {{ form_errors(form.end) }}
+
+      <div class="col-sm-7">
+        {{ form_widget(form.end) }}
+      </div>
+    </div>
+
+    {# Submit #}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Champ CSRF et tous les champs cachés #}
+    {{ form_rest(form) }}
+
+    {# Fin du form #}
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

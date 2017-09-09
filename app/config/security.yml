@@ -1,0 +1,42 @@
+# app/config/security.yml
+
+security:
+  encoders:
+    UserBundle\Entity\User: sha512
+
+  role_hierarchy:
+    ROLE_ADMIN:       ROLE_USER
+    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+  providers:
+    users:
+      id: fos_user.user_provider.username
+  provider: users
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    # On crée un pare-feu uniquement pour le formulaire
+    main_login:
+        # Cette expression régulière permet de prendre /login (mais pas /login_check !)
+        pattern:   ^/login$
+        anonymous: true # On autorise alors les anonymes sur ce pare-feu
+    main:
+      pattern:   ^/
+      anonymous: true
+      provider: users
+      form_login:
+        login_path: fos_user_security_login
+        check_path: fos_user_security_check
+      logout:
+        path:       fos_user_security_logout
+        target:     fos_user_security_login
+      remember_me:
+        secret:   "%secret"
+
+  access_control:
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/mywords, roles: ROLE_USER }
+    - { path: ^/wordwars/in_progress, roles: ROLE_USER }
+    #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

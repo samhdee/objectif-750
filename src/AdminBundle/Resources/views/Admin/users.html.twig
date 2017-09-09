@@ -1,0 +1,22 @@
+{% extends "AdminBundle::admin_layout.html.twig" %}
+
+{% block admin_body %}
+  <p>Hello World!</p>
+
+  <table class="table table-bordered table-striped table-condensed col-sm-offset-1 col-sm-10">
+    <tr>
+      <th class="col-sm-3">Username</th>
+      <th class="col-sm-3">Email</th>
+      <th class="col-sm-3">Dernière connexion</th>
+      <th class="col-sm-3">Actif</th>
+    </tr>
+    {% for user in users %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td> {{ user.lastLogin|localizeddate('medium', 'none', 'fr') }}</td>
+        <td>{% if user.enabled == 1 %}Oui{% else %}Non{% endif %}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

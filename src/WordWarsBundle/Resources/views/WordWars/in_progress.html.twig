@@ -1,0 +1,19 @@
+{% extends "WordWarsBundle::layout.html.twig" %}
+
+{% block title_page %}C'est parti !{% endblock %}
+
+{% block wordwars_body %}
+  <div id="mywordwar_wrapper" class="content_wrapper">
+    <form>
+      <button id="test_button">Je suis un bouton</button>
+      <div id="words_header">
+        <span id="word_counter">{{ word_count }} </span>
+        <a id="clickme" href="#">focus</a>
+        <span id="progression_status"></span>
+        <input id="end_time" type="hidden" value="{{ end_time }}">
+        <input id="ww_id" type="hidden" value="{{ ww_id }}">
+      </div>
+      <textarea id="my_wordwar_words">{{ saved_words }}</textarea>
+    </form>
+  </div>
+{% endblock %}

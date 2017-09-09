@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "SverigeScript";
+  src: url('../fonts/SverigeScriptDecorated.ttf');
+}
+
+body {
+  // background-image: url("../images/paper.png");
+  background-color: #F1F1F1;
+  font-family: 'Lato';
+  font-size: 15px;
+
+  h1, h2 {
+    color: #D1A232;
+    font-family: 'Shadows Into Light Two', 'Candara';
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 34px;
+    margin-top: 0;
+  }
+
+  header#header.jumbotron {
+    background-color: #2E3136;
+    padding: 20px 0 0 30px;
+
+    div#user_ribbon {
+      margin-left: 20px;
+      font-family: 'Open Sans Condensed', 'Calibri', sans-serif;
+      display: inline;
+      color: white;
+      font-size: 16px;
+
+      a {
+        color: #5191C8;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: #428BCA;
+      }
+    }
+
+    h1 {
+      display: inline;
+      font-variant: small-caps;
+      font-size: 50px;
+      line-height: 70px;
+
+      a {
+        color: #D1A232;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+
+    nav.navbar {
+      margin-top: 20px;
+
+      ul.inline_list {
+        list-style: none;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          margin-right: 20px;
+          font-size: 16px;
+
+          a {
+            color: #5191C8;
+          }
+
+          a:hover {
+            color: #428BCA;
+          }
+
+          a.current_location {
+            border-bottom: 2px solid #5191C8;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    p.message {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+
+    p.status_message {
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+    }
+
+    #content {
+      .content_wrapper {
+        margin-top: 30px;
+
+        .well {
+          background-color: transparent;
+          border: none;
+        }
+
+        .btn {
+          background-color: #2DAB9B;
+          border-color: #018574;
+          float: right;
+        }
+
+        .hidden {
+          display: none;
+        }
+
+        .quota_reached {
+          color: #3c763d;
+          background-color: #dff0d8;
+          padding: 0 5px;
+          margin-left: 10px;
+        }
+      }
+    }
+    #content.col-md-9 {
+      position: inherit;
+    }
+  }
+
+  footer {
+    background-color: #2E3136;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

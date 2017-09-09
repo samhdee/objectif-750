@@ -1,0 +1,11 @@
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Admin:index }
+
+admin_users:
+    path:     /admin/users/{page}
+    defaults:
+        _controller: AdminBundle:Admin:users
+        page:        0
+    requirements:
+        page: \d+

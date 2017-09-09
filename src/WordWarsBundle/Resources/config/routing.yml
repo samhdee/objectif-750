@@ -1,0 +1,21 @@
+word_wars_homepage:
+    path:     /wordwars
+    defaults: { _controller: WordWarsBundle:WordWars:index }
+
+word_wars_new:
+    path:     /wordwars/new
+    defaults: { _controller: WordWarsBundle:WordWars:new }
+
+word_wars_in_progress:
+    path:     /wordwars/in_progress/{id}
+    defaults: { _controller: WordWarsBundle:WordWars:inProgress }
+    requirements:
+        id: \d+
+
+save_my_ww_words:
+    path:     /wordwars/in_progress/save
+    defaults: { _controller: WordWarsBundle:WordWars:save}
+    requirements:
+        _method: POST
+    options:
+        expose: true

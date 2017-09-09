@@ -1,0 +1,11 @@
+{% extends 'CoreBundle::core_layout.html.twig' %}
+
+{% block title %} Accueil {{ parent() }} {% endblock %}
+
+{% block title_page %} Accueil {% endblock %}
+
+{% block lien_accueil %}<a href="{{ path('core_homepage') }}">Objectif 750</a>{% endblock %}
+
+{% block body %}
+	<p>Bienvenue !</p>
+{% endblock %}
