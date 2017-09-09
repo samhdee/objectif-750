@@ -5,8 +5,13 @@
 {% block wordwars_body %}
   <div id="mywordwar_wrapper" class="content_wrapper">
     <form>
-      <button id="test_button">Je suis un bouton</button>
+      {# <button id="test_button">Je suis un bouton</button> #}
       <div id="words_header">
+        <p id="countdown">
+          <span id="hours"></span>h
+          <span id="minutes"></span>&nbsp;
+          <span id="secondes"></span>s
+        </p>
         <span id="word_counter">{{ word_count }} </span>
         <a id="clickme" href="#">focus</a>
         <span id="progression_status"></span>
