@@ -29,19 +29,19 @@ function count_my_time() {
 
     var past_content = '';
 
-    // window.setInterval(function() {
-    //   var words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
+    window.setInterval(function() {
+      var words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
 
-    //   if('' === past_content) {
-    //     past_content = words;
-    //   }
-    //   else if(words === past_content) {
-    //     return false;
-    //   }
+      if('' === past_content) {
+        past_content = words;
+      }
+      else if(words === past_content) {
+        return false;
+      }
 
-    //   save_words();
-    // }
-    // , 15000);
+      save_words();
+    }
+    , 15000);
 
     var countdown = count_my_time();
     update_countdown;
@@ -49,6 +49,8 @@ function count_my_time() {
     window.setInterval(function() {
       countdown.secondes = countdown.secondes - 1;
 
+      // Pour refaire partir le nombre de secondes et minutes à 59 une fois à 0
+      // Et décrémenter les minutes quand secondes = 0
       if(countdown.secondes == -1) {
         countdown.secondes = 59;
         countdown.minutes = countdown.minutes - 1;
@@ -59,6 +61,19 @@ function count_my_time() {
         }
       }
 
+      // On force la converstion integer -> string comme des gros sales
+      countdown.secondes = '' + countdown.secondes;
+      countdown.minutes = '' + countdown.minutes;
+
+      if(countdown.secondes.length < 2) {
+        countdown.secondes = "0" + countdown.secondes;
+      }
+
+      if(countdown.minutes.length < 2) {
+        countdown.minutes = "0" + countdown.minutes;
+      }
+
+      // Affichage du résultat formatté de partout
       update_countdown();
     }, 1000);
 
