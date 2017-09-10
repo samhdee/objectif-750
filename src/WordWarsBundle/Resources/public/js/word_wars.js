@@ -21,15 +21,13 @@ function count_my_time(date, temps_diff) {
       count_my_words();
     });
 
-    // On part du principe que la WW n'a pas commencé
+    // Init des variables globales
     var ww_in_progress = false;
+    var autosave_interval_id = null;
+    var past_content = '';
 
-    // $('#test_button').on('click', function(e) {
-    //   e.preventDefault();
-
-      // Mais on vérifie quand même
-      check_ww_started();
-    // });
+    // Mais on vérifie quand même
+    check_ww_started();
 
     // =====================
     // Functions
@@ -95,7 +93,8 @@ function count_my_time(date, temps_diff) {
           }
           else {
             // Fin de la WW : posez les stylos, on disable le textarea
-            $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', ww_started);
+            $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', true);
+            clearInterval(autosave_interval_id);
           }
 
           // Dans tous les cas on désactive le setInterval
@@ -138,8 +137,7 @@ function count_my_time(date, temps_diff) {
 
     function auto_save() {
       // On sauvegarde automatiquement toutes les 15 secondes
-      window.setInterval(function() {
-        var past_content = '';
+      autosave_interval_id = window.setInterval(function() {
         words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
 
         if('' === past_content) {
