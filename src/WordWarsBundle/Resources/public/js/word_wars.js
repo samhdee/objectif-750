@@ -1,56 +1,117 @@
-function count_my_time() {
-  var end = $('#end_time').val();
+function count_my_time(date, temps_diff) {
+  var diff = {};
+  diff.temps = Math.floor(temps_diff/1000);
+  diff.secondes = diff.temps % 60;
+  diff.minutes = Math.floor(diff.temps/60) % 60;
+  diff.heures = Math.floor(diff.temps/3600) % 24;
 
-  if('undefined' !== typeof end) {
-    var end_date = new Date(end);
-    var now = new Date();
-
-    var diff = {};
-    var temps_diff = new Date(end_date - now);
-    var temps = Math.floor(temps_diff/1000);
-    diff.secondes = temps % 60;
-    diff.minutes = Math.floor(temps/60) % 60;
-    diff.heures = Math.floor(temps/3600) % 24;
-
-    return diff;
-  }
-
-  return false;
+  return diff;
 }
 
 ( function($) {
   $(document).ready(function() {
-    $('#my_wordwar_words').autogrow();
+    $('#mywordwar_wrapper textarea#my_wordwar_words').autogrow();
 
-    $('a#clickme').on('click', function(e) {
+    $('a#focus_me').on('click', function(e) {
       e.preventDefault();
       $('#mywordwar_wrapper').toggleClass('distraction_free');
     });
 
-    var past_content = '';
+    $('#mywordwar_wrapper textarea#my_wordwar_words').on('keyup', function(event) {
+      count_my_words();
+    });
 
-    window.setInterval(function() {
-      var words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
+    // On part du principe que la WW n'a pas commencé
+    var ww_in_progress = false;
 
-      if('' === past_content) {
-        past_content = words;
+    // $('#test_button').on('click', function(e) {
+    //   e.preventDefault();
+
+      // Mais on vérifie quand même
+      check_ww_started();
+    // });
+
+    // =====================
+    // Functions
+    // =====================
+    function check_ww_started() {
+      // Initialisation des objets Date now, début et fin
+      var now        = new Date();
+
+      start_time = $('#start_time').val();
+      var start_date = new Date(start_time);
+
+      end_time   = $('#end_time').val();
+      var end_date   = new Date(end_time);
+
+      // On vérifie si la WW a commencé
+      if(start_date > now) {
+        // Si elle n'a pas commencé, on lance le CD et on désactive le textarea
+        $('#mywordwar_wrapper textarea#my_wordwar_words').hide();
+        $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', true);
+
+        var temps_diff = new Date(start_date - now);
+        countdown = count_my_time(start_date, temps_diff);
+        begin_countdown($('#giant_starting_coutdown'), false, countdown);
       }
-      else if(words === past_content) {
-        return false;
+      else {
+        // Si elle a commencé on affiche le textarea et on lance le CD
+        $('#giant_starting_coutdown').hide();
+        $('#mywordwar_wrapper textarea#my_wordwar_words').show();
+        $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', false);
+
+        // On met à jour le flag de WW commencée et on lance le CD et l'autosave
+        ww_in_progress = true;
+
+        var temps_diff = new Date(end_date - now);
+        countdown = count_my_time(end_date, temps_diff);
+        begin_countdown($('p#countdown'), true, countdown);
+        auto_save();
       }
+    };
 
-      save_words();
-    }
-    , 15000);
+    function begin_countdown(which_one, ww_started, countdown) {
+      // On décrémente le compteur toutes les secondes
+      interval_id = setInterval(function() {
+        // On décrémente les secondes
+        countdown.secondes -= 1;
+        countdown.temps -= 1;
 
-    var countdown = count_my_time();
-    update_countdown;
+        // Pour refaire partir le nombre de secondes et minutes à 59 une fois à 0
+        // Et décrémenter les minutes quand secondes = 0
+        format_countdown(countdown);
 
-    window.setInterval(function() {
-      countdown.secondes = countdown.secondes - 1;
+        // Affichage du résultat formatté de partout
+        update_countdown(countdown, $(which_one));
 
-      // Pour refaire partir le nombre de secondes et minutes à 59 une fois à 0
-      // Et décrémenter les minutes quand secondes = 0
+        // Fin du countdown !
+        if(countdown.temps == 0) {
+          // On signale que la WW commence
+          if(!ww_started) {
+            ww_started = true;
+
+            // On rappelle la fonction pour lancer l'auto save
+            check_ww_started();
+          }
+          else {
+            // Fin de la WW : posez les stylos, on disable le textarea
+            $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', ww_started);
+          }
+
+          // Dans tous les cas on désactive le setInterval
+          clearInterval(interval_id);
+          interval_id = null;
+        }
+      }, 1000);
+    };
+
+    function update_countdown(countdown, which_one) {
+      $(which_one).find('.hours').html(countdown.heures);
+      $(which_one).find('.minutes').html(countdown.minutes);
+      $(which_one).find('.secondes').html(countdown.secondes);
+    };
+
+    function format_countdown(countdown) {
       if(countdown.secondes == -1) {
         countdown.secondes = 59;
         countdown.minutes = countdown.minutes - 1;
@@ -65,6 +126,7 @@ function count_my_time() {
       countdown.secondes = '' + countdown.secondes;
       countdown.minutes = '' + countdown.minutes;
 
+      // Ajout des 0 initiaux si besoin
       if(countdown.secondes.length < 2) {
         countdown.secondes = "0" + countdown.secondes;
       }
@@ -72,15 +134,13 @@ function count_my_time() {
       if(countdown.minutes.length < 2) {
         countdown.minutes = "0" + countdown.minutes;
       }
+    };
 
-      // Affichage du résultat formatté de partout
-      update_countdown();
-    }, 1000);
-
-    $(window).keypress('s', function(e) {
-      if(e.ctrlKey) {
-        e.preventDefault();
-        var words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
+    function auto_save() {
+      // On sauvegarde automatiquement toutes les 15 secondes
+      window.setInterval(function() {
+        var past_content = '';
+        words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
 
         if('' === past_content) {
           past_content = words;
@@ -89,26 +149,14 @@ function count_my_time() {
           return false;
         }
 
-        save_words();
+        if(ww_in_progress) {
+          save_words();
+        }
       }
-    });
+      , 15000);
+    };
 
-    $('#mywordwar_wrapper textarea#my_wordwar_words').on('keyup', function(event) {
-      count_my_words();
-    });
-
-    // $('#test_button').on('click', function (e) {
-    //   e.preventDefault();
-    //   // count_my_time();
-    // });
-
-    var update_countdown = function() {
-      $('p#countdown #hours').html(countdown.heures);
-      $('p#countdown #minutes').html(countdown.minutes);
-      $('p#countdown #secondes').html(countdown.secondes);
-    }
-
-    var count_my_words = function() {
+    function count_my_words() {
       var words = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
       var regexp = / ?[,-?!.\'";:*_/()]+ ?/g;
       var result = regexp[Symbol.replace](words, ' ').trim();
@@ -118,9 +166,9 @@ function count_my_time() {
 
       $('span#word_counter').html(word_count);
       return word_count;
-    }
+    };
 
-    var save_words = function() {
+    function save_words() {
       var url = Routing.generate('save_my_ww_words');
       var content = $('#mywordwar_wrapper textarea#my_wordwar_words').val();
       var word_count = count_my_words();

@@ -56,17 +56,6 @@
       }
     });
 
-    var count_my_words = function() {
-      var words = $('#daily_words_wrapper textarea#my_daily_words').val();
-      var regexp = / ?[,-?!.\'";:*_/()]+ ?/g;
-      var result = regexp[Symbol.replace](words, ' ').trim();
-      var tab = result.split(' ');
-      tab = tab.filter(function(n) { return n !== ''});
-      var word_count = tab.length;
-
-      return word_count;
-    }
-
     var save_words = function() {
       var url = Routing.generate('save_my_words');
       var content = $('#daily_words_wrapper textarea#my_daily_words').val();
@@ -89,6 +78,17 @@
             }
           });
       }
+    };
+
+    var count_my_words = function() {
+      var words = $('#daily_words_wrapper textarea#my_daily_words').val();
+      var regexp = / ?[,-?!.\'";:*_/()]+ ?/g;
+      var result = regexp[Symbol.replace](words, ' ').trim();
+      var tab = result.split(' ');
+      tab = tab.filter(function(n) { return n !== ''});
+      var word_count = tab.length;
+
+      return word_count;
     };
   })
 } )( jQuery );

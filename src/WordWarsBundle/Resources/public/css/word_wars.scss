@@ -10,7 +10,7 @@
         display: none;
       }
 
-      a#clickme, span#word_counter, span#progression_status {
+      a#focus_me, span#word_counter, span#progression_status {
         display: inline-block;
       }
 
@@ -18,12 +18,12 @@
         margin-left: 10px;
       }
 
-      a#clickme {
+      a#focus_me {
         color: #2E3136;
         float: right;
       }
 
-      a#clickme:hover {
+      a#focus_me:hover {
         color: #4A4C50;
         text-decoration: none;
       }

@@ -93,7 +93,9 @@ class WordWarsController extends Controller
       $manager->flush();
     }
 
+    $date_start = $word_war->getStart();
     $date_end = $word_war->getEnd();
+    $start_time = $date_start->format('Y-m-d H:i');
     $end_time = $date_end->format('Y-m-d H:i');
 
     return $this->render(
@@ -101,6 +103,7 @@ class WordWarsController extends Controller
       array(
         'saved_words' => $saved_words,
         'word_count' => $word_count,
+        'start_time' => $start_time,
         'end_time' => $end_time,
         'ww_id' => $word_war->getId(),
         )
