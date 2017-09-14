@@ -45,17 +45,19 @@ function count_my_time(date, temps_diff) {
       // On vérifie si la WW a commencé
       if(start_date > now) {
         // Si elle n'a pas commencé, on lance le CD et on désactive le textarea
-        $('#mywordwar_wrapper textarea#my_wordwar_words').hide();
+        $('#word_war_form').hide();
         $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', true);
+        $('#wordwars_wrapper h2').html('La WW débutera dans :');
 
         var temps_diff = new Date(start_date - now);
         countdown = count_my_time(start_date, temps_diff);
         begin_countdown($('#giant_starting_coutdown'), false, countdown);
       }
-      else {
+      else if (end_date > now) {
         // Si elle a commencé on affiche le textarea et on lance le CD
         $('#giant_starting_coutdown').hide();
-        $('#mywordwar_wrapper textarea#my_wordwar_words').show();
+        $('#word_war_form').show();
+        $('#wordwars_wrapper h2').html("C'est parti !");
         $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', false);
 
         // On met à jour le flag de WW commencée et on lance le CD et l'autosave
@@ -95,6 +97,7 @@ function count_my_time(date, temps_diff) {
             // Fin de la WW : posez les stylos, on disable le textarea
             $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', true);
             clearInterval(autosave_interval_id);
+            save_words();
           }
 
           // Dans tous les cas on désactive le setInterval

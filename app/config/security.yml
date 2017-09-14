@@ -38,5 +38,6 @@ security:
   access_control:
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/mywords, roles: ROLE_USER }
-    - { path: ^/wordwars/in_progress, roles: ROLE_USER }
+    - { path: ^/wordwars, roles: ROLE_USER }
+    - { path: ^/mystats, roles: ROLE_USER }
     #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

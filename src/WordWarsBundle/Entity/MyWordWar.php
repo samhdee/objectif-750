@@ -5,6 +5,7 @@ namespace WordWarsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use WordWarsBundle\Entity\WordWar;
 use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * MyWordWar
@@ -32,6 +33,7 @@ class MyWordWar
    * @var string
    *
    * @ORM\Column(name="content", type="text")
+   * @Assert\NotBlank()
    */
   private $content;
 

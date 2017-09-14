@@ -11,42 +11,42 @@
       <p>Par contre lancez pas des WW à cheval sur deux jours c'est chiant.</p>
     </div>
 
-    {{ form_start(form, {'attr': {'class': 'form-horizontal col-lg-offset-1 col-md-8'}}) }}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal col-md-12'}}) }}
 
     {# Erreurs générales du formulaire #}
     {{ form_errors(form) }}
 
     {# Champ Titre #}
     <div class="form-group">
-      {{ form_label(form.title, 'ww.title'|trans, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.title, 'ww.title'|trans, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
-      {{ form_errors(form.title) }}
-
-      <div class="col-sm-9">
+      <div class="col-sm-5">
         {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
       </div>
+
+      {{ form_errors(form.title) }}
     </div>
 
     {# Champ Début #}
     <div class="form-group">
-      {{ form_label(form.start, 'ww.start'|trans, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.start, 'ww.start'|trans, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
-      {{ form_errors(form.start) }}
-
-      <div class="col-sm-7">
+      <div class="col-sm-3">
         {{ form_widget(form.start) }}
       </div>
+
+      {{ form_errors(form.start) }}
     </div>
 
     {# Champ Fin #}
     <div class="form-group">
-      {{ form_label(form.end, 'ww.end'|trans, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_label(form.end, 'ww.end'|trans, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 
-      {{ form_errors(form.end) }}
-
-      <div class="col-sm-7">
+      <div class="col-sm-3">
         {{ form_widget(form.end) }}
       </div>
+
+      {{ form_errors(form.end) }}
     </div>
 
     {# Submit #}

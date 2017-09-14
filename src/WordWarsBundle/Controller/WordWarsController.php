@@ -34,6 +34,7 @@ class WordWarsController extends Controller
         // Formattage de la date pour qu'à l'heure sélectionnée s'ajoute la date du jour
         $word_war->setStart(new \DateTime($word_war->getStart()->format('H:i:s')));
         $word_war->setEnd(new \DateTime($word_war->getEnd()->format('H:i:s')));
+
         // Persistage de la word war nouvellement créée
         $manager = $this->getDoctrine()->getManager();
         $manager->persist($word_war);

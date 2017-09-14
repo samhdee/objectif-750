@@ -64,19 +64,34 @@
     padding: 50px 20%;
   }
 
+  #mywordwar_wrapper #giant_starting_coutdown {
+    font-size: 36px;
+  }
+
   #new_wordwar_wrapper {
     .form-horizontal {
       margin-top: 30px;
 
-      select#wordwarsbundle_wordwar_start_hour,
-      select#wordwarsbundle_wordwar_end_hour {
-        margin-right: 5px;
+      .form-group {
+        .help-block {
+          color: #a94442;
+          display: inline-block;
+          margin-bottom: 10px;
+          margin-left: 15px;
+          border-radius: 4px;
+        }
+
+        select#wordwarsbundle_wordwar_start_hour,
+        select#wordwarsbundle_wordwar_end_hour {
+          margin-right: 5px;
+        }
+
+        select#wordwarsbundle_wordwar_start_minute,
+        select#wordwarsbundle_wordwar_end_minute {
+          margin-left: 5px;
+        }
       }
 
-      select#wordwarsbundle_wordwar_start_minute,
-      select#wordwarsbundle_wordwar_end_minute {
-        margin-left: 5px;
-      }
     }
   }
 }

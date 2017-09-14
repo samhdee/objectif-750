@@ -16,22 +16,25 @@ class WordWarType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-      $builder->add('title', TextType::class);
+      $builder->add('title', TextType::class, array(
+          'required' => false,
+          'attr' => array('placeholder' => 'Facultatif mais toujours pratique')));
 
       $now = date('H');
       $hours = array($now, ($now+1)%24, ($now+2)%24, ($now+3)%24);
+      $minutes = array(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55);
 
       $builder->add('start', TimeType::class, array(
         'widget' => 'choice',
         'input' => 'datetime',
         'hours' => $hours,
-        'minutes' => array(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55)));
+        'minutes' => $minutes));
 
       $builder->add('end', TimeType::class, array(
         'widget' => 'choice',
         'input' => 'datetime',
         'hours' => $hours,
-        'minutes' => array(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55)));
+        'minutes' => $minutes));
 
       $builder->add('save', SubmitType::class);
     }

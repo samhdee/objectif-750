@@ -4,6 +4,8 @@ namespace WordWarsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * WordWar
@@ -25,17 +27,19 @@ class WordWar
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @ORM\Column(name="start", type="datetime")
+     * @Assert\DateTime()
      */
     private $start;
 
     /**
      * @ORM\Column(name="end", type="datetime")
+     * @Assert\DateTime()
      */
     private $end;
 
@@ -56,7 +60,7 @@ class WordWar
      */
     public function getId()
     {
-        return $this->id;
+      return $this->id;
     }
 
     /**
@@ -68,9 +72,9 @@ class WordWar
      */
     public function setStart($start)
     {
-        $this->start = $start;
+      $this->start = $start;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -80,7 +84,7 @@ class WordWar
      */
     public function getStart()
     {
-        return $this->start;
+      return $this->start;
     }
 
     /**
@@ -92,9 +96,9 @@ class WordWar
      */
     public function setAuthor(\UserBundle\Entity\User $author = null)
     {
-        $this->author = $author;
+      $this->author = $author;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -104,7 +108,7 @@ class WordWar
      */
     public function getAuthor()
     {
-        return $this->author;
+      return $this->author;
     }
 
     /**
@@ -116,9 +120,9 @@ class WordWar
      */
     public function setEnd($end)
     {
-        $this->end = $end;
+      $this->end = $end;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -128,7 +132,7 @@ class WordWar
      */
     public function getEnd()
     {
-        return $this->end;
+      return $this->end;
     }
 
     /**
@@ -140,9 +144,9 @@ class WordWar
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+      $this->title = $title;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -152,6 +156,36 @@ class WordWar
      */
     public function getTitle()
     {
-        return $this->title;
+      return $this->title;
     }
-}
+
+    /**
+     * @Assert\Callback
+     */
+    public function isWWValid(ExecutionContextInterface $context) {
+      $now = new \DateTime();
+      $start = new \DateTime($this->getStart()->format('H:i:s'));
+      $end = new \DateTime($this->getEnd()->format('H:i:s'));
+
+      if($start < $now) {
+        $context
+          ->buildViolation('La WW ne peut pas démarrer dans le passé !')
+          ->atPath('start')
+          ->addViolation();
+      }
+
+      if($start > $end) {
+        $context
+          ->buildViolation('La WW doit démarrer avant de finir !')
+          ->atPath('end')
+          ->addViolation();
+      }
+
+      if($start == $end) {
+        $context
+          ->buildViolation("L'heure de fin doit être différente de celle de début !")
+          ->atPath('end')
+          ->addViolation();
+      }
+    }
+  }

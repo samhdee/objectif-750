@@ -4,7 +4,7 @@
 
 {% block wordwars_body %}
   <div id="mywordwar_wrapper" class="content_wrapper">
-    <form>
+    <form id="word_war_form">
       {# <button id="test_button">Je suis un bouton</button> #}
       <div id="words_header">
         <p id="countdown">
@@ -20,14 +20,13 @@
         <input id="ww_id" type="hidden" value="{{ ww_id }}">
       </div>
 
-      <div id="giant_starting_coutdown">
-        <span id="starting_in" class="hidden">Début dans&nbsp;</span>
-        <span class="hours"></span>h
-        <span class="minutes"></span>m
-        <span class="secondes"></span>s
-      </div>
-
       <textarea id="my_wordwar_words">{{ saved_words }}</textarea>
     </form>
+
+    <div id="giant_starting_coutdown">
+      <span class="hours"></span>h
+      <span class="minutes"></span>m
+      <span class="secondes"></span>s
+    </div>
   </div>
 {% endblock %}
