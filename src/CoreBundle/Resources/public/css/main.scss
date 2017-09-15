@@ -23,9 +23,28 @@ body {
     margin-top: 0;
   }
 
+  ul.inline_list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
+
   header#header.jumbotron {
     background-color: #2E3136;
     padding: 20px 0 0 30px;
+
+    a {
+      color: #5191C8;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #FFFFFF;
+    }
 
     div#user_ribbon {
       margin-left: 20px;
@@ -33,15 +52,6 @@ body {
       display: inline;
       color: white;
       font-size: 16px;
-
-      a {
-        color: #5191C8;
-      }
-
-      a:hover {
-        text-decoration: none;
-        color: #428BCA;
-      }
     }
 
     h1 {
@@ -50,12 +60,8 @@ body {
       font-size: 50px;
       line-height: 70px;
 
-      a {
+      a, a:hover {
         color: #D1A232;
-        text-decoration: none;
-      }
-
-      a:hover {
         text-decoration: none;
       }
     }
@@ -63,7 +69,7 @@ body {
     nav.navbar {
       margin-top: 20px;
 
-      ul.inline_list {
+      ul#main_menu.inline_list {
         list-style: none;
         padding: 0;
 
@@ -73,21 +79,10 @@ body {
           font-size: 16px;
           vertical-align: top;
 
-          a {
-            color: #5191C8;
-          }
-
-          a:hover {
-            color: #428BCA;
-          }
-
-          a.current_location {
-            border-bottom: 2px solid #5191C8;
-          }
-
           ul.submenu {
+            display: none;
             padding-left: 0;
-            margin-top: 5px;
+            padding-top: 5px;
           }
         }
       }
@@ -95,6 +90,30 @@ body {
   }
 
   .container {
+    div#breadcrumb {
+      ul {
+        li {
+          font-family: 'Open Sans', 'Calibri', sans-serif;
+          margin-right: 10px;
+        }
+
+        li:after {
+          content: "\27A4";
+          color: #428BCA;
+          margin-left: 10px;
+        }
+
+        li:last-child:after {
+          content: "";
+        }
+
+        li:last-child {
+          font-weight: bold;
+          color: #428BCA;
+        }
+      }
+    }
+
     p.message {
       padding: 15px;
       margin-bottom: 20px;

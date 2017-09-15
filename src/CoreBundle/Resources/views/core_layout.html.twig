@@ -25,9 +25,15 @@
 		</title>
 	<body>
 		{% include 'CoreBundle::header.html.twig' %}
-		{# {{ render(controller('CoreBundle:Core:menu')) }} #}
 
 		<div class="container">
+				<div id="breadcrumb">
+					<ul class="inline_list">
+						<li><a href="{{ path('core_homepage') }}">Accueil</a></li>
+						{% block fil_ariane %}
+						{% endblock %}
+					</ul>
+				</div>
 			{% for status in app.session.flashbag.get('status') %}
 				<p class="message status_message">{{ status }}</p>
 			{% endfor %}
@@ -46,6 +52,10 @@
 	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 			<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+	  {% javascripts
+	    'bundles/core/js/core.js' %}
+	    <script type="text/javascript" src="{{ asset_url }}"></script>
+	  {% endjavascripts %}
 	  {% endblock %}
 	</body>
 	<footer>

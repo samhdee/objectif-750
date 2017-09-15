@@ -12,8 +12,12 @@
   {% endstylesheets %}
 {% endblock %}
 
+{% block fil_ariane %}
+  <li><a href="{{ path('word_wars_homepage') }}">word wars</a></li>
+  {# {{ render(controller('WordWarsBundle:WordWars:breadcrumb')) }} #}
+{% endblock %}
+
 {% block body %}
-  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
   <div id="wordwars_wrapper">
     <h2>{% block title_page %}{% endblock %}</h2>
 

@@ -15,6 +15,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class WordWarsController extends Controller
 {
+  public function breadcrumbAction() {
+
+    return $this->render('WordWars::breadcrumb.html.twig');
+  }
+
   public function indexAction($id) {
     return $this->render('WordWars:MyWords:index.html.twig');
   }

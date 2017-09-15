@@ -3,11 +3,16 @@
 
 {% block title_page %}Créer votre WW{% endblock %}
 
+{% block fil_ariane %}
+  {{ parent() }}
+  <li>créer une WW</li>
+{% endblock %}
+
 {% block wordwars_body %}
   <div id="new_wordwar_wrapper" class="content_wrapper">
     <div class="introduction">
       <p>Une Word War (plus communément appelée WW) est une session où les participants se livrent à une course au plus grand nombre de mots en un temps donné (15 à 30 minutes en général).</p>
-      <p>Après avoir créé votre WW, il vous suffira de transmettre le lien aux participants et ils pourront participer directement. <strong>Notez qu'il leur faudra toutefois être connecté à leur compte (ou en créer un s'ils n'en ont pas).</strong></p>
+      <p>Après avoir créé votre WW, il vous suffira de transmettre le lien aux participants et ils pourront participer directement. <strong>Notez qu'il leur faudra toutefois être connectés à leur compte (ou en créer un s'ils n'en ont pas).</strong></p>
       <p>Par contre lancez pas des WW à cheval sur deux jours c'est chiant.</p>
     </div>
 

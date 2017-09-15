@@ -2,6 +2,11 @@
 
 {% block title_page %}C'est parti !{% endblock %}
 
+{% block fil_ariane %}
+  {{ parent() }}
+  <li>WW en cours</li>
+{% endblock %}
+
 {% block wordwars_body %}
   <div id="mywordwar_wrapper" class="content_wrapper">
     <form id="word_war_form">

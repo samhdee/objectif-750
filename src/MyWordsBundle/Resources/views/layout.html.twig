@@ -12,6 +12,11 @@
   {% endstylesheets %}
 {% endblock %}
 
+{% block fil_ariane %}
+  <li>mots d'aujourd'hui</li>
+  {# {{ render(controller('WordWarsBundle:WordWars:breadcrumb')) }} #}
+{% endblock %}
+
 {% block body %}
   {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
   <div id="mywords_wrapper">
