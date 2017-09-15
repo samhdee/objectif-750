@@ -1,0 +1,27 @@
+{% extends "MyStatsBundle::layout.html.twig" %}
+
+{% block fil_ariane %}
+  {{ parent() }}
+  <li>mots d'aujourd'hui</li>
+  {# {{ render(controller('WordWarsBundle:WordWars:breadcrumb')) }} #}
+{% endblock %}
+
+{% block title_page %}Mon quota journalier{% endblock %}
+
+{% block wordwars_body %}
+  <div id="mystats_wrapper" class="content_wrapper">
+    <div id="daily_words_stats">
+      <p>Aujourd'hui :
+        {% if validay %}
+          <span id="quota_validay">validé</span>
+        {% else %}
+          <span id="quota_pas_validay">pas encore validé</span>
+        {% endif %}
+        ({{ total_words_written }} mots sur {{ word_count_goal }})
+      </p>
+      <div id="word_count_progression">
+        <div id="words_done">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

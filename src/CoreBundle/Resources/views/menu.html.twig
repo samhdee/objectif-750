@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <ul id="main_menu" class="inline_list">
+    <li class="first_level">
+      <a href="{{ path('my_words_homepage') }}">mots d'aujourd'hui</a>
+    </li>
+    <li class="first_level">
+      <a href="{{ path('word_wars_new') }}">word wars</a>
+    </li>
+    <li class="first_level">
+      <a href="{{ path('my_stats_homepage') }}">mes stats</a>
+
+      {# Sous menu Stats #}
+      <ul class="submenu">
+        <li><a href="{{ path('my_stats_daily') }}">quota journalier</a></li>
+        <li><a href="{{ path('my_stats_ww') }}">mes WW</a></li>
+      </ul>
+    </li>
+    {% if is_granted('ROLE_ADMIN') %}
+      <li><a href="{{ path('admin_homepage') }}">administration</a></li>
+    {% endif %}
+  </ul>
+</nav>
