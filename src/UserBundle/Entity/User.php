@@ -29,6 +29,7 @@ class User extends BaseUser
 
     /**
     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Avatar", cascade={"persist", "remove"})
+    * @ORM\JoinColumn(nullable=true)
     */
     private $avatar;
 

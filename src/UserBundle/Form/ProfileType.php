@@ -11,7 +11,7 @@ class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('avatar', AvatarType::class);
+        $builder->add('avatar', AvatarType::class, array('required' => false));
         $builder->add('user_preferences', UserPreferencesType::class);
         $builder->remove('current_password');
     }

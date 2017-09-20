@@ -24,9 +24,10 @@
         <input id="end_time" type="hidden" value="{{ end_time }}">
         <input id="ww_id" type="hidden" value="{{ ww_id }}">
       </div>
-
       <textarea id="my_wordwar_words">{{ saved_words }}</textarea>
     </form>
+
+    <p id="message_end_ww" class="hidden">La WW est finie ! Vous pouvez aller voir les résultats en cliquant <a href="{{ path('word_war_ended', {id: ww_id}) }}">ici</a>.</p>
 
     <div id="giant_starting_coutdown">
       <span class="hours"></span>h

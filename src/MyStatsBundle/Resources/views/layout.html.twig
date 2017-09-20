@@ -6,8 +6,7 @@
 
 {% block stylesheets %}
   {{ parent() }}
-  {% stylesheets filter='cssrewrite'
-    'bundles/wordwars/css/word_wars.css' %}
+  {% stylesheets filter='cssrewrite' 'bundles/mystats/css/mystats.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
   {% endstylesheets %}
 {% endblock %}
@@ -19,10 +18,10 @@
 
 {% block body %}
   {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
-  <div id="wordwars_wrapper">
+  <div id="mystats_wrapper">
     <h2>{% block title_page %}{% endblock %}</h2>
 
-    {% block wordwars_body %}{% endblock %}
+    {% block mystats_body %}{% endblock %}
   </div>
 {% endblock %}
 

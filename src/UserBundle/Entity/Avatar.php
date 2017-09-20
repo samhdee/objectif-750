@@ -26,14 +26,14 @@ class Avatar
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=255, nullable=true)
+     * @ORM\Column(name="extension", type="string", length=255)
      */
     private $extension;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
 

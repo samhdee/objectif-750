@@ -53,7 +53,7 @@ function count_my_time(date, temps_diff) {
         countdown = count_my_time(start_date, temps_diff);
         begin_countdown($('#giant_starting_coutdown'), false, countdown);
       }
-      else if (end_date > now) {
+      else if (end_date >= now) {
         // Si elle a commencé on affiche le textarea et on lance le CD
         $('#giant_starting_coutdown').hide();
         $('#word_war_form').show();
@@ -65,12 +65,14 @@ function count_my_time(date, temps_diff) {
 
         var temps_diff = new Date(end_date - now);
         countdown = count_my_time(end_date, temps_diff);
-        begin_countdown($('p#countdown'), true, countdown);
+        begin_countdown($('#countdown'), true, countdown);
         auto_save();
       }
     };
 
+    // NB : le bug est quelque part du côté de l'arrêt du setInterval
     function begin_countdown(which_one, ww_started, countdown) {
+      console.log('begin_countdown');
       // On décrémente le compteur toutes les secondes
       interval_id = setInterval(function() {
         // On décrémente les secondes
@@ -89,25 +91,33 @@ function count_my_time(date, temps_diff) {
           // On signale que la WW commence
           if(!ww_started) {
             ww_started = true;
+            console.log('ALLO');
+
+            // Dans tous les cas on désactive le setInterval
+            clearInterval(interval_id);
+            interval_id = null;
 
             // On rappelle la fonction pour lancer l'auto save
             check_ww_started();
           }
           else {
+            // Dans tous les cas on désactive le setInterval
+            clearInterval(interval_id);
+            interval_id = null;
+
             // Fin de la WW : posez les stylos, on disable le textarea
             $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', true);
             clearInterval(autosave_interval_id);
             save_words();
+            $('#word_war_form').hide();
+            $('#message_end_ww.hidden').removeClass('hidden');
           }
-
-          // Dans tous les cas on désactive le setInterval
-          clearInterval(interval_id);
-          interval_id = null;
         }
       }, 1000);
     };
 
     function update_countdown(countdown, which_one) {
+      console.log('OUI');
       $(which_one).find('.hours').html(countdown.heures);
       $(which_one).find('.minutes').html(countdown.minutes);
       $(which_one).find('.secondes').html(countdown.secondes);

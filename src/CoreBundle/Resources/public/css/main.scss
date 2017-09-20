@@ -95,11 +95,16 @@ body {
         li {
           font-family: 'Open Sans', 'Calibri', sans-serif;
           margin-right: 10px;
+          color: #5E49A3;
+
+          a {
+            color: #5E49A3;
+          }
         }
 
         li:after {
           content: "\27A4";
-          color: #428BCA;
+          color: #5E49A3;
           margin-left: 10px;
         }
 
@@ -109,7 +114,7 @@ body {
 
         li:last-child {
           font-weight: bold;
-          color: #428BCA;
+          color: #5E49A3;
         }
       }
     }
@@ -128,6 +133,8 @@ body {
     }
 
     #content {
+      margin-top: 30px;
+
       .content_wrapper {
         margin-top: 30px;
 

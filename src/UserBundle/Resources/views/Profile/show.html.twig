@@ -8,8 +8,8 @@
     <p>{{ 'profile.show.username'|trans }} : {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }} : {{ user.email }}</p>
     <p>Avatar :
-      {% if user.avatar %}
-        <img src="{{ asset(user.avatar.uploadDir ~ '/' ~ user.avatar.id ~ '.' ~ user.avatar.extension) }}" />
+      {% if user.avatar.extension %}
+        <img width="150" src="{{ asset(user.avatar.uploadDir ~ '/' ~ user.avatar.id ~ '.' ~ user.avatar.extension) }}" />
       {% else %}
         <em>Vous n'avez pas (encore) d'avatar.</em>
       {% endif %}

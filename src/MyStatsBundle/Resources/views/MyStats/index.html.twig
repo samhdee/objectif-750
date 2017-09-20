@@ -1,8 +1,13 @@
-{% extends "WordWarsBundle::layout.html.twig" %}
+{% extends "MyStatsBundle::layout.html.twig" %}
+
+{% block fil_ariane %}
+  <li>mes stats</li>
+  {# {{ render(controller('WordWarsBundle:WordWars:breadcrumb')) }} #}
+{% endblock %}
 
 {% block title_page %}Soon...{% endblock %}
 
-{% block wordwars_body %}
+{% block mystats_body %}
   <div id="mystats_wrapper" class="content_wrapper">
   </div>
 {% endblock %}

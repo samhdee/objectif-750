@@ -19,3 +19,9 @@ save_my_ww_words:
         _method: POST
     options:
         expose: true
+
+word_war_ended:
+    path:     /wordwars/in_progress/{id}/end
+    defaults: { _controller: WordWarsBundle:WordWars:wwEnded }
+    requirements:
+        id: \d+

@@ -8,7 +8,7 @@
 
 {% block title_page %}Mon quota journalier{% endblock %}
 
-{% block wordwars_body %}
+{% block mystats_body %}
   <div id="mystats_wrapper" class="content_wrapper">
     <div id="daily_words_stats">
       <p>Aujourd'hui :
@@ -19,8 +19,35 @@
         {% endif %}
         ({{ total_words_written }} mots sur {{ word_count_goal }})
       </p>
+
       <div id="word_count_progression">
         <div id="words_done">&nbsp;</div>
+      </div>
+
+      <div id="words_calendar_wrapper">
+        <ul id="calendar_legend" class="inline_list">
+          <li id="nowords" class="legend_item">
+            <span class="legend_color nowords">&nbsp;</span>
+            aucun mot écrit
+          </li>
+          <li id="somewords" class="legend_item">
+            <span class="legend_color somewords">&nbsp;</span>
+            quelques mots écrits
+          </li>
+          <li id="allwords" class="legend_item">
+            <span class="legend_color allwords">&nbsp;</span>
+            but atteint
+          </li>
+        </ul>
+
+        <ul id="words_calendar" class="inline_list col-md-5">
+          {% for data in calendar_data %}
+            {% if data.achieved == true %} {% set class = "allwords" %}
+            {% elseif data.achieved == false and data.nb_mots > 0 %} {% set class = "somewords" %}
+            {% else %} {% set class = "nowords" %} {% endif %}
+            <li class="{{ class }} calendar_item">&nbsp;</li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>
