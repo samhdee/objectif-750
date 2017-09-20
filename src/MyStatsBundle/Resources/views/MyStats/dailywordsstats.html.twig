@@ -49,7 +49,10 @@
           <li class="week_day">S</li>
           <li class="week_day">D</li>
           {% for data in calendar_data %}
-            <li data-progression="{{ data.progression }}" class="{{ data.class }} calendar_item">{{ data.nb_day }}</li>
+            <li data-progression="{{ data.progression }}" class="{{ data.class }} calendar_item">
+              <div class="day_number">{{ data.nb_day }}</div>
+              <div class="progression_status">&nbsp;</div>
+            </li>
           {% endfor %}
         </ul>
       </div>

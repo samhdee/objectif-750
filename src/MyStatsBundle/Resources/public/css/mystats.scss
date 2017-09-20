@@ -1,18 +1,7 @@
 #mystats_wrapper {
   #words_calendar_wrapper {
-    .nowords {
-      background-color: #5E5F5C;
-    }
-
-    .somewords {
-      background-color: #D47034;
-    }
-
-    .allwords {
-      background-color: #A5D392;
-    }
-
     ul#calendar_legend {
+      display: none;
       li.legend_item {
         vertical-align: middle;
 
@@ -38,11 +27,40 @@
 
       li.calendar_item {
         margin: 0 20px 20px 0;
-        padding-left: 3px;
+        // padding-left: 3px;
         height: 30px;
         width: 30px;
         font-size: 10px;
         vertical-align: top;
+        border: 1px solid black;
+        background-repeat: no-repeat;
+        background-size: 10px 10px;
+        position: relative;
+        background-color: transparent;
+
+        .day_number {
+          position: absolute;
+          top: 0;
+          left: 3px;
+          z-index: 10;
+          background-color: transparent;
+        }
+
+        .progression_status {
+          background-color: #A5D392;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          z-index: 1;
+        }
+      }
+
+      li.calendar_item.nowords,
+      li.calendar_item.filler, {
+        .progression_status {
+          display: none;
+        }
       }
     }
   }

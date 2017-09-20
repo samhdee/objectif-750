@@ -27,9 +27,7 @@
 
 {% block javascripts %}
   {{ parent() }}
-  {% javascripts
-    'bundles/wordwars/js/word_wars.js'
-    'bundles/mywords/js/jquery.autogrow-textarea.js' %}
+  {% javascripts 'bundles/mystats/js/mystats.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
   {% endjavascripts %}
 {% endblock %}
