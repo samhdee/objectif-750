@@ -33,6 +33,7 @@ class MyStatsController extends Controller
     $now = new \DateTime();
     $month = $now->format('m');
     $year = $now->format('Y');
+    $number_day_of_week = $now->format('N');
     $nb_days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
     $calendar_data = array();
@@ -41,15 +42,51 @@ class MyStatsController extends Controller
       $total_mots = $stat->getMyWordsWordCount() + $stat->getWordWarsWordCount();
       $goal = $stat->getDaysGoal();
       $date = $stat->getDate()->format('Y-m-d');
-      $calendar_data[$date] = array('nb_mots' => $total_mots, 'goal' => $goal, 'achieved' => ($goal <= $total_mots));
+      $day = $stat->getDate()->format('d');
+      $calendar_data[$date] = array(
+        'nb_mots' => $total_mots,
+        'goal' => $goal,
+        'progression' => ($goal != 0) ? ($total_mots * 100) / $goal : 0,
+        'class' => ($goal <= $total_mots) ? 'allwords' : ($total_mots == 0) ? 'nowords' : 'somewords',
+        'nb_day' => $day);
     }
 
     for($i = 1 ; $i <= $nb_days ; $i++) {
-      $temp = new \DateTime($year . '-' . $month . '-' . $i);
-      $temp = $temp->format('Y-m-d');
+      if($i < $number_day_of_week) {
+        for($j = $number_day_of_week ; $j >= 0 ; $j--) {
+          if($month == '01') {
+            $temp_month = '12';
+            $temp_year--;
+          }
+          else {
+            $temp_year = $year;
+            $temp_month = $month -1;
+          }
 
-      if(!isset($calendar_data[$temp])) {
-        $calendar_data[$temp] = array('nb_mots' => 0, 'goal' => 0, 'achieved' => false);
+          $temp_nb_days = cal_days_in_month(CAL_GREGORIAN, $temp_month, $temp_year);
+          $temp_day = $temp_nb_days - $j;
+          $temp = new \DateTime($temp_year . '-' . $temp_month . '-' . $temp_day);
+          $temp = $temp->format('Y-m-d');
+          $calendar_data[$temp] = array(
+            'nb_mots' => 0,
+            'goal' => 0,
+            'progression' => 0,
+            'class' => 'filler',
+            'nb_day' => '');
+        }
+      }
+
+      $temp = new \DateTime($year . '-' . $month . '-' . $i);
+      $temp_date = $temp->format('Y-m-d');
+      $temp_day = $temp->format('d');
+
+      if(!isset($calendar_data[$temp_date])) {
+        $calendar_data[$temp_date] = array(
+          'nb_mots' => 0,
+          'goal' => 0,
+          'progression' => 0,
+          'class' => 'nowords',
+          'nb_day' => $temp_day);
       }
     }
 

@@ -41,11 +41,15 @@
         </ul>
 
         <ul id="words_calendar" class="inline_list col-md-5">
+          <li class="week_day">L</li>
+          <li class="week_day">M</li>
+          <li class="week_day">M</li>
+          <li class="week_day">J</li>
+          <li class="week_day">V</li>
+          <li class="week_day">S</li>
+          <li class="week_day">D</li>
           {% for data in calendar_data %}
-            {% if data.achieved == true %} {% set class = "allwords" %}
-            {% elseif data.achieved == false and data.nb_mots > 0 %} {% set class = "somewords" %}
-            {% else %} {% set class = "nowords" %} {% endif %}
-            <li class="{{ class }} calendar_item">&nbsp;</li>
+            <li data-progression="{{ data.progression }}" class="{{ data.class }} calendar_item">{{ data.nb_day }}</li>
           {% endfor %}
         </ul>
       </div>

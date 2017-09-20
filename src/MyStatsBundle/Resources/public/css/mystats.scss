@@ -1,0 +1,49 @@
+#mystats_wrapper {
+  #words_calendar_wrapper {
+    .nowords {
+      background-color: #5E5F5C;
+    }
+
+    .somewords {
+      background-color: #D47034;
+    }
+
+    .allwords {
+      background-color: #A5D392;
+    }
+
+    ul#calendar_legend {
+      li.legend_item {
+        vertical-align: middle;
+
+        span.legend_color {
+          display: inline-block;
+          height: 10px;
+          width: 10px;
+          margin-right: 10px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    ul#words_calendar {
+      margin-top: 20px;
+      li.week_day {
+        text-align: center;
+        font-size: 14px;
+        margin: 0 20px 0 0;
+        height: 30px;
+        width: 30px;
+      }
+
+      li.calendar_item {
+        margin: 0 20px 20px 0;
+        padding-left: 3px;
+        height: 30px;
+        width: 30px;
+        font-size: 10px;
+        vertical-align: top;
+      }
+    }
+  }
+}
