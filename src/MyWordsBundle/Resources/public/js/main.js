@@ -24,7 +24,7 @@
     }
     , 15000);
 
-    $('button#saveme').on('click', function(e) {
+    $('button#save_me').on('click', function(e) {
       e.preventDefault();
       var words = $('#daily_words_wrapper textarea#my_daily_words').val();
 

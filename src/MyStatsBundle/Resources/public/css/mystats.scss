@@ -17,21 +17,22 @@
 
     ul#words_calendar {
       margin-top: 20px;
+      width: 400px;
+
+      li {
+        margin: 0 5% 20px 0;
+        height: 30px;
+        width: 8%;
+      }
+
       li.week_day {
         text-align: center;
         font-size: 14px;
-        margin: 0 20px 0 0;
         height: 30px;
-        width: 30px;
       }
 
       li.calendar_item {
-        margin: 0 20px 20px 0;
-        // padding-left: 3px;
-        height: 30px;
-        width: 30px;
         font-size: 10px;
-        vertical-align: top;
         border: 1px solid black;
         background-repeat: no-repeat;
         background-size: 10px 10px;
@@ -47,13 +48,17 @@
         }
 
         .progression_status {
-          background-color: #A5D392;
+          background-color: #1DB954;
           position: absolute;
           left: 0;
           bottom: 0;
           width: 100%;
           z-index: 1;
         }
+      }
+
+      li.calendar_item.filler {
+        border: none;
       }
 
       li.calendar_item.nowords,

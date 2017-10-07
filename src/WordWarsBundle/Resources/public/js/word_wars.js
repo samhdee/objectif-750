@@ -72,7 +72,6 @@ function count_my_time(date, temps_diff) {
 
     // NB : le bug est quelque part du côté de l'arrêt du setInterval
     function begin_countdown(which_one, ww_started, countdown) {
-      console.log('begin_countdown');
       // On décrémente le compteur toutes les secondes
       interval_id = setInterval(function() {
         // On décrémente les secondes
@@ -87,37 +86,32 @@ function count_my_time(date, temps_diff) {
         update_countdown(countdown, $(which_one));
 
         // Fin du countdown !
-        if(countdown.temps == 0) {
-          // On signale que la WW commence
+        if(countdown.temps <= 1) {
+          // Si la WW n'a pas commencé, on signale que la WW commence
           if(!ww_started) {
-            ww_started = true;
-            console.log('ALLO');
-
-            // Dans tous les cas on désactive le setInterval
+            // On désactive le setInterval
             clearInterval(interval_id);
             interval_id = null;
 
-            // On rappelle la fonction pour lancer l'auto save
+            // On rappelle la fonction pour lancer la WW
             check_ww_started();
           }
           else {
-            // Dans tous les cas on désactive le setInterval
-            clearInterval(interval_id);
-            interval_id = null;
-
             // Fin de la WW : posez les stylos, on disable le textarea
             $('#mywordwar_wrapper textarea#my_wordwar_words').prop('disabled', true);
-            clearInterval(autosave_interval_id);
             save_words();
             $('#word_war_form').hide();
             $('#message_end_ww.hidden').removeClass('hidden');
+
+            // On désactive le setInterval
+            clearInterval(interval_id);
+            interval_id = null;
           }
         }
       }, 1000);
     };
 
     function update_countdown(countdown, which_one) {
-      console.log('OUI');
       $(which_one).find('.hours').html(countdown.heures);
       $(which_one).find('.minutes').html(countdown.minutes);
       $(which_one).find('.secondes').html(countdown.secondes);

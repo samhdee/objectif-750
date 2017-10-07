@@ -1,9 +1,9 @@
 admin_homepage:
-    path:     /admin
+    path:     /admin_old
     defaults: { _controller: AdminBundle:Admin:index }
 
 admin_users:
-    path:     /admin/users/{page}
+    path:     /admin_old/users/{page}
     defaults:
         _controller: AdminBundle:Admin:users
         page:        0

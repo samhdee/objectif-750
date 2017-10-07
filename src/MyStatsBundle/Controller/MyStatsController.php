@@ -51,21 +51,24 @@ class MyStatsController extends Controller
         'nb_day' => $day);
     }
 
-    for($i = 1 ; $i <= $nb_days ; $i++) {
-      if($i < $number_day_of_week) {
-        for($j = $number_day_of_week ; $j >= 0 ; $j--) {
-          if($month == '01') {
-            $temp_month = '12';
-            $temp_year--;
-          }
-          else {
-            $temp_year = $year;
-            $temp_month = $month -1;
-          }
+    if($month == '01') {
+      $prev_month = '12';
+      $prev_year--;
+    }
+    else {
+      $prev_year = $year;
+      $prev_month = $month -1;
+    }
 
-          $temp_nb_days = cal_days_in_month(CAL_GREGORIAN, $temp_month, $temp_year);
-          $temp_day = $temp_nb_days - $j;
-          $temp = new \DateTime($temp_year . '-' . $temp_month . '-' . $temp_day);
+    $nb_days_prev_month = cal_days_in_month(CAL_GREGORIAN, $prev_month, $prev_year);
+
+    for($i = 1 ; $i <= $nb_days ; $i++) {
+      // Le premier jour du mois n'est pas un lundi
+      if($i < $number_day_of_week) {
+        // On rajoute des cases filler jusqu'au premier jour du mois
+        for($j = ($number_day_of_week - 1) ; $j >= 1 ; $j--) {
+          $temp_day = $nb_days_prev_month - $j;
+          $temp = new \DateTime($prev_year . '-' . $prev_month . '-' . $temp_day);
           $temp = $temp->format('Y-m-d');
           $calendar_data[$temp] = array(
             'nb_mots' => 0,

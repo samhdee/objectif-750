@@ -14,7 +14,7 @@
       font-size: 12px;
       margin-bottom: 20px;
 
-      a#clickme, span#word_counter, span#progression_status {
+      a#focus_me, span#word_counter, span#progression_status {
         display: inline-block;
       }
 
@@ -34,18 +34,13 @@
         color: orange;
       }
 
-      button#saveme {
-        color: #609561;
-        padding: 0 5px;
+      button {
+        margin-left: 5px;
+        padding: 0 5px 1px;
         float: right;
         border: 1px solid transparent;
-        border-radius: 4px;
-      }
-
-      button#clickme {
+        border-radius: 5px;
         color: #609561;
-        float: right;
-        border: 1px solid transparent;
       }
     }
   }

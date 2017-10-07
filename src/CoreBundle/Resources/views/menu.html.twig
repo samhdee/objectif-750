@@ -11,7 +11,7 @@
 
       {# Sous menu Stats #}
       <ul class="submenu">
-        <li><a href="{{ path('my_stats_daily') }}">quota journalier</a></li>
+        <li><a href="{{ path('my_stats_daily') }}">quota</a></li>
         <li><a href="{{ path('my_stats_ww') }}">WW</a></li>
       </ul>
     </li>
@@ -19,7 +19,7 @@
       <a href="{{ path('export_homepage') }}">exports</a>
     </li>
     {% if is_granted('ROLE_ADMIN') %}
-      <li><a href="{{ path('admin_homepage') }}">administration</a></li>
+      <li><a href="{{ path('sonata_admin_dashboard') }}">administration</a></li>
     {% endif %}
   </ul>
 </nav>
