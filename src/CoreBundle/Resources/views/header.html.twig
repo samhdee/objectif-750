@@ -1,19 +1,21 @@
 <header id="header" class="jumbotron">
-  <h1><a href="{{ path('core_homepage') }}">Objectif 750</a></h1>
+  <div id="header_wrapper" class="container">
+    <h1><a href="{{ path('core_homepage') }}">Objectif 750</a></h1>
 
-  {# User ribbon si connecté #}
-  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    <div id="user_ribbon">
-      Connecté en tant que <a href="{{path('fos_user_profile_show')}}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+    {# User ribbon si connecté #}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      <div id="user_ribbon">
+        connecté en tant que <a href="{{path('fos_user_profile_show')}}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">déconnexion</a>
+      </div>
 
-      {# Menu #}
-      {% include 'CoreBundle::menu.html.twig' %}
-    </div>
+    {# User ribbon si déconnecté #}
+    {% else %}
+      <div id="user_ribbon">
+        <a href="{{ path('fos_user_security_login') }}">connexion</a>
+      </div>
+    {% endif %}
 
-  {# User ribbon si déconnecté #}
-  {% else %}
-    <div id="user_ribbon">
-      <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-    </div>
-  {% endif %}
+    {# Menu #}
+    {% include 'CoreBundle::menu.html.twig' %}
+  </div>
 </header>
