@@ -5,15 +5,15 @@
 {% block fos_user_content %}
   <div class="fos_user_user_show">
     <p><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></p>
-    <p>{{ 'profile.show.username'|trans }} : {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }} : {{ user.email }}</p>
-    <p>Avatar :
+    <p><span class="label">{{ 'profile.show.username'|trans }} :</span> {{ user.username }}</p>
+    <p><span class="label">{{ 'profile.show.email'|trans }} :</span> {{ user.email }}</p>
+    <p><span class="label">Avatar :</span>
       {% if user.avatar.extension %}
         <img width="150" src="{{ asset(user.avatar.uploadDir ~ '/' ~ user.avatar.id ~ '.' ~ user.avatar.extension) }}" />
       {% else %}
         <em>Vous n'avez pas (encore) d'avatar.</em>
       {% endif %}
     </p>
-    <p>Objectif : {% if user.userPreferences %} {{ user.userPreferences.wordCountGoal }} mots {% else %} 0 mot {% endif %} par jour</p>
+    <p><span class="label">Objectif :</span> {% if user.userPreferences %} {{ user.userPreferences.wordCountGoal }} mots {% else %} 0 mot {% endif %} par jour</p>
   </div>
 {% endblock %}

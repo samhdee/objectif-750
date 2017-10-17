@@ -2,7 +2,7 @@
   $(document).ready(function() {
     $('#my_daily_words').autogrow();
 
-    $('button#clickme').on('click', function(e) {
+    $('button#focus_me').on('click', function(e) {
       e.preventDefault();
       $('#daily_words_wrapper').toggleClass('distraction_free');
     });
@@ -22,7 +22,7 @@
       save_words();
       // count_my_words();
     }
-    , 15000);
+    , 10000);
 
     $('button#save_me').on('click', function(e) {
       e.preventDefault();

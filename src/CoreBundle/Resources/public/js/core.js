@@ -2,6 +2,7 @@
   $(document).ready(function() {
     $('nav.navbar ul#main_menu li.first_level').on('mouseover', function() {
       $(this).find('ul.submenu').fadeIn('fast');
+      $(this).find('a.first_level')
     });
 
     $('nav.navbar ul#main_menu li.first_level').on('mouseleave', function() {

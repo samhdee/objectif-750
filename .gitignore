@@ -16,6 +16,9 @@
 /vendor/
 /web/bundles/
 /web/uploads/
+/web/css/
+/web/js/
 sftp-config.json
 index.html
 .htaccess
+/.sass-cache/

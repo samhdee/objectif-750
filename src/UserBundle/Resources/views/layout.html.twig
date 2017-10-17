@@ -6,11 +6,17 @@
   User{{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets filter='cssrewrite' 'bundles/user/css/user.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
 {% block title_page %}Mon profil{% endblock %}
 
-{# Dans notre layout, il faut définir le block body #}
 {% block body %}
-  {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+  {# Messages flash #}
   {% for key, messages in app.session.flashbag.all() %}
     {% for message in messages %}
       <div class="alert alert-{{ key }}">
@@ -19,7 +25,6 @@
     {% endfor %}
   {% endfor %}
 
-  {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
   {% block fos_user_content %}
   {% endblock fos_user_content %}
 {% endblock %}

@@ -33,8 +33,20 @@ body {
     }
   }
 
+  a {
+    color: #3b9090;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  // Empêche Chrome de rajouter un outline bleu merdique au focus des trucs
+  *:focus, textarea:focus, input:focus {
+    outline: none;
+  }
+
   header#header.jumbotron {
-    background-color: #2E3136;
     padding: 0;
     margin: 0 0 10px 0;
 
@@ -51,15 +63,6 @@ body {
         color: #FFFFFF;
       }
 
-      div#user_ribbon {
-        position: absolute;
-        top: 5px;
-        right: 15px;
-        font-family: 'Open Sans Condensed', 'Calibri', sans-serif;
-        color: white;
-        font-size: 15px;
-      }
-
       h1 {
         margin: 0;
         text-align: center;
@@ -73,46 +76,129 @@ body {
         }
       }
 
-      nav.navbar {
-        margin-top: 20px;
-        min-height: 30px;
-        margin-bottom: 5px;
-        font-family: 'Open Sans Condensed', 'Calibri', sans-serif;
+      div#menu_bar {
+        margin-top: 30px;
+        border-bottom: 3px solid #373A3F;
+        font-family: 'Raleway', 'Calibri', sans-serif;
+        font-weight: bold;
 
-        ul#main_menu.inline_list {
-          list-style: none;
-          padding: 0;
+        div#user_ribbon {
+          float: right;
+          padding: 5px 0 0 0;
+          font-size: 16px;
 
-          li {
-            position: relative;
-            margin-right: 20px;
-            font-size: 16px;
-            vertical-align: top;
+          a:hover {
+            color: #333333;
+          }
+        }
 
-            ul.submenu {
-              display: none;
-              position: absolute;
-              top: 20px;
-              width: 100px;
-              height: 20px;
-              padding-left: 0;
-              padding-top: 5px;
+        nav.navbar {
+          float: left;
+          min-height: 10px;
+          margin-bottom: 0;
+          border: none;
 
-              li {
-                background-color: #2E3136;
+          ul#main_menu.inline_list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
 
-                a {
-                  display: block;
-                  padding: 5px 0;
-                  width: 100px;
-                  text-align: center;
-                  border-bottom: 1px solid #3b9090;
+            li.active,
+            li:hover {
+              a {
+                background-color: #373A3F;
+                color: #FFFFFF;
+                position: relative;
+                text-decoration: none;
+                border: 1px solid #373A3F;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+              }
+            }
+
+            li.first_level {
+              position: relative;
+              vertical-align: top;
+              margin-right: 10px;
+              font-size: 16px;
+
+              a {
+                display: block;
+                padding: 5px 8px 4px;
+                border: 1px solid transparent;
+              }
+
+              ul.submenu {
+                display: none;
+                position: absolute;
+                top: 30px;
+                width: 100%;
+                padding-left: 0;
+                padding-top: 5px;
+
+                li:before,
+                li:after {
+                  content: '';
+                  width: 20px;
+                  height: 35px;
+                  background-color: #373A3F;
+                  position: absolute;
+                  top: -1px;
                 }
 
-                a:hover {
-                  background-color: #373A3F;
+                li:before {
+                  left: -7px;
+                }
+
+                li:after {
+                  right: -7px;
+                }
+
+                li {
+                  background-color: #2E3136;
+                  width: 100%;
+                  border-bottom: 1px solid #3C3C3C;
+                  position: relative;
+
+                  a {
+                    padding: 5px;
+                    color: #3b9090;
+                    display: block;
+                    text-align: center;
+                  }
+
+                  a:hover {
+                    background-color: #373A3F;
+                    color: #ffffff;
+                  }
+                }
+
+                li:last-child {
+                  border-bottom: none;
                 }
               }
+            }
+
+            li.first_level:hover::before {
+              content: '';
+              border-top: 18px solid transparent;
+              border-bottom: 18px solid #373A3F;
+              border-left: 4px solid transparent;
+              border-right: 4px solid #373A3F;
+              position: absolute;
+              top: 0px;
+              left: -8px;
+            }
+
+            li.first_level:hover::after {
+              content: '';
+              border-top: 18px solid transparent;
+              border-bottom: 18px solid #373A3F;
+              border-left: 4px solid #373A3F;
+              border-right: 4px solid transparent;
+              position: absolute;
+              top: 0px;
+              right: -8px;
             }
           }
         }
@@ -195,6 +281,7 @@ body {
         }
       }
     }
+
     #content.col-md-10 {
       position: inherit;
     }

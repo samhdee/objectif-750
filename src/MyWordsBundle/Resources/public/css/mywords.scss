@@ -13,8 +13,10 @@
     #words_header {
       font-size: 12px;
       margin-bottom: 20px;
+      font-family: 'Raleway', 'Calibri', sans-serif;
+      font-weight: bold;
 
-      a#focus_me, span#word_counter, span#progression_status {
+      span#word_counter, span#progression_status {
         display: inline-block;
       }
 
@@ -35,12 +37,22 @@
       }
 
       button {
-        margin-left: 5px;
-        padding: 0 5px 1px;
+        margin-left: 10px;
         float: right;
         border: 1px solid transparent;
-        border-radius: 5px;
-        color: #609561;
+        width: 13px;
+        height: 13px;
+        background-repeat: no-repeat;
+        background-size: 12px auto;
+        background-color: transparent;
+      }
+
+      button#focus_me {
+        background-image: url('../images/focus.png');
+      }
+
+      button#save_me {
+        background-image: url('../images/save.png');
       }
     }
   }
@@ -55,5 +67,11 @@
     background: #F1F1F1;
     z-index: 10;
     padding: 50px 20%;
+
+    #words_header {
+      button#focus_me {
+        background-image: url('../images/unfocus.png');
+      }
+    }
   }
 }

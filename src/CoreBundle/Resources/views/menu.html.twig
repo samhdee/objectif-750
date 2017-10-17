@@ -1,13 +1,21 @@
+{% set current = app.request.requestUri %}
+
 <nav class="navbar">
   <ul id="main_menu" class="inline_list">
     <li class="first_level">
-      <a href="{{ path('my_words_homepage') }}">mots d'aujourd'hui</a>
+      <a
+        {% if path('my_words_homepage') in current %} class="active" {% endif %}
+        href="{{ path('my_words_homepage') }}">mots d'aujourd'hui</a>
     </li>
     <li class="first_level">
-      <a href="{{ path('word_wars_new') }}">word wars</a>
+      <a
+        {% if path('word_wars_new') in current %} class="active" {% endif %}
+        href="{{ path('word_wars_new') }}">word wars</a>
     </li>
     <li class="first_level">
-      <a href="{{ path('my_stats_homepage') }}">mes stats</a>
+      <a
+        {% if path('my_stats_homepage') in current %} class="active" {% endif %}
+        href="{{ path('my_stats_homepage') }}">mes stats</a>
 
       {# Sous menu Stats #}
       <ul class="submenu">
@@ -16,7 +24,9 @@
       </ul>
     </li>
     <li class="first_level">
-      <a href="{{ path('export_homepage') }}">exports</a>
+      <a
+        {% if path('my_stats_homepage') in current %} class="active" {% endif %}
+        href="{{ path('export_homepage') }}">exports</a>
     </li>
     {% if is_granted('ROLE_ADMIN') %}
       <li><a href="{{ path('sonata_admin_dashboard') }}">administration</a></li>

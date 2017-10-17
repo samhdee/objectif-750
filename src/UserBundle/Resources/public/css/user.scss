@@ -1,0 +1,22 @@
+body {
+  .container {
+    #content {
+      .fos_user_user_show {
+        span.label {
+          display: inline-block;
+          width: 150px;
+          color: #333333;
+          font-size: 100%;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
+
+      form.fos_user_profile_edit {
+        .form-control {
+          width: 250px;
+        }
+      }
+    }
+  }
+}

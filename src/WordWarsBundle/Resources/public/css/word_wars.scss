@@ -5,12 +5,14 @@
     #words_header {
       font-size: 12px;
       margin-bottom: 20px;
+      font-family: 'Raleway', 'Calibri', sans-serif;
+      font-weight: bold;
 
       span#date_end_ww {
         display: none;
       }
 
-      a#focus_me, span#word_counter, span#progression_status {
+      span#word_counter, span#progression_status {
         display: inline-block;
       }
 
@@ -18,14 +20,15 @@
         margin-left: 10px;
       }
 
-      a#focus_me {
-        color: #2E3136;
+      button#focus_me {
+        background-image: url('../images/focus.png');
         float: right;
-      }
-
-      a#focus_me:hover {
-        color: #4A4C50;
-        text-decoration: none;
+        width: 13px;
+        height: 13px;
+        background-repeat: no-repeat;
+        background-size: 12px auto;
+        background-color: transparent;
+        border: 1px solid transparent;
       }
 
       #progression_status {
@@ -62,6 +65,12 @@
     background: #F1F1F1;
     z-index: 10;
     padding: 50px 20%;
+
+    #words_header {
+      button#focus_me {
+        background-image: url('../images/unfocus.png');
+      }
+    }
   }
 
   #mywordwar_wrapper #giant_starting_coutdown {

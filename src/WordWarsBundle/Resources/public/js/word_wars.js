@@ -12,7 +12,7 @@ function count_my_time(date, temps_diff) {
   $(document).ready(function() {
     $('#mywordwar_wrapper textarea#my_wordwar_words').autogrow();
 
-    $('a#focus_me').on('click', function(e) {
+    $('button#focus_me').on('click', function(e) {
       e.preventDefault();
       $('#mywordwar_wrapper').toggleClass('distraction_free');
     });
@@ -158,7 +158,7 @@ function count_my_time(date, temps_diff) {
           save_words();
         }
       }
-      , 15000);
+      , 10000);
     };
 
     function count_my_words() {

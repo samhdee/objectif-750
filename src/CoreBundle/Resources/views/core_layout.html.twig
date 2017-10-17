@@ -10,7 +10,7 @@
     <meta name="identifier-url" content="https://objectif750.fr" />
 
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Open+Sans+Condensed:300,700|Lato|Merriweather" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Raleway|Lato|Merriweather" rel="stylesheet">
 
 	  {% block stylesheets %}
 	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -27,13 +27,13 @@
 		{% include 'CoreBundle::header.html.twig' %}
 
 		<div class="container">
-				<div id="breadcrumb">
+				{# <div id="breadcrumb">
 					<ul class="inline_list">
 						<li><a href="{{ path('core_homepage') }}">accueil</a></li>
 						{% block fil_ariane %}
 						{% endblock %}
 					</ul>
-				</div>
+				</div> #}
 			{% for status in app.session.flashbag.get('status') %}
 				<p class="message status_message">{{ status }}</p>
 			{% endfor %}
