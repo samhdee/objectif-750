@@ -108,7 +108,7 @@ class MyStatsController extends Controller
     ));
   }
 
-  public function WWStatsAction() {
+  public function wwStatsAction() {
     return $this->render('MyStatsBundle:MyStats:wwstats.html.twig');
   }
 
