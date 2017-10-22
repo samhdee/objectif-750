@@ -138,7 +138,6 @@ class MyStatsController extends Controller
       $daily_word_repo = $manager->getRepository('MyWordsBundle:DailyWords');
       $repo_my_nanos = $manager->getRepository('MyStatsBundle:MyNanos');
 
-      $words = $daily_word_repo->findTodaysWords($user);
       $nano = $repo_my_nanos->findThisMonthNano($user);
 
       $progress['nano_stats'] = array('nano_mode' => $nano_mode_text);
