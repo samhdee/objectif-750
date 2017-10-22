@@ -1,5 +1,5 @@
 my_words_homepage:
-    path:     /
+    path:     /mywords
     defaults: { _controller: MyWordsBundle:MyWords:index }
 
 save_my_words:
