@@ -181,7 +181,6 @@ class MyStatsController extends Controller
       $todays_word_goal = $user_pref->getWordCountGoal();
       $progress['regular_stats']['todays_word_goal'] = $todays_word_goal;
 
-      // $validay = false;
       $total_words_written = 0;
       $percent_accomplished = 0;
 
