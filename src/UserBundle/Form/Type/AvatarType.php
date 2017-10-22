@@ -23,16 +23,6 @@ class AvatarType extends AbstractType
           'label' => 'profile.upload.avatar'
         )
       );
-
-      // $builder->addEventListener(
-      // FormEvents::PRE_SET_DATA,
-      // function(FormEvent $event) {
-      //   $groupe = $event->getData();
-
-      //   if (null === $groupe) {
-      //     return;
-      //   }
-      // });
     }
 
     /**

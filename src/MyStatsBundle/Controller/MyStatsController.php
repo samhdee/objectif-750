@@ -135,7 +135,6 @@ class MyStatsController extends Controller
     // Le mode nano contient plus de stats que le mode normal
     if($nano_mode) {
       $todays_word_count = $percent_nano_accomplished = $total_nano_words = 0;
-      $daily_word_repo = $manager->getRepository('MyWordsBundle:DailyWords');
       $repo_my_nanos = $manager->getRepository('MyStatsBundle:MyNanos');
 
       $nano = $repo_my_nanos->findThisMonthNano($user);
