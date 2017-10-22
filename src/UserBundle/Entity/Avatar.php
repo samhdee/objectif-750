@@ -40,6 +40,10 @@ class Avatar
     private $file;
     private $temp_filename;
 
+    public function __toString() {
+      return $this->id . '.' . $this->extension;
+    }
+
     /**
      * Get id
      *

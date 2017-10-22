@@ -17,7 +17,7 @@ class UserPreferencesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder->add('wordCountGoal', TextType::class, array('label' => 'Votre objectif'));
-      $builder->add('nanoMode', CheckboxType::class, array('label' => 'Mode NaNo'));
+      $builder->add('nanoMode', CheckboxType::class, array('label' => 'Activer le mode NaNo', 'required' => false));
     }
 
     /**

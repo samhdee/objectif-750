@@ -2,13 +2,15 @@
 
 {% extends "UserBundle::layout.html.twig" %}
 
+{% block title_page %}Votre profil{% endblock %}
+
 {% block fos_user_content %}
   <div class="fos_user_user_show">
     <p><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></p>
     <p><span class="label">{{ 'profile.show.username'|trans }} :</span> {{ user.username }}</p>
     <p><span class="label">{{ 'profile.show.email'|trans }} :</span> {{ user.email }}</p>
     <p><span class="label">Avatar :</span>
-      {% if user.avatar.extension %}
+      {% if user.avatar %}
         <img width="150" src="{{ asset(user.avatar.uploadDir ~ '/' ~ user.avatar.id ~ '.' ~ user.avatar.extension) }}" />
       {% else %}
         <em>Vous n'avez pas (encore) d'avatar.</em>
@@ -19,6 +21,8 @@
       <span class="label">Mode NaNo :</span>
       {% if user.userPreferences %}
         {% if user.userPreferences.nanoMode == true %} ON {% else %} OFF {% endif %}
+      {% else %}
+        OFF
       {% endif %}
     </p>
   </div>

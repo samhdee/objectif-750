@@ -12,12 +12,13 @@ class MyStatsController extends Controller
 
   public function dailyStatsAction()
   {
+    // Récupération des objets nécessaires
     $user = $this->getUser();
     $manager = $this->getDoctrine()->getManager();
     $repo_my_stats = $manager->getRepository('MyStatsBundle:MyDailyStats');
     $todays_stats = $repo_my_stats->findTodaysStats($user);
     $todays_word_count = $user->getUserPreferences()->getWordCountGoal();
-    $all_stats = $repo_my_stats->findBy(array('user' => $user));
+    $all_stats = $repo_my_stats->findThisMonthsStats(array('user' => $user));
 
     $validay = false;
     $total_words_written = 0;
@@ -30,6 +31,7 @@ class MyStatsController extends Controller
       }
     }
 
+    // Récupération du nombre de jour dans le mois en cours
     $now = new \DateTime();
     $month = $now->format('m');
     $year = $now->format('Y');
@@ -38,6 +40,7 @@ class MyStatsController extends Controller
 
     $calendar_data = array();
 
+    // Construction des data du calendrier
     foreach ($all_stats as $stat) {
       $total_mots = $stat->getMyWordsWordCount() + $stat->getWordWarsWordCount();
       $goal = $stat->getDaysGoal();
@@ -62,14 +65,16 @@ class MyStatsController extends Controller
 
     $nb_days_prev_month = cal_days_in_month(CAL_GREGORIAN, $prev_month, $prev_year);
 
+    // Ajout des jours où ya rien eu
     for($i = 1 ; $i <= $nb_days ; $i++) {
-      // Le premier jour du mois n'est pas un lundi
+      // Si le premier jour du mois n'est pas un lundi
       if($i < $number_day_of_week) {
         // On rajoute des cases filler jusqu'au premier jour du mois
         for($j = ($number_day_of_week - 1) ; $j >= 1 ; $j--) {
           $temp_day = $nb_days_prev_month - $j;
           $temp = new \DateTime($prev_year . '-' . $prev_month . '-' . $temp_day);
           $temp = $temp->format('Y-m-d');
+
           $calendar_data[$temp] = array(
             'nb_mots' => 0,
             'goal' => 0,
@@ -111,15 +116,23 @@ class MyStatsController extends Controller
     $user = $this->getUser();
     $manager = $this->getDoctrine()->getManager();
 
-    $nano_mode = $user->getUserPreferences()->getNanoMode();
+    $user_pref = $user->getUserPreferences();
+    $nano_mode = false;
+
+    if(null !== $user_pref) {
+      $nano_mode = $user_pref->getNanoMode();
+    }
+
+    // Version texte du booléen nano_mode
     $nano_mode_text = ($nano_mode) ? 'on' :'off';
 
     $repo_my_stats = $manager->getRepository('MyStatsBundle:MyDailyStats');
     $todays_stats = $repo_my_stats->findTodaysStats($user);
     $this_months_stats = $repo_my_stats->findThisMonthsStats($user);
 
-    $progress = array('nano_mode' => $nano_mode_text);
+    $progress = array('nano_mode' => $nano_mode_text, 'no_pref_set' => false);
 
+    // Le mode nano contient plus de stats que le mode normal
     if($nano_mode) {
       $todays_word_count = $percent_nano_accomplished = $total_nano_words = 0;
       $daily_word_repo = $manager->getRepository('MyWordsBundle:DailyWords');
@@ -132,7 +145,6 @@ class MyStatsController extends Controller
       $progress['is_nano_started'] = ($nano !== null);
 
       if(null !== $this_months_stats) {
-
         // On remonte tous les mots écrits pour ce nano
         if(null !== $this_months_stats) {
           foreach ($this_months_stats as $stat) {
@@ -158,25 +170,32 @@ class MyStatsController extends Controller
       $words_a_day_to_finish = ceil($remaining_words / $remaining_days);
       $todays_nano_percent = $todays_word_count / $words_a_day_to_finish;
 
-      $progress['nano_stats']['todays_word_count'] = $todays_word_count;
-      $progress['nano_stats']['words_a_day_to_finish'] = $words_a_day_to_finish;
-      $progress['nano_stats']['todays_nano_percent'] = $todays_nano_percent;
+      $progress['regular_stats']['todays_word_count'] = $todays_word_count;
+      $progress['regular_stats']['todays_word_goal'] = $words_a_day_to_finish;
+      $progress['regular_stats']['todays_percent_accomplished'] = $todays_nano_percent;
       $progress['nano_stats']['total_nano_words'] = $total_nano_words;
       $progress['nano_stats']['percent_nano_accomplished'] = $percent_nano_accomplished;
       $progress['nano_stats']['nano_word_goal'] = 50000;
     }
-    else {
-      $todays_word_goal = $user->getUserPreferences()->getWordCountGoal();
-      $progress['regular_stats']['word_goal'] = $todays_word_goal;
+    elseif(null !== $user_pref) {
+      $todays_word_goal = $user_pref->getWordCountGoal();
+      $progress['regular_stats']['todays_word_goal'] = $todays_word_goal;
 
       // $validay = false;
       $total_words_written = 0;
       $percent_accomplished = 0;
 
       if($todays_stats) {
-        $progress['regular_stats']['total_words_written'] = $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount();
-        $progress['regular_stats']['percent_accomplished'] = $total_words_written * 100 / $todays_word_goal;
+        $progress['regular_stats']['todays_word_count'] = $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount();
+        $progress['regular_stats']['todays_percent_accomplished'] = $total_words_written * 100 / $todays_word_goal;
       }
+      else {
+        $progress['regular_stats']['todays_word_count'] = 0;
+        $progress['regular_stats']['todays_percent_accomplished'] = 0;
+      }
+    }
+    else {
+      $progress['no_pref_set'] = true;
     }
 
     return $this->render(

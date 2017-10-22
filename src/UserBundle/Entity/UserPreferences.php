@@ -42,6 +42,13 @@ class UserPreferences
      */
     private $nanoMode = false;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="dark_mode", type="boolean", nullable=true)
+     */
+    private $darkMode = false;
+
 
     /**
      * Get id
@@ -123,5 +130,29 @@ class UserPreferences
     public function getNanoMode()
     {
         return $this->nanoMode;
+    }
+
+    /**
+     * Set darkMode
+     *
+     * @param boolean $darkMode
+     *
+     * @return UserPreferences
+     */
+    public function setDarkMode($darkMode)
+    {
+        $this->darkMode = $darkMode;
+
+        return $this;
+    }
+
+    /**
+     * Get darkMode
+     *
+     * @return boolean
+     */
+    public function getDarkMode()
+    {
+        return $this->darkMode;
     }
 }

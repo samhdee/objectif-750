@@ -26,11 +26,14 @@
 	<body>
 		{% include 'CoreBundle::header.html.twig' %}
 
-		<div id="left_column">
-			{% block left_column %}
-				{{ render(controller('MyStatsBundle:MyStats:daysProgress')) }}
-			{% endblock %}
-		</div>
+		{# Pas de stats pour un user non autentifié #}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				{% block left_column %}
+					<div id="left_column">
+						{{ render(controller('MyStatsBundle:MyStats:daysProgress')) }}
+					</div>
+				{% endblock %}
+		{% endif %}
 
 		<div class="container">
 				{# <div id="breadcrumb">
@@ -64,8 +67,8 @@
 	  {% endjavascripts %}
 	  {% endblock %}
 	</body>
-	<footer>
+	{# <footer>
 		<p>Responsable du site : {{ webmaster }}</p>
 		<p>Suivez-nous sur <a target="_blank" href="{{ twitter }}">Twitter</a>
-	</footer>
+	</footer> #}
 </html>

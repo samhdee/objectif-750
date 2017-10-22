@@ -6,14 +6,14 @@
   User{{ parent() }}
 {% endblock %}
 
+{% block left_column %}{% endblock %}
+
 {% block stylesheets %}
   {{ parent() }}
   {% stylesheets filter='cssrewrite' 'bundles/user/css/user.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
   {% endstylesheets %}
 {% endblock %}
-
-{% block title_page %}Mon profil{% endblock %}
 
 {% block body %}
   {# Messages flash #}
@@ -24,6 +24,8 @@
       </div>
     {% endfor %}
   {% endfor %}
+
+  <h2>{% block title_page %}{% endblock %}</h2>
 
   {% block fos_user_content %}
   {% endblock fos_user_content %}

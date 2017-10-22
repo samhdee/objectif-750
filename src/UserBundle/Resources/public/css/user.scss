@@ -1,6 +1,21 @@
 body {
   .container {
     #content {
+      p {
+        margin: 20px 0;
+      }
+
+      .required:after {
+        content: ' *';
+        color: red;
+      }
+
+      .fos_user_login {
+        input[type="checkbox"] {
+          margin-top: 12px;
+        }
+      }
+
       .fos_user_user_show {
         span.label {
           display: inline-block;
@@ -13,9 +28,35 @@ body {
       }
 
       form.fos_user_profile_edit {
-        .form-control {
-          width: 250px;
+        .form-group {
+          .checkbox {
+            label {
+              font-weight: bold;
+
+              input[type="checkbox"] {
+                float: right;
+                position: relative;
+                margin-left: 10px;
+              }
+            }
+          }
         }
+      }
+
+      form.fos_user_registration_register {
+        .control-label {
+          width: 200px;
+          margin-right: 10px;
+        }
+
+        .form-control {
+          width: 300px;
+          display: inline-block;
+        }
+
+        // input[type="submit"] {
+        //   float: right;
+        // }
       }
     }
   }

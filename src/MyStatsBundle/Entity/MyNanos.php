@@ -130,39 +130,4 @@ class MyNanos
     {
         return $this->user;
     }
-
-    /**
-     * Add dailyNano
-     *
-     * @param \MyStatsBundle\Entity\MyDailyNanos $dailyNano
-     *
-     * @return MyNanos
-     */
-    public function addDailyNano(\MyStatsBundle\Entity\MyDailyNanos $dailyNano)
-    {
-        $this->daily_nanos[] = $dailyNano;
-        $dailyNano->setNano($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove dailyNano
-     *
-     * @param \MyStatsBundle\Entity\MyDailyNanos $dailyNano
-     */
-    public function removeDailyNano(\MyStatsBundle\Entity\MyDailyNanos $dailyNano)
-    {
-        $this->daily_nanos->removeElement($dailyNano);
-    }
-
-    /**
-     * Get dailyNanos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDailyNanos()
-    {
-        return $this->daily_nanos;
-    }
 }

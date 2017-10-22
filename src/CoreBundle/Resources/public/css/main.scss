@@ -21,6 +21,7 @@ body {
   h2 {
     font-size: 34px;
     margin-top: 0;
+    margin-bottom: 40px;
   }
 
   ul {
@@ -39,6 +40,10 @@ body {
 
   a:hover {
     text-decoration: none;
+  }
+
+  p.help {
+    font-style: italic;
   }
 
   // Empêche Chrome de rajouter un outline bleu merdique au focus des trucs

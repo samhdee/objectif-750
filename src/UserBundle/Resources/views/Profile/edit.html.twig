@@ -2,11 +2,67 @@
 
 {% extends "UserBundle::layout.html.twig" %}
 
+{% block title_page %}Editer votre profil{% endblock %}
+
 {% block fos_user_content %}
-  {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-      {{ form_widget(form) }}
-      <div>
-          <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+  {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit form-horizontal col-md-12' } }) }}
+
+  {# {{ form_widget(form) }} #}
+
+    {# Erreurs générales du formulaire #}
+    {{ form_errors(form) }}
+
+    {# Champ Titre #}
+    <div class="form-group">
+      {{ form_label(form.username, 'Pseudo', {'label_attr': {'class': 'col-sm-2'}}) }}
+
+      <div class="col-sm-5">
+        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
       </div>
+
+      {{ form_errors(form.username) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.email, 'Email', {'label_attr': {'class': 'col-sm-2'}}) }}
+
+      <div class="col-sm-5">
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+      </div>
+
+      {{ form_errors(form.email) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.avatar, 'Changer votre avatar', {'label_attr': {'class': 'col-sm-2'}}) }}
+
+      <div class="col-sm-5">
+        {{ form_widget(form.avatar.file, {'attr': {'class': 'form-control '}}) }}
+      </div>
+
+      {{ form_errors(form.avatar) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.user_preferences.wordCountGoal, 'Objectif', {'label_attr': {'class': 'col-sm-2'}}) }}
+
+      <div class="col-sm-5">
+        {{ form_widget(form.user_preferences.wordCountGoal, {'attr': {'class': 'form-control'}}) }}
+      </div>
+
+      {{ form_errors(form.user_preferences.wordCountGoal) }}
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-5">
+        {{ form_widget(form.user_preferences.nanoMode) }}
+      </div>
+
+      {{ form_errors(form.user_preferences.nanoMode) }}
+    </div>
+
+    <div>
+      <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+    </div>
   {{ form_end(form) }}
 {% endblock fos_user_content %}
