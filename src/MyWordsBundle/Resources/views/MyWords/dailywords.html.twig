@@ -4,17 +4,17 @@
 
 {% block mywords_body %}
   <div id="daily_words_wrapper" class="content_wrapper">
+    <div id="words_header">
+      <input type="hidden" id="todays_goal" value="{{ todays_goal }}">
+      <span id="word_counter"{% if word_count >= todays_goal %} class="quota_reached" title="Félicitations ! Vous avez atteint votre quota journalier. Mais vous pouvez continuer sur votre lancée si vous voulez."{% endif %}>
+        {{ word_count }}
+      </span>
+      <span id="progression_status"></span>
+      <button id="focus_me" title="mode focus"></button>
+      {# <button id="save_me" title="sauvegarder"></button> #}
+    </div>
     <form>
       {# <button id="test_button">Je suis un bouton</button> #}
-      <div id="words_header">
-        <input type="hidden" id="todays_goal" value="{{ todays_goal }}">
-        <span id="word_counter"{% if word_count >= todays_goal %} class="quota_reached" title="Félicitations ! Vous avez atteint votre quota journalier. Mais vous pouvez continuer sur votre lancée si vous voulez."{% endif %}>
-          {{ word_count }}
-        </span>
-        <span id="progression_status"></span>
-        <button id="focus_me" title="mode focus"></button>
-        {# <button id="save_me" title="sauvegarder"></button> #}
-      </div>
       <textarea id="my_daily_words">{{ saved_words }}</textarea>
     </form>
   </div>

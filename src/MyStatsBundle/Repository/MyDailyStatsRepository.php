@@ -23,4 +23,22 @@ class MyDailyStatsRepository extends \Doctrine\ORM\EntityRepository
 
     return $em->getQuery()->getOneOrNullResult();
   }
+
+  public function findThisMonthsStats($user) {
+    $starting_date = new \Datetime(date('Y-m') . '-01 00:00:00');
+    $ending_date = new \Datetime(date('Y-m-d') . ' 00:00:00');
+
+    $em = $this->createQueryBuilder('w');
+    $em
+      ->where('w.date >= :starting_date')
+      ->setParameter('starting_date', $starting_date);
+    $em
+      ->andWhere('w.date < :ending_date')
+      ->setParameter('ending_date', $ending_date);
+    $em
+      ->andWhere('w.user = :user')
+      ->setParameter('user', $user);
+
+    return $em->getQuery()->getResult();
+  }
 }

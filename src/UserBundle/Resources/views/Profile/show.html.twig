@@ -15,5 +15,11 @@
       {% endif %}
     </p>
     <p><span class="label">Objectif :</span> {% if user.userPreferences %} {{ user.userPreferences.wordCountGoal }} mots {% else %} 0 mot {% endif %} par jour</p>
+    <p>
+      <span class="label">Mode NaNo :</span>
+      {% if user.userPreferences %}
+        {% if user.userPreferences.nanoMode == true %} ON {% else %} OFF {% endif %}
+      {% endif %}
+    </p>
   </div>
 {% endblock %}

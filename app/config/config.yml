@@ -52,6 +52,7 @@ twig:
     globals:
         webmaster: 'tchaymz'
         twitter:   'https://twitter.com/objectif750'
+        save_interval: '5'
 
 # Doctrine Configuration
 doctrine:

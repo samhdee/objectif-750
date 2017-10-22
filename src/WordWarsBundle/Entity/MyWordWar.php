@@ -49,6 +49,13 @@ class MyWordWar
   */
   private $word_war;
 
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="counts_for_nano", type="boolean")
+   */
+  private $countsForNano = false;
+
   public function __construct($ww, $user) {
     $this->word_war = $ww;
     $this->user = $user;
@@ -159,5 +166,29 @@ class MyWordWar
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set countsForNano
+     *
+     * @param boolean $countsForNano
+     *
+     * @return MyWordWar
+     */
+    public function setCountsForNano($countsForNano)
+    {
+        $this->countsForNano = $countsForNano;
+
+        return $this;
+    }
+
+    /**
+     * Get countsForNano
+     *
+     * @return boolean
+     */
+    public function getCountsForNano()
+    {
+        return $this->countsForNano;
     }
 }

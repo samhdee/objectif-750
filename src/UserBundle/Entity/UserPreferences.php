@@ -26,14 +26,21 @@ class UserPreferences
      *
      * @ORM\Column(name="word_count_goal", type="integer", nullable=true)
      */
-    private $wordCountGoal;
+    private $wordCountGoal = 750;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="period_goal", type="string", nullable=true)
+     * @ORM\Column(name="period_goal", type="string")
      */
-    private $periodGoal;
+    private $periodGoal = 'jour';
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nano_mode", type="boolean")
+     */
+    private $nanoMode = false;
 
 
     /**
@@ -92,5 +99,29 @@ class UserPreferences
     public function getPeriodGoal()
     {
         return $this->periodGoal;
+    }
+
+    /**
+     * Set nanoMode
+     *
+     * @param boolean $nanoMode
+     *
+     * @return UserPreferences
+     */
+    public function setNanoMode($nanoMode)
+    {
+        $this->nanoMode = $nanoMode;
+
+        return $this;
+    }
+
+    /**
+     * Get nanoMode
+     *
+     * @return boolean
+     */
+    public function getNanoMode()
+    {
+        return $this->nanoMode;
     }
 }

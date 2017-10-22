@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class UserPreferencesType extends AbstractType
 {
@@ -16,18 +17,7 @@ class UserPreferencesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder->add('wordCountGoal', TextType::class, array('label' => 'Votre objectif'));
-
-      $builder->add(
-        'periodGoal',
-        ChoiceType::class, array(
-          'choices' => array(
-            'day' => 'jour',
-            'week' => 'semaine',
-            'month' => 'mois'
-          ),
-          'label' => 'par'
-        )
-      );
+      $builder->add('nanoMode', CheckboxType::class, array('label' => 'Mode NaNo'));
     }
 
     /**

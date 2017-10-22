@@ -55,6 +55,13 @@ class DailyWords
    */
   private $todaysGoal;
 
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="counts_for_nano", type="boolean")
+   */
+  private $countsForNano = false;
+
 
   public function __construct($user) {
     $this->user = $user;
@@ -188,5 +195,29 @@ class DailyWords
     public function getTodaysGoal()
     {
         return $this->todaysGoal;
+    }
+
+    /**
+     * Set countsForNano
+     *
+     * @param boolean $countsForNano
+     *
+     * @return DailyWords
+     */
+    public function setCountsForNano($countsForNano)
+    {
+        $this->countsForNano = $countsForNano;
+
+        return $this;
+    }
+
+    /**
+     * Get countsForNano
+     *
+     * @return boolean
+     */
+    public function getCountsForNano()
+    {
+        return $this->countsForNano;
     }
 }

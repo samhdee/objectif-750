@@ -1,14 +1,10 @@
+#left_column {
+}
+
 #mywords_wrapper {
   #daily_words_wrapper {
-    textarea {
-      border: none;
-      width: 100%;
-      min-height: 300px;
-      clip:rect(0,189px, 50px, 0);
-      z-index: -1;
-      resize: none;
-      background-color: #F1F1F1;
-    }
+    position: relative;
+    padding-top: 20px;
 
     #words_header {
       font-size: 12px;
@@ -54,6 +50,16 @@
       button#save_me {
         background-image: url('../images/save.png');
       }
+    }
+
+    textarea {
+      border: none;
+      width: 100%;
+      min-height: 300px;
+      clip:rect(0,189px, 50px, 0);
+      z-index: -1;
+      resize: none;
+      background-color: #F1F1F1;
     }
   }
 

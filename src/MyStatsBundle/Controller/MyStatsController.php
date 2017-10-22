@@ -106,4 +106,82 @@ class MyStatsController extends Controller
   public function WWStatsAction() {
     return $this->render('MyStatsBundle:MyStats:wwstats.html.twig');
   }
+
+  public function daysProgressAction() {
+    $user = $this->getUser();
+    $manager = $this->getDoctrine()->getManager();
+
+    $nano_mode = $user->getUserPreferences()->getNanoMode();
+    $nano_mode_text = ($nano_mode) ? 'on' :'off';
+
+    $repo_my_stats = $manager->getRepository('MyStatsBundle:MyDailyStats');
+    $todays_stats = $repo_my_stats->findTodaysStats($user);
+    $this_months_stats = $repo_my_stats->findThisMonthsStats($user);
+
+    $progress = array('nano_mode' => $nano_mode_text);
+
+    if($nano_mode) {
+      $todays_word_count = $percent_nano_accomplished = $total_nano_words = 0;
+      $daily_word_repo = $manager->getRepository('MyWordsBundle:DailyWords');
+      $repo_my_nanos = $manager->getRepository('MyStatsBundle:MyNanos');
+
+      $words = $daily_word_repo->findTodaysWords($user);
+      $nano = $repo_my_nanos->findThisMonthNano($user);
+
+      $progress['nano_stats'] = array('nano_mode' => $nano_mode_text);
+      $progress['is_nano_started'] = ($nano !== null);
+
+      if(null !== $this_months_stats) {
+
+        // On remonte tous les mots écrits pour ce nano
+        if(null !== $this_months_stats) {
+          foreach ($this_months_stats as $stat) {
+            $total_nano_words+= $stat->getMyWordsWordCount() + $stat->getWordWarsWordCount();
+          }
+        }
+
+        // On remonte les stats du jour
+        if(null !== $todays_stats) {
+          $todays_word_count = $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount();
+          $percent_nano_accomplished = $todays_word_count * 100 / 50000;
+        }
+      }
+
+      // Calcul du quota journalier idéal pour atteindre les 50k en fin de mois
+      $remaining_words = 50000 - $total_nano_words;
+      $now = new \DateTime();
+      $todays_day = $now->format('d');
+      $todays_month = $now->format('m');
+      $todays_year = $now->format('Y');
+      $nb_days_in_month = cal_days_in_month(CAL_GREGORIAN, $todays_month, $todays_year);
+      $remaining_days = $nb_days_in_month - $todays_day;
+      $words_a_day_to_finish = ceil($remaining_words / $remaining_days);
+      $todays_nano_percent = $todays_word_count / $words_a_day_to_finish;
+
+      $progress['nano_stats']['todays_word_count'] = $todays_word_count;
+      $progress['nano_stats']['words_a_day_to_finish'] = $words_a_day_to_finish;
+      $progress['nano_stats']['todays_nano_percent'] = $todays_nano_percent;
+      $progress['nano_stats']['total_nano_words'] = $total_nano_words;
+      $progress['nano_stats']['percent_nano_accomplished'] = $percent_nano_accomplished;
+      $progress['nano_stats']['nano_word_goal'] = 50000;
+    }
+    else {
+      $todays_word_goal = $user->getUserPreferences()->getWordCountGoal();
+      $progress['regular_stats']['word_goal'] = $todays_word_goal;
+
+      // $validay = false;
+      $total_words_written = 0;
+      $percent_accomplished = 0;
+
+      if($todays_stats) {
+        $progress['regular_stats']['total_words_written'] = $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount();
+        $progress['regular_stats']['percent_accomplished'] = $total_words_written * 100 / $todays_word_goal;
+      }
+    }
+
+    return $this->render(
+      'MyStatsBundle:MyStats:days_progress.html.twig',
+      array('progress' => $progress)
+    );
+  }
 }

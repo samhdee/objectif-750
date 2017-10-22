@@ -51,6 +51,13 @@ class MyDailyStats
   private $daysGoal;
 
   /**
+   * @var int
+   *
+   * @ORM\Column(name="counts_for_nano", type="boolean")
+   */
+  private $countsForNano = false;
+
+  /**
   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
   */
   private $user;
@@ -190,4 +197,28 @@ class MyDailyStats
   {
       return $this->wordWarsWordCount;
   }
+
+    /**
+     * Set countsForNano
+     *
+     * @param boolean $countsForNano
+     *
+     * @return MyDailyStats
+     */
+    public function setCountsForNano($countsForNano)
+    {
+        $this->countsForNano = $countsForNano;
+
+        return $this;
+    }
+
+    /**
+     * Get countsForNano
+     *
+     * @return boolean
+     */
+    public function getCountsForNano()
+    {
+        return $this->countsForNano;
+    }
 }

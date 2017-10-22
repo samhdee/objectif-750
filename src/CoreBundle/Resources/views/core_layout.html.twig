@@ -26,6 +26,12 @@
 	<body>
 		{% include 'CoreBundle::header.html.twig' %}
 
+		<div id="left_column">
+			{% block left_column %}
+				{{ render(controller('MyStatsBundle:MyStats:daysProgress')) }}
+			{% endblock %}
+		</div>
+
 		<div class="container">
 				{# <div id="breadcrumb">
 					<ul class="inline_list">

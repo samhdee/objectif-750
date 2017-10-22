@@ -6,8 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use MyWordsBundle\Entity\DailyWords;
 use MyStatsBundle\Entity\MyDailyStats;
+use MyStatsBundle\Entity\MyNanos;
+use MyWordsBundle\Entity\DailyWords;
 
 class MyWordsController extends Controller
 {
@@ -61,9 +62,13 @@ class MyWordsController extends Controller
       // Récupération des repos daily_words et stats
       $daily_word_repo = $manager->getRepository('MyWordsBundle:DailyWords');
       $daily_stats_repo = $manager->getRepository('MyStatsBundle:MyDailyStats');
+      $my_nanos_repo = $manager->getRepository('MyStatsBundle:MyNanos');
 
       $words = $daily_word_repo->findTodaysWords($user);
       $stats = $daily_stats_repo->findTodaysStats($user);
+      $nano = $my_nanos_repo->findThisMonthNano($user);
+
+      $today = new \Datetime();
 
       // Si ce sont les premiers mots de la journée, on crée la ligne du jour
       if(null === $words) {
@@ -76,23 +81,36 @@ class MyWordsController extends Controller
         $manager->persist($stats);
       }
 
+      if(null === $nano) {
+        $nano = new MyNanos($user);
+        $manager->persist($nano);
+      }
+
       // Mise à jour des mots du jour
-      $words->setDate(new \Datetime());
+      $words->setDate($today);
       $words->setContent(htmlentities($post));
       $words->setWordCount($word_count);
       $words->setTodaysGoal($user->getUserPreferences()->getWordCountGoal());
 
       // Mise à jour des stats relatives aux mots du jour
-      $stats->setDate(new \Datetime());
+      $stats->setDate($today);
       $stats->setDaysGoal($user->getUserPreferences()->getWordCountGoal());
       $stats->setMyWordsWordCount($word_count);
+
+      // Mise à jour du WC nano si le user est en mode nano
+      if($user->getUserPreferences()->getNanoMode()) {
+        $words->setCountsForNano(true);
+        $stats->setCountsForNano(true);
+      }
 
       // Sauvegarde en base
       $manager->flush();
 
       $response = new JsonResponse(array(
         'status' => 'ok',
-        'message' => 'progression sauvegardée'));
+        'message' => 'progression sauvegardée',
+        'total_word_count' => $word_count + $stats->getWordWarsWordCount()
+      ));
     }
     else {
       $response = new JsonResponse(array(

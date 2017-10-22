@@ -2,20 +2,18 @@
 
 <nav class="navbar">
   <ul id="main_menu" class="inline_list">
-    <li class="first_level">
-      <a
-        {% if path('my_words_homepage') in current %} class="active" {% endif %}
-        href="{{ path('my_words_homepage') }}">mots d'aujourd'hui</a>
+    <li class="first_level"><a href="{{ path('core_homepage')}}">home</a></li>
+    <li class="first_level
+        {% if path('my_words_homepage') in current %} active{% endif %}">
+      <a href="{{ path('my_words_homepage') }}">aujourd'hui</a>
     </li>
-    <li class="first_level">
-      <a
-        {% if path('word_wars_new') in current %} class="active" {% endif %}
-        href="{{ path('word_wars_new') }}">word wars</a>
+    <li class="first_level
+        {% if path('word_wars_new') in current %} active{% endif %}">
+      <a href="{{ path('word_wars_new') }}">word wars</a>
     </li>
-    <li class="first_level">
-      <a
-        {% if path('my_stats_homepage') in current %} class="active" {% endif %}
-        href="{{ path('my_stats_homepage') }}">mes stats</a>
+    <li class="first_level
+        {% if path('my_stats_homepage') in current %} active{% endif %}">
+      <a href="{{ path('my_stats_homepage') }}">stats</a>
 
       {# Sous menu Stats #}
       <ul class="submenu">
@@ -23,13 +21,14 @@
         <li><a href="{{ path('my_stats_ww') }}">WW</a></li>
       </ul>
     </li>
-    <li class="first_level">
-      <a
-        {% if path('my_stats_homepage') in current %} class="active" {% endif %}
-        href="{{ path('export_homepage') }}">exports</a>
-    </li>
+    {# <li class="first_level
+        {% if path('export_homepage') in current %} active{% endif %}">
+      <a href="{{ path('export_homepage') }}">exports</a>
+    </li> #}
     {% if is_granted('ROLE_ADMIN') %}
-      <li><a href="{{ path('sonata_admin_dashboard') }}">administration</a></li>
+      <li class="first_level">
+        <a href="{{ path('sonata_admin_dashboard') }}">administration</a>
+      </li>
     {% endif %}
   </ul>
 </nav>

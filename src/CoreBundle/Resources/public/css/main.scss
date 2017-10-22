@@ -179,7 +179,8 @@ body {
               }
             }
 
-            li.first_level:hover::before {
+            li.first_level:hover::before,
+            li.first_level.active::before {
               content: '';
               border-top: 18px solid transparent;
               border-bottom: 18px solid #373A3F;
@@ -190,7 +191,8 @@ body {
               left: -8px;
             }
 
-            li.first_level:hover::after {
+            li.first_level:hover::after,
+            li.first_level.active::after {
               content: '';
               border-top: 18px solid transparent;
               border-bottom: 18px solid #373A3F;
@@ -202,6 +204,65 @@ body {
             }
           }
         }
+      }
+    }
+  }
+
+  #left_column {
+    float: left;
+    width: 230px;
+    margin-top: 35px;
+    margin-left: 20px;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-family: 'Raleway', 'Calibri', sans-serif;
+    font-weight: bold;
+    border: 2px solid #333333;
+    border-radius: 5px;
+
+    h3 {
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      color: #D1A232;
+    }
+
+    .percent_accomplished,
+    .percent_nano_accomplished,
+    .percent_days_accomplished {
+      position: relative;
+      margin: 0 0 10px;
+      border: 1px solid #333333;
+
+      .percentage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #51E898;
+        z-index: 1;
+      }
+
+      .word_count,
+      .nano_word_count,
+      .days_word_count {
+        position: relative;
+        z-index: 10;
+        padding: 5px;
+        color: #333333;
+        background-color: transparent;
+      }
+    }
+
+    .nano_mode {
+      font-size: 13px;
+
+      p {
+        margin: 5px;
+        text-align: center;
+        font-style: italic;
       }
     }
   }
