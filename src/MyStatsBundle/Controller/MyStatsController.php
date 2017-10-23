@@ -22,7 +22,7 @@ class MyStatsController extends Controller
 
     $word_count_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
     $total_words_written = ($todays_stats) ? ($todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount()) : 0;
-    $validay = ($word_count_goal <= $total_words_written);
+    $validay = ($word_count_goal <= $total_words_written && 0 !== $total_words_written);
 
     // Récupération du nombre de jour dans le mois en cours
     $now = new \DateTime(date('Y-m') . '-01');
@@ -121,13 +121,13 @@ class MyStatsController extends Controller
     if($nano_mode) {
       // Init des variables
       $total_nano_words = 0;
-      $progress['nano_stats'] = array('nano_mode' => $nano_mode_text, 'is_nano_started' => ($nano !== null));
       $percent_nano_accomplished = $todays_word_count * 100 / 50000;
 
       // Récupération des données en base
       $repo_my_nanos = $manager->getRepository('MyStatsBundle:MyNanos');
       $nano = $repo_my_nanos->findThisMonthNano($user);
       $this_months_stats = $repo_my_stats->findThisMonthsStats($user);
+      $progress['nano_stats'] = array('is_nano_started' => ($nano !== null));
 
       // Calcul du nombre de mots écrits ce mois-ci, WW et quota confondus
       if(null !== $this_months_stats) {

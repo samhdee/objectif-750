@@ -7,7 +7,7 @@
   <p>Mode NaNo : {{ progress.nano_mode }}</p>
 
   {% if progress.nano_mode == 'on' %}
-    <p>Aujourd'hui :</p>
+    <p class="italic">Aujourd'hui :</p>
   {% endif %}
 
   <div class="percent_days_accomplished">
@@ -19,7 +19,7 @@
 
   <div class="nano_mode">
     {% if progress.nano_mode == 'on' %}
-      <p>Sur le mois :</p>
+      <p class="italic">Sur le mois :</p>
       <div class="percent_nano_accomplished">
         <div class="nano_word_count">
           <span class="current_nano_word_count">{{ progress.nano_stats.total_nano_words }}</span> mots sur <span class="word_goal">{{ progress.nano_stats.nano_word_goal }}</span>

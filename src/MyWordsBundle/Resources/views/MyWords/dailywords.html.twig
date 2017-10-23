@@ -6,7 +6,7 @@
   <div id="daily_words_wrapper" class="content_wrapper">
     <div id="words_header">
       <input type="hidden" id="todays_goal" value="{{ todays_goal }}">
-      <span id="word_counter"{% if word_count >= todays_goal %} class="quota_reached" title="Félicitations ! Vous avez atteint votre quota journalier. Mais vous pouvez continuer sur votre lancée si vous voulez."{% endif %}>
+      <span id="word_counter"{% if word_count >= todays_goal and word_count > 0 %} class="quota_reached" title="Félicitations ! Vous avez atteint votre quota journalier. Mais vous pouvez continuer sur votre lancée si vous voulez."{% endif %}>
         {{ word_count }}
       </span>
       <span id="progression_status"></span>

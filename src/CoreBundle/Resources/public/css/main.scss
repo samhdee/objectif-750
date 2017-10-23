@@ -234,6 +234,13 @@ body {
       color: #D1A232;
     }
 
+    p.italic {
+      margin: 5px;
+      text-align: center;
+      font-style: italic;
+      font-size: 13px;
+    }
+
     .percent_accomplished,
     .percent_nano_accomplished,
     .percent_days_accomplished {
@@ -258,16 +265,6 @@ body {
         padding: 5px;
         color: #333333;
         background-color: transparent;
-      }
-    }
-
-    .nano_mode {
-      font-size: 13px;
-
-      p {
-        margin: 5px;
-        text-align: center;
-        font-style: italic;
       }
     }
   }
