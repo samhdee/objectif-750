@@ -5,7 +5,6 @@ imports:
     - { resource: "@CoreBundle/Resources/config/services.yml" }
     - { resource: "@MyWordsBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
-    - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@WordWarsBundle/Resources/config/services.yml" }
     - { resource: "@ExportBundle/Resources/config/services.yml" }
     - { resource: "@MyStatsBundle/Resources/config/services.yml" }
@@ -93,10 +92,10 @@ fos_user:
         sender_name: "%mailer_user%"
     registration:
         form:
-            type: UserBundle\Form\RegistrationType
+            type: UserBundle\Form\Type\RegistrationType
     profile:
         form:
-            type: UserBundle\Form\ProfileType
+            type: UserBundle\Form\Type\ProfileType
 
 assetic:
     debug:          '%kernel.debug%'

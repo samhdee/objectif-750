@@ -11,14 +11,14 @@
       <a href="{{ path('word_wars_new') }}">word wars</a>
     </li>
     <li class="first_level
-        {% if path('my_stats_homepage') in current %} active{% endif %}">
-      <a href="{{ path('my_stats_homepage') }}">stats</a>
+        {% if path('my_stats_daily') in current %} active{% endif %}">
+      <a href="{{ path('my_stats_daily') }}">stats</a>
 
       {# Sous menu Stats #}
-      <ul class="submenu">
+      {# <ul class="submenu">
         <li><a href="{{ path('my_stats_daily') }}">quota</a></li>
         <li><a href="{{ path('my_stats_ww') }}">WW</a></li>
-      </ul>
+      </ul> #}
     </li>
     {# <li class="first_level
         {% if path('export_homepage') in current %} active{% endif %}">

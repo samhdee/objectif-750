@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use WordWarsBundle\Entity\WordWar;
 use WordWarsBundle\Entity\MyWordWar;
 use MyStatsBundle\Entity\MyDailyStats;
-use WordWarsBundle\Form\WordWarType;
+use WordWarsBundle\Form\Type\WordWarType;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class WordWarsController extends Controller

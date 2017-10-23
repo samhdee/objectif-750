@@ -1,9 +1,9 @@
-my_stats_homepage:
-    path:     /mystats
-    defaults: { _controller: MyStatsBundle:MyStats:index }
+# my_stats_homepage:
+#     path:     /mystats
+#     defaults: { _controller: MyStatsBundle:MyStats:index }
 
 my_stats_daily:
-    path:     /mystats/daily
+    path:     /mystats
     defaults: { _controller: MyStatsBundle:MyStats:DailyStats }
 
 my_stats_ww:

@@ -9,6 +9,8 @@
     <meta name="language" content="fr" />
     <meta name="identifier-url" content="https://objectif750.fr" />
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Raleway|Lato|Merriweather" rel="stylesheet">
 
@@ -28,11 +30,11 @@
 
 		{# Pas de stats pour un user non autentifié #}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				{% block left_column %}
-					<div id="left_column">
-						{{ render(controller('MyStatsBundle:MyStats:daysProgress')) }}
-					</div>
-				{% endblock %}
+			{% block left_column %}
+				<div id="left_column">
+					{{ render(controller('MyStatsBundle:MyStats:daysProgress')) }}
+				</div>
+			{% endblock %}
 		{% endif %}
 
 		<div class="container">
