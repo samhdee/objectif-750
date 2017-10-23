@@ -113,43 +113,35 @@ class MyStatsController extends Controller
   public function daysProgressAction() {
     $user = $this->getUser();
     $manager = $this->getDoctrine()->getManager();
-
     $repo_my_stats = $manager->getRepository('MyStatsBundle:MyDailyStats');
     $todays_stats = $repo_my_stats->findTodaysStats($user);
     $user_pref = $user->getUserPreferences();
 
+    // Init des variables
     $nano_mode = (null !== $user_pref) ? $user_pref->getNanoMode() : false;
-
-    // Version texte du booléen nano_mode
-    $nano_mode_text = ($nano_mode) ? 'on' :'off';
-
-    $progress = array('nano_mode' => $nano_mode_text, 'no_pref_set' => (null === $user_pref));
-
+    $progress = array('nano_mode' => ($nano_mode) ? 'on' :'off', 'no_pref_set' => (null === $user_pref));
     $todays_word_count = (null !== $todays_stats) ? $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount() : 0;
     $todays_word_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
     $todays_percent = $todays_word_count * 100 / $todays_word_goal;
 
-    // Le mode nano contient plus de stats que le mode normal
+    // Récupération des stats nano, si nano en cours
     if($nano_mode) {
+      // Init des variables
       $total_nano_words = 0;
+      $progress['nano_stats'] = array('nano_mode' => $nano_mode_text, 'is_nano_started' => ($nano !== null));
+      $percent_nano_accomplished = $todays_word_count * 100 / 50000;
 
-      // Récupération d'un éventuel nano en cours
+      // Récupération des données en base
       $repo_my_nanos = $manager->getRepository('MyStatsBundle:MyNanos');
       $nano = $repo_my_nanos->findThisMonthNano($user);
-
-      $progress['nano_stats'] = array('nano_mode' => $nano_mode_text, 'is_nano_started' => ($nano !== null));
-
-      // Calcul du nombre de mots écrits ce mois-ci, WW et quota confondus
       $this_months_stats = $repo_my_stats->findThisMonthsStats($user);
 
+      // Calcul du nombre de mots écrits ce mois-ci, WW et quota confondus
       if(null !== $this_months_stats) {
-        // On remonte tous les mots écrits pour ce nano
         foreach ($this_months_stats as $stat) {
           $total_nano_words+= $stat->getMyWordsWordCount() + $stat->getWordWarsWordCount();
         }
       }
-
-      $percent_nano_accomplished = $todays_word_count * 100 / 50000;
 
       // Calcul du quota journalier idéal pour atteindre les 50k en fin de mois
       $now = new \DateTime();
