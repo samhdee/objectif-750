@@ -4,8 +4,8 @@ namespace UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use UserBundle\Form\AvatarType;
-use UserBundle\Form\UserPreferencesType;
+use UserBundle\Form\Type\AvatarType;
+use UserBundle\Form\Type\UserPreferencesType;
 
 class ProfileType extends AbstractType
 {

@@ -14,22 +14,15 @@ class MyStatsController extends Controller
   {
     // Récupération des objets nécessaires
     $user = $this->getUser();
+    $user_pref = $user->getUserPreferences();
     $manager = $this->getDoctrine()->getManager();
     $repo_my_stats = $manager->getRepository('MyStatsBundle:MyDailyStats');
     $todays_stats = $repo_my_stats->findTodaysStats($user);
-    $todays_word_count = $user->getUserPreferences()->getWordCountGoal();
     $all_stats = $repo_my_stats->findThisMonthsStats(array('user' => $user));
 
-    $validay = false;
-    $total_words_written = 0;
-
-    if($todays_stats) {
-      $total_words_written = $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount();
-
-      if($todays_word_count <= $total_words_written) {
-        $validay = true;
-      }
-    }
+    $word_count_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
+    $total_words_written = ($todays_stats) ? ($todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount()) : 0;
+    $validay = ($word_count_goal <= $total_words_written);
 
     // Récupération du nombre de jour dans le mois en cours
     $now = new \DateTime(date('Y-m') . '-01');
@@ -101,7 +94,7 @@ class MyStatsController extends Controller
     return $this->render('MyStatsBundle:MyStats:dailywordsstats.html.twig', array(
       'validay' => $validay,
       'total_words_written' => $total_words_written,
-      'word_count_goal' => $user->getUserPreferences()->getWordCountGoal(),
+      'word_count_goal' => $word_count_goal,
       'calendar_data' => $calendar_data
     ));
   }
@@ -122,7 +115,7 @@ class MyStatsController extends Controller
     $progress = array('nano_mode' => ($nano_mode) ? 'on' :'off', 'no_pref_set' => (null === $user_pref));
     $todays_word_count = (null !== $todays_stats) ? $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount() : 0;
     $todays_word_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
-    $todays_percent = $todays_word_count * 100 / $todays_word_goal;
+    $todays_percent = (0 !== $todays_word_goal) ? ($todays_word_count * 100 / $todays_word_goal) : 0;
 
     // Récupération des stats nano, si nano en cours
     if($nano_mode) {
