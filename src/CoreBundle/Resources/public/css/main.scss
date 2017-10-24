@@ -9,7 +9,7 @@ body {
   font-family: 'Lato';
   font-size: 15px;
 
-  h1, h2, h3, h4 {
+  h1, h2 {
     color: #D1A232;
     font-family: 'Shadows Into Light Two', 'Candara';
   }
@@ -21,17 +21,13 @@ body {
   h2 {
     font-size: 34px;
     margin-top: 0;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
-  h4 {
+  h3, h4 {
     font-family: 'Raleway', 'Calibri', sans-serif;
+    margin-left: 10px;
   }
-
-  // h3, h4 {
-  //   color: #D1A232;
-
-  // }
 
   ul {
     list-style: none;
@@ -51,11 +47,18 @@ body {
     text-decoration: none;
   }
 
+  hr {
+    height: 1px;
+    margin: 30px 0;
+    border: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+
   p.help {
     padding: 10px;
     border-radius: 5px;
     font-style: italic;
-    color: #925C94;
+    color: #B183B3;
     font-weight: bold;
   }
 
@@ -353,7 +356,7 @@ body {
       margin-top: 30px;
 
       .content_wrapper {
-        margin-top: 30px;
+        margin-top: 20px;
 
         .well {
           background-color: transparent;

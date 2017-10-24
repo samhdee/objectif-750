@@ -5,32 +5,34 @@
 {% block mystats_body %}
   <div id="mynanos_wrapper" class="content_wrapper">
     <p class="intro">Activer le mode NaNo vous permet de vous fixer un but de 50 000 mots pour le mois en cours et d'adapter votre quota journalier en fonction de votre avancée.</p>
-    <p class="intro">Le mode NaNo est actuellement <b>{{ mode_nano }}</b>. Vous pouvez changer ce paramètre dans vos <a href="">préférences utilisateur</a>.</p>
+    <p>En mode NaNo, votre objectif journalier est donc automatiquement calculé en fonction du nombre de mots restant pour atteindre l'objectif mensuel, surchargeant votre objectif normal. Toutefois, l'objectif normal que vous avez fixé dans vos préférences utilisateurs est toujours là, attendant de pouvoir être utilisé de nouveau.</p>
+    <p class="intro">Le mode NaNo est actuellement <b>{{ mode_nano }}</b>. Vous pouvez changer ce paramètre dans vos <a href="{{ path('fos_user_profile_edit') }}">préférences utilisateur</a>.</p>
     <p class="help">NB : il sera bientôt possible de fixer vous-même votre objectif de mots sur le mois.</p>
 
     {% if this_nano is not empty or all_nanos is not empty %}
+      <hr>
       <h3>Quelques statistiques :</h3>
 
       {% if this_nano is not empty %}
         <div id="current_nano">
           <h4>Ce mois-ci :</h4>
 
-          <ul class="nano_stats col-md-6">
+          <ul class="nano_stats col-md-offset-2 col-md-8">
             <li class="stat_row row">
-              <div class="stat_label col-sm-8">Votre objectif :</div>
-              <div class="stat_number col-sm-4">{{ this_nano.word_count_goal }}</div>
+              <div class="stat_label col-sm-7">Votre objectif :</div>
+              <div class="stat_number col-sm-5">{{ this_nano.word_count_goal }}</div>
             </li>
             <li class="stat_row row">
-              <div class="stat_label col-sm-8">Word count total :</div>
-              <div class="stat_number col-sm-4">{{ this_nano.month_word_count }}</div>
+              <div class="stat_label col-sm-7">Word count total :</div>
+              <div class="stat_number col-sm-5">{{ this_nano.month_word_count }}</div>
             </li>
             <li class="stat_row row">
-              <div class="stat_label col-sm-8">Moyenne mots/jour :</div>
-              <div class="stat_number col-sm-4">{{ this_nano.average_word_count }}</div>
+              <div class="stat_label col-sm-7">Moyenne mots/jour :</div>
+              <div class="stat_number col-sm-5">{{ this_nano.average_word_count }}</div>
             </li>
             <li class="stat_row row">
-              <div class="stat_label col-sm-8">Mots/jour pour atteindre l'objectif :</div>
-              <div class="stat_number col-sm-4">{{ this_nano.daily_word_goal }}</div>
+              <div class="stat_label col-sm-7">Mots/jour pour atteindre l'objectif :</div>
+              <div class="stat_number col-sm-5">{{ this_nano.daily_word_goal }}</div>
             </li>
           </ul>
         </div>
