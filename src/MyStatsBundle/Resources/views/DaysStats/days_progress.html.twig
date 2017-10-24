@@ -1,4 +1,4 @@
-<h3>Ma progression</h3>
+<h3>Progression</h3>
 <div id="triangle">&nbsp;</div>
 
 <div id="left_column_content">
@@ -8,25 +8,19 @@
   {% else %}
     <p>Mode NaNo : <a href="{{ path('my_stats_nano') }}">{{ progress.nano_mode }}</a></p>
 
-    {% if progress.nano_mode == 'on' %}
-      <p class="italic">Aujourd'hui :</p>
-    {% endif %}
+    <p class="days_word_count">Aujourd'hui : <span class="current_days_word_count">{{ progress.days_stats.todays_word_count }}</span> mots</span></p>
 
     <div class="percent_days_accomplished">
-      <div class="days_word_count">
-        <span class="current_days_word_count">{{ progress.days_stats.todays_word_count }}</span> mots {# sur <span class="word_goal">{{ progress.days_stats.todays_word_goal }} #}</span>
-      </div>
       <div class="percentage" style="width:{{ progress.days_stats.todays_percent_accomplished }}%">&nbsp;</div>
+      <div class="percent_number">{{ progress.days_stats.todays_percent_accomplished }}%</div>
     </div>
 
     {% if progress.nano_mode == 'on' %}
       <div class="nano_mode">
-        <p class="italic">Sur le mois :</p>
+        <p class="nano_word_count">Sur le mois : <span class="current_nano_word_count">{{ progress.nano_stats.total_nano_words }}</span> mots</span></p>
         <div class="percent_nano_accomplished">
-          <div class="nano_word_count">
-            <span class="current_nano_word_count">{{ progress.nano_stats.total_nano_words }}</span> mots{#  sur <span class="word_goal">{{ progress.nano_stats.nano_word_goal }} #}</span>
-          </div>
           <div class="percentage" style="width:{{ progress.nano_stats.percent_nano_accomplished }}%">&nbsp;</div>
+          <div class="percent_number">{{ progress.days_stats.todays_percent_accomplished }}%</div>
         </div>
       </div>
     {% endif %}

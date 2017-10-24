@@ -213,7 +213,7 @@ function count_my_time(date, temps_diff) {
       var percentage = total_word_count * 100 / word_goal;
 
       // Mise à jour du pourcentage et du WC du jour
-      $('.percent_days_accomplished .days_word_count .current_days_word_count').html(total_word_count);
+      $('.days_word_count .current_days_word_count').html(total_word_count);
       $('.percent_days_accomplished .percentage').css('width', percentage + '%');
     }
   })

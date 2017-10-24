@@ -18,13 +18,12 @@ class DaysStatsController extends Controller
     $progress = array('nano_mode' => ($nano_mode) ? 'on' :'off', 'no_pref_set' => (null === $user_pref));
     $todays_word_count = (null !== $todays_stats) ? $todays_stats->getMyWordsWordCount() + $todays_stats->getWordWarsWordCount() : 0;
     $todays_word_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
-    $todays_percent = (0 !== $todays_word_goal) ? ($todays_word_count * 100 / $todays_word_goal) : 0;
+    $todays_percent = (0 !== $todays_word_goal) ? floor($todays_word_count * 100 / $todays_word_goal) : 0;
 
     // Récupération des stats nano, si nano en cours
     if($nano_mode) {
       // Init des variables
       $total_nano_words = 0;
-      $percent_nano_accomplished = $todays_word_count * 100 / 50000;
 
       // Récupération des données en base
       $repo_my_nanos = $manager->getRepository('MyStatsBundle:MyNanos');
@@ -51,18 +50,19 @@ class DaysStatsController extends Controller
       $remaining_words = 50000 - $total_nano_words;
       $remaining_days = $nb_days_in_month - $todays_day;
       $todays_word_goal = ceil($remaining_words / $remaining_days);
-      $todays_percent = $todays_word_count / $todays_word_goal;
+      $todays_percent = floor($todays_word_count / $todays_word_goal);
+      $percent_nano_accomplished = floor($todays_word_count * 100 / 50000);
 
       // Stockage des stats mensuelles
       $progress['nano_stats']['total_nano_words'] = $total_nano_words;
-      $progress['nano_stats']['percent_nano_accomplished'] = $percent_nano_accomplished;
+      $progress['nano_stats']['percent_nano_accomplished'] = ($percent_nano_accomplished <= 100) ? $percent_nano_accomplished : 100;
       $progress['nano_stats']['nano_word_goal'] = 50000;
     }
 
     // Stockage des stats journalières
     $progress['days_stats']['todays_word_count'] = $todays_word_count;
     $progress['days_stats']['todays_word_goal'] = $todays_word_goal;
-    $progress['days_stats']['todays_percent_accomplished'] = $todays_percent;
+    $progress['days_stats']['todays_percent_accomplished'] = ($todays_percent <= 100) ? $todays_percent : 100;
 
     return $this->render(
       'MyStatsBundle:DaysStats:days_progress.html.twig',
