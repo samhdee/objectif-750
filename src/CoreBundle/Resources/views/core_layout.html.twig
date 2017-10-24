@@ -16,6 +16,7 @@
 
 	  {% block stylesheets %}
 	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		  {% stylesheets filter='cssrewrite'
 		    'bundles/core/css/main.css' %}
 		    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
@@ -32,7 +33,7 @@
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			{% block left_column %}
 				<div id="left_column">
-					{{ render(controller('MyStatsBundle:MyStats:daysProgress')) }}
+					{{ render(controller('MyStatsBundle:DaysStats:daysProgress')) }}
 				</div>
 			{% endblock %}
 		{% endif %}
@@ -58,8 +59,11 @@
 			</div>
 		</div>
 
+		<div id="dialog"></div>
+
 		{% block javascripts %}
 	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 			<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>

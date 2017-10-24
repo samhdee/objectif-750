@@ -3,9 +3,13 @@
 #     defaults: { _controller: MyStatsBundle:MyStats:index }
 
 my_stats_daily:
-    path:     /mystats
-    defaults: { _controller: MyStatsBundle:MyStats:DailyStats }
+    path:     /mystats/month
+    defaults: { _controller: MyStatsBundle:MyStats:dailyStats }
 
 my_stats_ww:
     path:     /mystats/ww
-    defaults: { _controller: MyStatsBundle:MyStats:WWStats }
+    defaults: { _controller: MyStatsBundle:MyStats:wwStats }
+
+my_stats_nano:
+    path:     /mystats/nanos
+    defaults: { _controller: MyStatsBundle:MyNanos:myNanos }

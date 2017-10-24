@@ -1,0 +1,71 @@
+{% extends "MyStatsBundle::layout.html.twig" %}
+
+{% block title_page %}Mes NaNos{% endblock %}
+
+{% block mystats_body %}
+  <div id="mynanos_wrapper" class="content_wrapper">
+    <p class="intro">Activer le mode NaNo vous permet de vous fixer un but de 50 000 mots pour le mois en cours et d'adapter votre quota journalier en fonction de votre avancée.</p>
+    <p class="intro">Le mode NaNo est actuellement <b>{{ mode_nano }}</b>. Vous pouvez changer ce paramètre dans vos <a href="">préférences utilisateur</a>.</p>
+    <p class="help">NB : il sera bientôt possible de fixer vous-même votre objectif de mots sur le mois.</p>
+
+    {% if this_nano is not empty or all_nanos is not empty %}
+      <h3>Quelques statistiques :</h3>
+
+      {% if this_nano is not empty %}
+        <div id="current_nano">
+          <h4>Ce mois-ci :</h4>
+
+          <ul class="nano_stats col-md-6">
+            <li class="stat_row row">
+              <div class="stat_label col-sm-8">Votre objectif :</div>
+              <div class="stat_number col-sm-4">{{ this_nano.word_count_goal }}</div>
+            </li>
+            <li class="stat_row row">
+              <div class="stat_label col-sm-8">Word count total :</div>
+              <div class="stat_number col-sm-4">{{ this_nano.month_word_count }}</div>
+            </li>
+            <li class="stat_row row">
+              <div class="stat_label col-sm-8">Moyenne mots/jour :</div>
+              <div class="stat_number col-sm-4">{{ this_nano.average_word_count }}</div>
+            </li>
+            <li class="stat_row row">
+              <div class="stat_label col-sm-8">Mots/jour pour atteindre l'objectif :</div>
+              <div class="stat_number col-sm-4">{{ this_nano.daily_word_goal }}</div>
+            </li>
+          </ul>
+        </div>
+      {% else %}
+        <em>Vous n'avez aucun nano en cours.</em>
+      {% endif %}
+
+      {% if all_nanos is not empty %}
+        <div id="all_nanos">
+          <h4>Les mois précédents :</h4>
+
+          {% for nano in all_nanos %}
+            <ul class="nano_stats col-md-6">
+              <li class="stat_row row">
+                <div class="stat_label col-sm-8">Votre objectif :</div>
+                <div class="stat_number col-sm-4">{{ this_nano.word_count_goal }}</div>
+              </li>
+              <li class="stat_row row">
+                <div class="stat_label col-sm-8">Word count total :</div>
+                <div class="stat_number col-sm-4">{{ this_nano.month_word_count }}</div>
+              </li>
+              <li class="stat_row row">
+                <div class="stat_label col-sm-8">Moyenne mots/jour :</div>
+                <div class="stat_number col-sm-4">{{ this_nano.average_word_count }}</div>
+              </li>
+              <li class="stat_row row">
+                <div class="stat_label col-sm-8">Mots/jour pour atteindre l'objectif :</div>
+                <div class="stat_number col-sm-4">{{ this_nano.daily_word_goal }}</div>
+              </li>
+            </ul>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% else %}
+      <em>Vous n'avez pas encore participé à un nano. Lorsque ce sera le cas, vos statistiques apparaîtront à la place de ce message.</em>
+    {% endif %}
+  </div>
+{% endblock %}

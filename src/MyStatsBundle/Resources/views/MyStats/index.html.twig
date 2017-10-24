@@ -1,13 +1,10 @@
 {% extends "MyStatsBundle::layout.html.twig" %}
 
-{% block fil_ariane %}
-  <li>mes stats</li>
-  {# {{ render(controller('WordWarsBundle:WordWars:breadcrumb')) }} #}
-{% endblock %}
-
-{% block title_page %}Soon...{% endblock %}
+{% block title_page %}Mes NaNos{% endblock %}
 
 {% block mystats_body %}
-  <div id="mystats_wrapper" class="content_wrapper">
+  <div id="mynanos_wrapper" class="content_wrapper">
+    <p class="intro">Activer le mode NaNo vous permet de vous fixer un but de 50 000 mots pour le mois en cours et d'adapter votre quota journalier en fonction de votre avancée.</p>
+    <p class="intro">Le mode NaNo est présentement <b>{{ mode_nano }}</b>. Vous pouvez changer ce paramètre dans vos <a href="">préférences utilisateur</a>.</p>
   </div>
 {% endblock %}

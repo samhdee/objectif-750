@@ -1,14 +1,19 @@
 {% extends "WordWarsBundle::layout.html.twig" %}
 
-{% block title_page %}C'est fini !{% endblock %}
-
-{% block fil_ariane %}
-  {{ parent() }}
-  <li>WW terminée</li>
-{% endblock %}
+{% block title_page %}Posez les stylos !{% endblock %}
 
 {% block wordwars_body %}
   <div id="mywordwar_wrapper" class="content_wrapper">
-    <p>La WW à laquelle vous tentez d'accéder a pris fin. Vous pouvez toutefois en créer une nouvelle en cliquant sur <a href="{{ path('word_wars_new') }}">ce lien</a>.</p>
+    <p class="help">NB : pas d'inquiétude, votre texte est bien sauvegardé ! Cependant, le site n'étant pas fini, il n'est pas encore possible de le retrouver. Cette fonctionnalité devrait arriver d'ici quelques jours :)</p>
+    <p>La WW est terminée ! Voici les résultats :</p>
+
+    <ul id="ww_results_wrapper" class="col-md-4">
+      {% for result in all_ww %}
+        <li class="result_row row{% if true == result.is_me %} my_result{% endif %}">
+          <div class="pseudo col-sm-8">{{ result.username }}</div>
+          <div class="word_count col-sm-4">{{ result.word_count }}</div>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 {% endblock %}

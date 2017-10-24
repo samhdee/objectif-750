@@ -59,9 +59,7 @@ class WordWarsController extends Controller
   public function inProgressAction($id) {
     // Récupération du user en cours
     $user = $this->getUser();
-    $manager = $this
-      ->getDoctrine()
-      ->getManager();
+    $manager = $this->getDoctrine()->getManager();
 
     // Récupération de la WW
     $ww_repo = $manager->getRepository('WordWarsBundle:WordWar');
@@ -173,7 +171,35 @@ class WordWarsController extends Controller
     return $response;
   }
 
-  public function wwEndedAction(Request $request) {
-    return $this->render('WordWarsBundle:WordWars:ww_ended.html.twig');
+  public function wwEndedAction(Request $request, $id) {
+    $user = $this->getUser();
+    $manager = $this->getDoctrine()->getManager();
+
+    $all_word_wars = null;
+
+    // Récupération de la WW
+    $ww_repo = $manager->getRepository('WordWarsBundle:WordWar');
+    $word_war = $ww_repo->find($id);
+
+    if(null !== $word_war) {
+      $mww_repo = $manager->getRepository('WordWarsBundle:MyWordWar');
+      $all_results = $mww_repo->findWWParticipants($word_war);
+
+      if(null !== $all_results) {
+        $all_word_wars = array();
+
+        foreach ($all_results as $result) {
+          $all_word_wars[] = array(
+            'username' => $result->getUser()->getUsername(),
+            'word_count' => $result->getWordCount(),
+            'is_me' => ($result->getUser()->getId() == $user->getId())
+          );
+        }
+      }
+    }
+
+    return $this->render('WordWarsBundle:WordWars:ww_ended.html.twig', array(
+      'all_ww' => $all_word_wars
+    ));
   }
 }

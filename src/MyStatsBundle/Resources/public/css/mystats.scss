@@ -69,4 +69,36 @@
       }
     }
   }
+
+
+  #mynanos_wrapper {
+    #current_nano,
+    #all_nanos {
+      margin-left: 10px;
+      margin-top: 20px;
+    }
+
+    ul.nano_stats {
+
+      li.stat_row:first-child {
+        border-top: none;
+      }
+
+      li.stat_row {
+        display: block;
+        padding: 5px;
+        margin: 5px 0;
+        border-top: 1px dotted #333333;
+
+        div {
+          display: inline-block;
+          position: relative;
+        }
+
+        div.stat_label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }

@@ -45,13 +45,49 @@
     }
 
     textarea {
-      border: none;
+      // border: none;
       width: 100%;
       min-height: 300px;
       clip:rect(0,189px, 50px, 0);
       z-index: -1;
       resize: none;
       background-color: #F1F1F1;
+    }
+
+    ul#ww_results_wrapper {
+      // margin-top: 20px;
+
+      li.result_row:first-child {
+        font-weight: bold;
+        color: #3c763d;
+        // background-color: #DFF0D8;
+        border: none;
+      }
+
+      li.result_row.my_result {
+        font-weight: bold;
+        font-size: 16px;
+
+        .word_count:after {
+          content: '\21e0\0020\0020vous !';
+          position: absolute;
+          right: -70px;
+          font-weight: normal;
+          font-size: 15px;
+        }
+      }
+
+      li.result_row {
+        display: block;
+        padding: 5px;
+        margin: 5px 0;
+        border-top: 1px dotted #333333;
+
+        div {
+          display: inline-block;
+          position: relative;
+        }
+      }
     }
   }
 

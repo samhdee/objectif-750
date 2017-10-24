@@ -13,12 +13,10 @@
     <li class="first_level
         {% if path('my_stats_daily') in current %} active{% endif %}">
       <a href="{{ path('my_stats_daily') }}">stats</a>
-
-      {# Sous menu Stats #}
-      {# <ul class="submenu">
-        <li><a href="{{ path('my_stats_daily') }}">quota</a></li>
-        <li><a href="{{ path('my_stats_ww') }}">WW</a></li>
-      </ul> #}
+    </li>
+    <li class="first_level
+        {% if path('my_stats_nano') in current %} active{% endif %}">
+      <a href="{{ path('my_stats_nano') }}">nano</a>
     </li>
     {# <li class="first_level
         {% if path('export_homepage') in current %} active{% endif %}">
@@ -29,5 +27,11 @@
         <a href="{{ path('sonata_admin_dashboard') }}">administration</a>
       </li>
     {% endif %}
+
+    {# Sous menus sample #}
+    {# <ul class="submenu">
+      <li><a href="{{ path('my_stats_daily') }}">quota</a></li>
+      <li><a href="{{ path('my_stats_ww') }}">WW</a></li>
+    </ul> #}
   </ul>
 </nav>

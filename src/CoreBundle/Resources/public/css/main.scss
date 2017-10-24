@@ -9,7 +9,7 @@ body {
   font-family: 'Lato';
   font-size: 15px;
 
-  h1, h2 {
+  h1, h2, h3, h4 {
     color: #D1A232;
     font-family: 'Shadows Into Light Two', 'Candara';
   }
@@ -23,6 +23,15 @@ body {
     margin-top: 0;
     margin-bottom: 40px;
   }
+
+  h4 {
+    font-family: 'Raleway', 'Calibri', sans-serif;
+  }
+
+  // h3, h4 {
+  //   color: #D1A232;
+
+  // }
 
   ul {
     list-style: none;
@@ -43,12 +52,37 @@ body {
   }
 
   p.help {
+    padding: 10px;
+    border-radius: 5px;
     font-style: italic;
+    color: #925C94;
+    font-weight: bold;
   }
 
   // Empêche Chrome de rajouter un outline bleu merdique au focus des trucs
   *:focus, textarea:focus, input:focus {
     outline: none;
+  }
+
+  #dialog {
+    display: none;
+  }
+
+  .tool_tip {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border: 1px solid #3b9090;
+    border-radius: 50%;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 10px;
+    background-color: #3b9090;
+    cursor: pointer;
+  }
+
+  .tool_tip:hover {
+    background-color: #60AEAE;
   }
 
   header#header.jumbotron {
@@ -219,7 +253,7 @@ body {
     margin-top: 35px;
     margin-left: 20px;
     padding: 10px 20px;
-    font-size: 12px;
+    font-size: 13px;
     font-family: 'Raleway', 'Calibri', sans-serif;
     font-weight: bold;
     border: 2px solid #333333;

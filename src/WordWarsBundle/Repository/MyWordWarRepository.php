@@ -45,4 +45,17 @@ class MyWordWarRepository extends \Doctrine\ORM\EntityRepository
 
     return $query->getQuery()->getOneOrNullResult();
   }
+
+  public function findWWParticipants($ww) {
+    $date = new \Datetime(date('Y-m-d') . ' 00:00:00');
+
+    $query = $this->createQueryBuilder('mww');
+
+    $query->where('mww.word_war = :ww')
+          ->setParameter('ww', $ww);
+
+    $query->orderBy('mww.wordCount', 'DESC');
+
+    return $query->getQuery()->getResult();
+  }
 }
