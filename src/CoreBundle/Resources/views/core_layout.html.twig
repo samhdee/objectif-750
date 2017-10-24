@@ -12,7 +12,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Raleway|Lato|Merriweather" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Raleway|Lato|Bevan" rel="stylesheet">
 
 	  {% block stylesheets %}
 	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -32,9 +32,9 @@
 		{# Pas de stats pour un user non autentifié #}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			{% block left_column %}
-				<div id="left_column">
+				<aside id="left_column">
 					{{ render(controller('MyStatsBundle:DaysStats:daysProgress')) }}
-				</div>
+				</aside>
 			{% endblock %}
 		{% endif %}
 

@@ -1,31 +1,34 @@
 <h3>Ma progression</h3>
+<div id="triangle">&nbsp;</div>
 
-{% if progress.no_pref_set == true %}
-  <p>Vous n'avez pas encore défini d'objectif.</p>
-  <p><a href="{{ path('fos_user_profile_edit') }}">Cliquez ici pour corriger cela !</a></p>
-{% else %}
-  <p>Mode NaNo : <a href="{{ path('my_stats_nano') }}">{{ progress.nano_mode }}</a></p>
+<div id="left_column_content">
+  {% if progress.no_pref_set == true %}
+    <p>Vous n'avez pas encore défini d'objectif.</p>
+    <p><a href="{{ path('fos_user_profile_edit') }}">Cliquez ici pour corriger cela !</a></p>
+  {% else %}
+    <p>Mode NaNo : <a href="{{ path('my_stats_nano') }}">{{ progress.nano_mode }}</a></p>
 
-  {% if progress.nano_mode == 'on' %}
-    <p class="italic">Aujourd'hui :</p>
-  {% endif %}
+    {% if progress.nano_mode == 'on' %}
+      <p class="italic">Aujourd'hui :</p>
+    {% endif %}
 
-  <div class="percent_days_accomplished">
-    <div class="days_word_count">
-      <span class="current_days_word_count">{{ progress.days_stats.todays_word_count }}</span> mots {# sur <span class="word_goal">{{ progress.days_stats.todays_word_goal }} #}</span>
-    </div>
-    <div class="percentage" style="width:{{ progress.days_stats.todays_percent_accomplished }}%">&nbsp;</div>
-  </div>
-
-  {% if progress.nano_mode == 'on' %}
-    <div class="nano_mode">
-      <p class="italic">Sur le mois :</p>
-      <div class="percent_nano_accomplished">
-        <div class="nano_word_count">
-          <span class="current_nano_word_count">{{ progress.nano_stats.total_nano_words }}</span> mots{#  sur <span class="word_goal">{{ progress.nano_stats.nano_word_goal }} #}</span>
-        </div>
-        <div class="percentage" style="width:{{ progress.nano_stats.percent_nano_accomplished }}%">&nbsp;</div>
+    <div class="percent_days_accomplished">
+      <div class="days_word_count">
+        <span class="current_days_word_count">{{ progress.days_stats.todays_word_count }}</span> mots {# sur <span class="word_goal">{{ progress.days_stats.todays_word_goal }} #}</span>
       </div>
+      <div class="percentage" style="width:{{ progress.days_stats.todays_percent_accomplished }}%">&nbsp;</div>
     </div>
+
+    {% if progress.nano_mode == 'on' %}
+      <div class="nano_mode">
+        <p class="italic">Sur le mois :</p>
+        <div class="percent_nano_accomplished">
+          <div class="nano_word_count">
+            <span class="current_nano_word_count">{{ progress.nano_stats.total_nano_words }}</span> mots{#  sur <span class="word_goal">{{ progress.nano_stats.nano_word_goal }} #}</span>
+          </div>
+          <div class="percentage" style="width:{{ progress.nano_stats.percent_nano_accomplished }}%">&nbsp;</div>
+        </div>
+      </div>
+    {% endif %}
   {% endif %}
-{% endif %}
+</div>
