@@ -61,7 +61,7 @@ class Avatar
      */
     public function getAvatarPath()
     {
-      return $this->getUploadRootDir() . '/' . $this->id . '.' . $this->extension;
+      return $this->getUploadDir() . '/' . $this->id . '.' . $this->extension;
     }
 
     public function getFile()

@@ -87,6 +87,15 @@
         div {
           display: inline-block;
           position: relative;
+          line-height: 36px;
+        }
+
+        .avatar {
+          img {
+            width: 40px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+          }
         }
       }
     }

@@ -15,10 +15,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class WordWarsController extends Controller
 {
-  public function indexAction($id) {
-    return $this->render('WordWarsBundle:WordWars:index.html.twig');
-  }
-
   public function newAction(Request $request)
   {
     $user = $this->getUser();
@@ -69,7 +65,7 @@ class WordWarsController extends Controller
     $date = new \DateTime();
 
     if($word_war->getEnd() < $date) {
-      return $this->render('WordWarsBundle:WordWars:ww_ended.html.twig');
+      return $this->redirectToRoute('word_war_ended', array('id' => $id));
     }
 
     // Récupération du repo my_word_war
@@ -189,8 +185,11 @@ class WordWarsController extends Controller
         $all_word_wars = array();
 
         foreach ($all_results as $result) {
+          $avatar = $result->getUser()->getAvatar();
+
           $all_word_wars[] = array(
             'username' => $result->getUser()->getUsername(),
+            'avatar' => (null !== $avatar) ? $avatar->getAvatarPath() : null,
             'word_count' => $result->getWordCount(),
             'is_me' => ($result->getUser()->getId() == $user->getId())
           );

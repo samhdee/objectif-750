@@ -1,7 +1,3 @@
-word_wars_homepage:
-    path:     /wordwars
-    defaults: { _controller: WordWarsBundle:WordWars:index }
-
 word_wars_new:
     path:     /wordwars/new
     defaults: { _controller: WordWarsBundle:WordWars:new }

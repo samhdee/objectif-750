@@ -11,7 +11,7 @@
     <p><span class="label">{{ 'profile.show.email'|trans }} :</span> {{ user.email }}</p>
     <p><span class="label">Avatar :</span>
       {% if user.avatar %}
-        <img width="150" src="{{ asset(user.avatar.uploadDir ~ '/' ~ user.avatar.id ~ '.' ~ user.avatar.extension) }}" />
+        <img width="150" src="{{ asset(user.avatar.getAvatarPath) }}" />
       {% else %}
         <em>Vous n'avez pas (encore) d'avatar.</em>
       {% endif %}
