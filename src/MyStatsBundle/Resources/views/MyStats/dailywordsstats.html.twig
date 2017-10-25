@@ -20,23 +20,12 @@
         ({{ total_words_written }} mots sur {{ word_count_goal }})
       </p>
 
-      <div id="word_count_progression">
-        <div id="words_done">&nbsp;</div>
-      </div>
-
       <div id="words_calendar_wrapper">
         <ul id="words_calendar" class="inline_list">
-          <li class="week_day">L</li>
-          <li class="week_day">M</li>
-          <li class="week_day">M</li>
-          <li class="week_day">J</li>
-          <li class="week_day">V</li>
-          <li class="week_day">S</li>
-          <li class="week_day">D</li>
           {% for data in calendar_data %}
             <li data-progression="{{ data.progression }}" class="{{ data.class }} calendar_item">
               <div class="day_number">{{ data.nb_day }}</div>
-              <div class="progression_status">&nbsp;</div>
+              <div class="progression_status">{{ data.progression }}%</div>
             </li>
           {% endfor %}
         </ul>

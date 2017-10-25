@@ -1,55 +1,49 @@
 #mystats_wrapper {
   #words_calendar_wrapper {
+    padding: 0;
+
     ul#words_calendar {
       margin-top: 20px;
-      width: 400px;
-
-      li {
-        margin: 0 5% 20px 0;
-        height: 30px;
-        width: 8%;
-      }
-
-      li.week_day {
-        text-align: center;
-        font-size: 14px;
-        height: 30px;
-      }
 
       li.calendar_item {
-        font-size: 10px;
-        border: 1px solid black;
-        background-repeat: no-repeat;
-        background-size: 10px 10px;
-        position: relative;
-        background-color: transparent;
+        margin: 0;
+        width: 25px;
+        line-height: normal;
 
         .day_number {
-          position: absolute;
-          top: 0;
-          left: 3px;
-          z-index: 10;
-          background-color: transparent;
+          font-size: 13px;
+          text-align: center;
+          margin-bottom: 5px;
         }
 
         .progression_status {
-          background-color: #1DB954;
-          position: absolute;
-          left: 0;
-          bottom: 0;
+          text-align: center;
+          padding-top: 2px;
           width: 100%;
-          z-index: 1;
+          height: 20px;
+          color: white;
+          font-size: 11px;
         }
       }
 
-      li.calendar_item.filler {
-        border: none;
+      li.calendar_item.nowords {
+        .progression_status {
+          background-color: #555555;
+          border-bottom: 3px solid #333333;
+        }
       }
 
-      li.calendar_item.nowords,
-      li.calendar_item.filler, {
+      li.calendar_item.somewords {
         .progression_status {
-          display: none;
+          background-color: #D18C32;
+          border-bottom: 3px solid #B67520;
+        }
+      }
+
+      li.calendar_item.allwords {
+        .progression_status {
+          background-color: #53EC79;
+          border-bottom: 3px solid #3CCA5F;
         }
       }
     }

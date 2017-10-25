@@ -6,10 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class MyStatsController extends Controller
 {
-  public function indexAction() {
-    return $this->render('MyStatsBundle:MyStats:index.html.twig');
-  }
-
   public function dailyStatsAction()
   {
     // Récupération des objets nécessaires
@@ -37,44 +33,17 @@ class MyStatsController extends Controller
     foreach ($all_stats as $stat) {
       $total_mots = $stat->getMyWordsWordCount() + $stat->getWordWarsWordCount();
       $goal = $stat->getDaysGoal();
+      $percent = ($goal != 0) ? floor(($total_mots * 100) / $goal) : 0;
       $calendar_data[$stat->getDate()->format('Y-m-d')] = array(
         'nb_mots' => $total_mots,
         'goal' => $goal,
-        'progression' => ($goal != 0) ? ($total_mots * 100) / $goal : 0,
-        'class' => ($goal <= $total_mots) ? 'allwords' : ($total_mots == 0) ? 'nowords' : 'somewords',
+        'progression' => ($percent <= 100) ? $percent : 100,
+        'class' => (100 <= $percent) ? 'allwords' : (0 < $percent) ? 'somewords' : 'nowords',
         'nb_day' => $stat->getDate()->format('d'));
     }
 
-    if($month == '01') {
-      $prev_month = '12';
-      $prev_year--;
-    }
-    else {
-      $prev_year = $year;
-      $prev_month = $month -1;
-    }
-
-    $nb_days_prev_month = cal_days_in_month(CAL_GREGORIAN, $prev_month, $prev_year);
-
     // Ajout des jours où ya rien eu
     for($i = 1 ; $i <= $nb_days ; $i++) {
-      // Si le premier jour du mois n'est pas un lundi
-      if($i < $number_day_of_week) {
-        // On rajoute des cases filler jusqu'au premier jour du mois
-        for($j = ($number_day_of_week - 1) ; $j >= 1 ; $j--) {
-          $temp_day = $nb_days_prev_month - $j;
-          $temp = new \DateTime($prev_year . '-' . $prev_month . '-' . $temp_day);
-          $temp = $temp->format('Y-m-d');
-
-          $calendar_data[$temp] = array(
-            'nb_mots' => 0,
-            'goal' => 0,
-            'progression' => 0,
-            'class' => 'filler',
-            'nb_day' => '');
-        }
-      }
-
       $temp = new \DateTime($year . '-' . $month . '-' . $i);
       $temp_date = $temp->format('Y-m-d');
       $temp_day = $temp->format('d');
