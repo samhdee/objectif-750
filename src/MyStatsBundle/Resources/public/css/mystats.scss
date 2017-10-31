@@ -58,7 +58,6 @@
     }
 
     ul.nano_stats {
-      // margin: 0 auto;
       font-size: 17px;
 
       li.stat_row:first-child {
@@ -78,6 +77,83 @@
 
         div.stat_label {
           font-weight: bold;
+        }
+      }
+    }
+  }
+
+  #archives_wrapper {
+    #archives_filters {
+      h4 {
+        margin-left: -10px;
+      }
+
+      button.btn_filter {
+        color: white;
+        border: 1px solid transparent;
+      }
+
+      button[data-filter="solo"] {
+        background-color: #6ED6A4;
+      }
+
+      button[data-filter="ww"] {
+        background-color: #AE81FF;
+      }
+
+      .btn_filter[data-filter="ww"].inactive,
+      .btn_filter[data-filter="solo"].inactive {
+        background-color: #CECECE;
+      }
+    }
+
+    #archives_content_wrapper {
+      margin-top: 30px;
+
+      .days_wrapper {
+        margin-top: 30px;
+
+        h3 {
+          font-size: 20px;
+        }
+
+        .archive_content_wrapper {
+          position: relative;
+
+          .content_type {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0 3px;
+            font-size: 12px;
+            color: white;
+            z-index: 5;
+          }
+
+          .archive_content {
+            // max-height: 150px;
+            overflow: hidden;
+            border-width: 2px;
+            border-style: dotted;
+            padding: 10px;
+            padding-top: 20px;
+          }
+
+          .content_type.solo {
+            background-color: #6ED6A4;
+          }
+
+          .content_type.ww {
+            background-color: #AE81FF;
+          }
+
+          .archive_content.ww {
+            border-color: #AE81FF;
+          }
+
+          .archive_content.solo {
+            border-color: #6ED6A4;
+          }
         }
       }
     }

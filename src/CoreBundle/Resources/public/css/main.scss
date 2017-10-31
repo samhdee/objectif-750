@@ -10,7 +10,7 @@ body {
   font-size: 15px;
 
   h1, h2 {
-    color: #D04B61;
+    color: #cc6475;
     font-family: 'Shadows Into Light Two', 'Candara';
   }
 
@@ -21,12 +21,13 @@ body {
   h2 {
     font-size: 34px;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   h3, h4 {
     font-family: 'Raleway', 'Calibri', sans-serif;
     margin-left: 10px;
+    margin-top: 10px;
   }
 
   ul {
@@ -64,6 +65,11 @@ body {
     font-weight: bold;
   }
 
+  p.explain {
+    font-size: 11px;
+    font-style: italic;
+  }
+
   // Empêche Chrome de rajouter un outline bleu merdique au focus des trucs
   *:focus, textarea:focus, input:focus {
     outline: none;
@@ -71,23 +77,6 @@ body {
 
   #dialog {
     display: none;
-  }
-
-  .tool_tip {
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-    border: 1px solid #3b9090;
-    border-radius: 50%;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 10px;
-    background-color: #3b9090;
-    cursor: pointer;
-  }
-
-  .tool_tip:hover {
-    background-color: #60AEAE;
   }
 
   header#header.jumbotron {
@@ -115,7 +104,7 @@ body {
         line-height: 70px;
 
         a, a:hover {
-          color: #D04B61;
+          color: #cc6475;
           text-decoration: none;
         }
       }
@@ -153,14 +142,15 @@ body {
             list-style: none;
             padding: 0;
             margin: 0;
+            text-align: center;
 
             li.first_level.active,
             li.first_level:hover {
-              a {
+              a.first_level_link {
                 background-color: #373A3F;
                 color: #7AB8B8;
                 position: relative;
-                transition: background-color 200ms ease-in;
+                transition: all 200ms ease-in;
               }
             }
 
@@ -175,7 +165,26 @@ body {
                 display: block;
                 padding: 10px 20px;
                 color: #FFFFFF;
-                transition: background-color 200ms ease-in;
+                transition: all 200ms ease-in;
+              }
+
+              ul.submenu {
+                display: none;
+                position: absolute;
+                background-color: #373A3F;
+
+                li.second_level {
+                  display: block;
+                  margin-right: 0;
+
+                  a {
+                    padding: 10px 20px;
+                  }
+
+                  a:hover {
+                    color: #7AB8B8;
+                  }
+                }
               }
             }
           }

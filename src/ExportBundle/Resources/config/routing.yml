@@ -1,3 +1,3 @@
-export_homepage:
-    path:     /export
-    defaults: { _controller: ExportBundle:Export:index }
+export_archives:
+    path:     /export/archives
+    defaults: { _controller: ExportBundle:Export:archives }

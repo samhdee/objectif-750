@@ -39,7 +39,7 @@ class MyNanosController extends Controller
       $nb_days_in_month = cal_days_in_month(CAL_GREGORIAN, $now->format('m'), $now->format('Y'));
       $remaining_words = $nano_goal - $total_nano_words;
       $remaining_days = $nb_days_in_month - $now->format('d');
-      $daily_word_goal = ceil($remaining_words / $remaining_days);
+      $daily_word_goal = (0 !== $remaining_days) ? ceil($remaining_words / $remaining_days) : $remaining_words;
 
       $this_nano['word_count_goal'] = $current_nano->getWordCountGoal();
       $this_nano['month_word_count'] = $total_nano_words;

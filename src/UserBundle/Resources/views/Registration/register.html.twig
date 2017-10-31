@@ -5,6 +5,7 @@
 {% block title_page %}Créer mon compte{% endblock %}
 
 {% block fos_user_content %}
+  <p class="help">Un email vous sera envoyé pour confirmer votre inscription.</p>
   {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div>

@@ -9,3 +9,19 @@ my_stats_ww:
 my_stats_nano:
     path:     /mystats/nanos
     defaults: { _controller: MyStatsBundle:MyNanos:myNanos }
+
+my_stats_archives:
+    path:     /mystats/archives/{page}
+    defaults:
+        _controller: MyStatsBundle:Archives:myArchives
+        page: 1
+    requirements:
+        page: \d*
+
+my_stats_filter_archives:
+    path:     /mystats/archives/filter
+    defaults: { _controller: MyStatsBundle:Archives:filter }
+    requirements:
+        _method: POST
+    options:
+        expose: true

@@ -1,0 +1,33 @@
+{% extends "MyStatsBundle::layout.html.twig" %}
+
+{% block title_page %}Archives{% endblock %}
+
+{% block mystats_body %}
+  <div id="archives_wrapper" class="content_wrapper">
+    <p>Ici vous pouvez retrouver tous les textes que vous avez écrits. Il sera bientôt possible de filtrer par date et de télécharger un export de votre sélection au format de votre choix (PDF, docx ou texte).</p>
+
+    <div id="archives_content_wrapper" class="col-lg-offset-1 col-md-10">
+      <div id="archives_filters">
+        <h4>Filtres</h4>
+        <button data-filter="solo" class="btn_filter
+        {% if 'solo' in app.session.get('inactive_filters') %} inactive{% endif %}">solo</button>
+        <button data-filter="ww" class="btn_filter
+        {% if 'ww' in app.session.get('inactive_filters') %} inactive{% endif %}">ww</button>
+        {# <p class="explain">cliquez pour désactiver un filtre</p> #}
+      </div>
+
+      {% for date,days_contents in contents %}
+        <div class="days_wrapper">
+          <h3>{{ date|date("d/m/Y") }}</h3>
+
+          {% for days_content in days_contents %}
+            <div class="archive_content_wrapper">
+              <div class="content_type {{ days_content.type|lower }}">{{ days_content.type }}</div>
+              <div class="archive_content {{ days_content.type|lower }}">{{ days_content.content }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

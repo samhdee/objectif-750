@@ -4,34 +4,26 @@
   <ul id="main_menu" class="inline_list">
     <li class="first_level
         {% if path('my_words_homepage') in current %} active{% endif %}">
-      <a href="{{ path('my_words_homepage') }}">aujourd'hui</a>
+      <a class="first_level_link" href="{{ path('my_words_homepage') }}">suivi journalier</a>
     </li>
     <li class="first_level
         {% if path('word_wars_new') in current %} active{% endif %}">
-      <a href="{{ path('word_wars_new') }}">word wars</a>
+      <a class="first_level_link" href="{{ path('word_wars_new') }}">word wars</a>
     </li>
     <li class="first_level
         {% if path('my_stats_daily') in current %} active{% endif %}">
-      <a href="{{ path('my_stats_daily') }}">stats</a>
+      <a class="first_level_link" href="">stats</a>
+
+      <ul class="submenu">
+        <li class="second_level"><a href="{{ path('my_stats_daily') }}">suivi</a></li>
+        <li class="second_level"><a href="{{ path('my_stats_nano') }}">nano</a></li>
+        <li class="second_level"><a href="{{ path('my_stats_archives') }}">archives</a></li>
+      </ul>
     </li>
-    <li class="first_level
-        {% if path('my_stats_nano') in current %} active{% endif %}">
-      <a href="{{ path('my_stats_nano') }}">nano</a>
-    </li>
-    {# <li class="first_level
-        {% if path('export_homepage') in current %} active{% endif %}">
-      <a href="{{ path('export_homepage') }}">exports</a>
-    </li> #}
     {% if is_granted('ROLE_ADMIN') %}
       <li class="first_level">
-        <a href="{{ path('sonata_admin_dashboard') }}">administration</a>
+        <a class="first_level_link" href="{{ path('sonata_admin_dashboard') }}">administration</a>
       </li>
     {% endif %}
-
-    {# Sous menus sample #}
-    {# <ul class="submenu">
-      <li><a href="{{ path('my_stats_daily') }}">quota</a></li>
-      <li><a href="{{ path('my_stats_ww') }}">WW</a></li>
-    </ul> #}
   </ul>
 </nav>

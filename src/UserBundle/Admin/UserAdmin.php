@@ -25,7 +25,8 @@ class UserAdmin extends AbstractAdmin
   {
     $datagridMapper
       ->add('username')
-      ->add('email');
+      ->add('email')
+      ->add('lastLogin');
   }
 
     // Fields to be shown on lists
@@ -33,7 +34,8 @@ class UserAdmin extends AbstractAdmin
   {
     $listMapper
       ->addIdentifier('username')
-      ->add('email');
+      ->add('email')
+      ->add('lastLogin');
   }
 
       // Fields to be shown on show action
@@ -41,6 +43,7 @@ class UserAdmin extends AbstractAdmin
   {
     $showMapper
       ->add('username')
-      ->add('email');
+      ->add('email')
+      ->add('lastLogin');
   }
 }

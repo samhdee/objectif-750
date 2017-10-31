@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ExportController extends Controller
 {
-    public function indexAction()
+    public function archivesAction()
     {
-        return $this->render('ExportBundle:Export:index.html.twig');
+        return $this->render('ExportBundle:Export:archives.html.twig');
     }
 }

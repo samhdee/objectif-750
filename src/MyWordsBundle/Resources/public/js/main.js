@@ -64,8 +64,7 @@
       if(content) {
         $.post(
           url,
-          {
-            'content': content,
+          { 'content': content,
             'word_count': word_count},
           function(data) {
             if(data.status == 'ok') {
