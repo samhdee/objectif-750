@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block title_page %}Erreur{% endblock %}
+
+{% block body %}
+  <div id="error_404" class="error_wrapper">
+    {% image '@CoreBundle/Resources/public/images/ah.png' %}
+      <p class="ah_image"><img src="{{ asset_url }}" alt="AH !" /></p>
+    {% endimage %}
+    <p>La page que vous cherchez n'existe pas !</p>
+    <p><a href="{{ path('my_words_homepage') }}">Retourner à l'accueil</a></p>
+  </div>
+{% endblock %}

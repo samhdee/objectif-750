@@ -85,6 +85,7 @@ body {
   header#header.jumbotron {
     padding: 0;
     margin: 0 0 10px 0;
+    background-color: #F1F1F1;
 
     #header_wrapper {
       padding: 40px 0 0 0;
@@ -302,38 +303,6 @@ body {
   }
 
   .container {
-    div#breadcrumb {
-      ul {
-        li {
-          font-family: 'Open Sans Condensed', 'Calibri', sans-serif;
-          margin-right: 0;
-          color: #136f63;
-          font-size: 16px;
-
-          a {
-            color: #136f63;
-          }
-        }
-
-        li:after {
-          // content: "\27A4";
-          content: "/";
-          color: #136f63;
-          margin-left: 2px;
-          font-size: 20px;
-        }
-
-        li:last-child:after {
-          content: "";
-        }
-
-        li:last-child {
-          font-weight: bold;
-          color: #136f63;
-        }
-      }
-    }
-
     p.message {
       padding: 15px;
       margin-bottom: 20px;
@@ -349,6 +318,24 @@ body {
 
     #content {
       margin-top: 30px;
+
+      .error_wrapper {
+        text-align: center;
+
+        p.ah_image {
+          width: 200px;
+          margin: 10px auto 30px;
+
+          img {
+            width: 200px;
+          }
+        }
+
+        blockquote {
+          border: 2px dashed #272822;
+          background-color: #9C9C9A;
+        }
+      }
 
       .content_wrapper {
         margin-top: 20px;

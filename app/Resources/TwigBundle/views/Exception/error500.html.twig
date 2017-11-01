@@ -1,0 +1,25 @@
+{% extends "CoreBundle::core_layout.html.twig" %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block title_page %}Erreur{% endblock %}
+
+{% block body %}
+  <div id="error_500" class="error_wrapper">
+    {% image '@CoreBundle/Resources/public/images/ah.png' %}
+      <p class="ah_image"><img src="{{ asset_url }}" alt="AH !" /></p>
+    {% endimage %}
+    <p>On dirait que quelque chose ne s'est pas déroulé comme prévu.</p>
+    <p>Afin de régler le problème dans les délais les plus brefs, vous pouvez contacter l'administratrice en lui communiquant les informations suivantes :</p>
+
+    <h3>Code d'erreur :</h3>
+    <blockquote>
+      {{ status_code }}
+    </blockquote>
+
+    <h3>Message d'erreur :</h3>
+    <blockquote>
+      {{ status_text }}
+    </blockquote>
+  </div>
+{% endblock %}

@@ -26,6 +26,7 @@
 		<title>
 			{% block title %}{% endblock %} - Objectif 750
 		</title>
+	</head>
 	<body>
 		{% include 'CoreBundle::header.html.twig' %}
 
@@ -39,13 +40,6 @@
 		{% endif %}
 
 		<div class="container">
-				{# <div id="breadcrumb">
-					<ul class="inline_list">
-						<li><a href="{{ path('core_homepage') }}">accueil</a></li>
-						{% block fil_ariane %}
-						{% endblock %}
-					</ul>
-				</div> #}
 			{% for status in app.session.flashbag.get('status') %}
 				<p class="message status_message">{{ status }}</p>
 			{% endfor %}

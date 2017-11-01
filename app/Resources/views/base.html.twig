@@ -1,13 +1,49 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="Ecrire tous les jours">
+    <meta name="author" content="Clara Dhaleine">
+    <meta name="keywords" content="quota mots journalier ecriture nanowrimo" />
+    <meta name="category" content="Ecriture mots quotidiens" />
+    <meta name="language" content="fr" />
+    <meta name="identifier-url" content="https://objectif750.fr" />
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Kristi|Open+Sans:400,700|Shadows+Into+Light+Two|Raleway|Lato|Bevan" rel="stylesheet">
+
+    {% block stylesheets %}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+      {% stylesheets filter='cssrewrite'
+      'bundles/core/css/main.css' %}
+      <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+      {% endstylesheets %}
+    {% endblock %}
+
+    <title>
+      {% block title %}{% endblock %} - Objectif 750
+    </title>
+  </head>
+  <body>
+    <header id="header" class="jumbotron">
+      <div id="header_wrapper">
+        <h1><a href="{{ path('my_words_homepage') }}">Objectif 750</a></h1>
+
+        <div id="menu_bar">
+          <div class="container">
+            {# Menu #}
+            {% include 'CoreBundle::menu.html.twig' %}
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div id="content" class="col-md-10 col-lg-offset-1">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
