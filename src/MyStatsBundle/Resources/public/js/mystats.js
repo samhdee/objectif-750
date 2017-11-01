@@ -16,8 +16,11 @@
         $.post(
           url,
           data_filtres,
-          function() {
-            location.reload();
+          function(data) {
+            $('#text_lists').fadeOut('200', function() {
+              $(this).html(data);
+              $(this).fadeIn(200);
+            });
           }
         );
       }

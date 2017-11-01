@@ -1,5 +1,7 @@
 {% extends "MyStatsBundle::layout.html.twig" %}
 
+{% block title %}NaNos{% endblock %}
+
 {% block title_page %}Mes NaNos{% endblock %}
 
 {% block mystats_body %}
@@ -13,10 +15,10 @@
       <hr>
       <h3>Quelques statistiques :</h3>
 
-      {% if this_nano is not empty %}
-        <div id="current_nano">
-          <h4>Ce mois-ci :</h4>
+      <div id="current_nano">
+        <h4>Ce mois-ci :</h4>
 
+        {% if this_nano is not empty %}
           <ul class="nano_stats col-md-offset-2 col-md-8">
             <li class="stat_row row">
               <div class="stat_label col-sm-7">Votre objectif :</div>
@@ -35,32 +37,33 @@
               <div class="stat_number col-sm-5">{{ this_nano.daily_word_goal }}</div>
             </li>
           </ul>
-        </div>
-      {% else %}
-        <em>Vous n'avez aucun nano en cours.</em>
-      {% endif %}
+        {% else %}
+          <em>Vous n'avez aucun nano en cours.</em>
+        {% endif %}
+      </div>
 
       {% if all_nanos is not empty %}
         <div id="all_nanos">
-          <h4>Les mois précédents :</h4>
 
           {% for nano in all_nanos %}
+            <h4>{{ nano.date }} :</h4>
+
             <ul class="nano_stats col-md-6">
               <li class="stat_row row">
                 <div class="stat_label col-sm-8">Votre objectif :</div>
-                <div class="stat_number col-sm-4">{{ this_nano.word_count_goal }}</div>
+                <div class="stat_number col-sm-4">{{ nano.word_count_goal }}</div>
               </li>
               <li class="stat_row row">
                 <div class="stat_label col-sm-8">Word count total :</div>
-                <div class="stat_number col-sm-4">{{ this_nano.month_word_count }}</div>
+                <div class="stat_number col-sm-4">{{ nano.month_word_count }}</div>
               </li>
               <li class="stat_row row">
                 <div class="stat_label col-sm-8">Moyenne mots/jour :</div>
-                <div class="stat_number col-sm-4">{{ this_nano.average_word_count }}</div>
+                <div class="stat_number col-sm-4">{{ nano.average_word_count }}</div>
               </li>
               <li class="stat_row row">
                 <div class="stat_label col-sm-8">Mots/jour pour atteindre l'objectif :</div>
-                <div class="stat_number col-sm-4">{{ this_nano.daily_word_goal }}</div>
+                <div class="stat_number col-sm-4">{{ nano.daily_word_goal }}</div>
               </li>
             </ul>
           {% endfor %}

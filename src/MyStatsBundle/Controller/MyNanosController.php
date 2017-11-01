@@ -52,10 +52,7 @@ class MyNanosController extends Controller
     if(null !== $all_my_nanos) {
       foreach ($all_my_nanos as $nano) {
         $date = $nano->getDate();
-
-        if($date->format('m') == $now->format('m')) {
-          continue;
-        }
+        $nb_days_in_month = cal_days_in_month(CAL_GREGORIAN, $date->format('m'), $date->format('Y'));
 
         // Calcul du nombre de mots écrits ce mois-ci, WW et quota confondus
         $total_nano_words = 0;
@@ -67,10 +64,11 @@ class MyNanosController extends Controller
           }
         }
 
+        $all_nanos[$nano->getId()]['date'] = $date->format('F Y');
         $all_nanos[$nano->getId()]['word_count_goal'] = $nano->getWordCountGoal();
         $all_nanos[$nano->getId()]['month_word_count'] = $total_nano_words;
         $all_nanos[$nano->getId()]['daily_word_goal'] = $daily_word_goal;
-        $all_nanos[$nano->getId()]['average_word_count'] = floor($total_nano_words / $today);
+        $all_nanos[$nano->getId()]['average_word_count'] = floor($total_nano_words / $nb_days_in_month);
       }
     }
 

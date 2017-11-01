@@ -1,0 +1,12 @@
+{% for date,days_contents in contents %}
+  <div class="days_wrapper">
+    <h3>{{ date|date("d/m/Y") }}</h3>
+
+    {% for days_content in days_contents %}
+      <div class="archive_content_wrapper">
+        <div class="content_type {{ days_content.type|lower }}">{{ days_content.type }}</div>
+        <div class="archive_content {{ days_content.type|lower }}">{{ days_content.content }}</div>
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
