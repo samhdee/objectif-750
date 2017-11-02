@@ -16,7 +16,8 @@ class MyWordsController extends Controller
   {
     // Récupération du user en cours et goal du jour
     $user = $this->getUser();
-    $todays_goal = $user->getUserPreferences()->getWordCountGoal();
+    $user_pref = $user->getUserPreferences();
+    $todays_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
 
     // Récupération du repo words
     $manager = $this
@@ -90,18 +91,11 @@ class MyWordsController extends Controller
       $words->setDate($today);
       $words->setContent(htmlentities($post));
       $words->setWordCount($word_count);
-      $words->setTodaysGoal($user->getUserPreferences()->getWordCountGoal());
 
       // Mise à jour des stats relatives aux mots du jour
       $stats->setDate($today);
       $stats->setDaysGoal($user->getUserPreferences()->getWordCountGoal());
       $stats->setMyWordsWordCount($word_count);
-
-      // Mise à jour du WC nano si le user est en mode nano
-      if($user->getUserPreferences()->getNanoMode()) {
-        $words->setCountsForNano(true);
-        $stats->setCountsForNano(true);
-      }
 
       // Sauvegarde en base
       $manager->flush();

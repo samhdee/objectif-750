@@ -4,6 +4,7 @@ namespace MyWordsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\User;
+use WordWarsBundle\Entity\WordWar;
 
 /**
  * DailyWords
@@ -37,6 +38,13 @@ class DailyWords
   private $date;
 
   /**
+   * @var string
+   *
+   * @ORM\Column(name="type", type="string", length=255)
+   */
+  private $type = 'solo';
+
+  /**
   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
   */
   private $user;
@@ -49,22 +57,22 @@ class DailyWords
   private $wordCount;
 
   /**
-   * @var int
-   *
-   * @ORM\Column(name="todays_goal", type="integer")
-   */
-  private $todaysGoal;
-
-  /**
-   * @var int
-   *
-   * @ORM\Column(name="counts_for_nano", type="boolean")
-   */
-  private $countsForNano = false;
+  * @ORM\ManyToOne(targetEntity="WordWarsBundle\Entity\WordWar")
+  * @ORM\JoinColumn(nullable=true)
+  */
+  private $wordWar;
 
 
-  public function __construct($user) {
+  public function __construct($user, $type = 'solo', $word_war = null) {
     $this->user = $user;
+    $this->content = '';
+    $this->wordCount = 0;
+    $this->type = $type;
+    $this->date = new \DateTime();
+
+    if('word_war' === $type) {
+      $this->wordWar = $word_war;
+    }
   }
 
   /**
@@ -174,50 +182,50 @@ class DailyWords
     }
 
     /**
-     * Set todaysGoal
+     * Set type
      *
-     * @param integer $todaysGoal
+     * @param string $type
      *
      * @return DailyWords
      */
-    public function setTodaysGoal($todaysGoal)
+    public function setType($type)
     {
-        $this->todaysGoal = $todaysGoal;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get todaysGoal
+     * Get type
      *
-     * @return integer
+     * @return string
      */
-    public function getTodaysGoal()
+    public function getType()
     {
-        return $this->todaysGoal;
+        return $this->type;
     }
 
     /**
-     * Set countsForNano
+     * Set wordWar
      *
-     * @param boolean $countsForNano
+     * @param \WordWarsBundle\Entity\WordWar $wordWar
      *
      * @return DailyWords
      */
-    public function setCountsForNano($countsForNano)
+    public function setWordWar(\WordWarsBundle\Entity\WordWar $wordWar = null)
     {
-        $this->countsForNano = $countsForNano;
+        $this->wordWar = $wordWar;
 
         return $this;
     }
 
     /**
-     * Get countsForNano
+     * Get wordWar
      *
-     * @return boolean
+     * @return \WordWarsBundle\Entity\WordWar
      */
-    public function getCountsForNano()
+    public function getWordWar()
     {
-        return $this->countsForNano;
+        return $this->wordWar;
     }
 }

@@ -22,7 +22,6 @@ class AppKernel extends Kernel
       new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
       new Symfony\Bundle\AsseticBundle\AsseticBundle(),
       new WordWarsBundle\WordWarsBundle(),
-      new ExportBundle\ExportBundle(),
       new MyStatsBundle\MyStatsBundle(),
       new JMS\SerializerBundle\JMSSerializerBundle(),
       new Sonata\CoreBundle\SonataCoreBundle(),

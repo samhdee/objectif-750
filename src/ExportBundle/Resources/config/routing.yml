@@ -1,3 +1,0 @@
-export_archives:
-    path:     /export/archives
-    defaults: { _controller: ExportBundle:Export:archives }

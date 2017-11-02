@@ -97,11 +97,11 @@
         background-color: #6ED6A4;
       }
 
-      button[data-filter="ww"] {
+      button[data-filter="word_war"] {
         background-color: #AE81FF;
       }
 
-      .btn_filter[data-filter="ww"].inactive,
+      .btn_filter[data-filter="word_war"].inactive,
       .btn_filter[data-filter="solo"].inactive {
         background-color: #CECECE;
       }
@@ -119,6 +119,7 @@
 
         .archive_content_wrapper {
           position: relative;
+          margin-bottom: 20px;
 
           .content_type {
             position: absolute;
@@ -143,11 +144,11 @@
             background-color: #6ED6A4;
           }
 
-          .content_type.ww {
+          .content_type.word_war {
             background-color: #AE81FF;
           }
 
-          .archive_content.ww {
+          .archive_content.word_war {
             border-color: #AE81FF;
           }
 

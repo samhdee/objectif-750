@@ -34,7 +34,7 @@ class MyDailyStats
    *
    * @ORM\Column(name="my_words_word_count", type="integer")
    */
-  private $myWordsWordCount;
+  private $myWordsWordCount = 0;
 
   /**
    * @var int
@@ -51,13 +51,6 @@ class MyDailyStats
   private $daysGoal;
 
   /**
-   * @var int
-   *
-   * @ORM\Column(name="counts_for_nano", type="boolean")
-   */
-  private $countsForNano = false;
-
-  /**
   * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
   */
   private $user;
@@ -65,6 +58,9 @@ class MyDailyStats
 
   public function __construct($user) {
     $this->user = $user;
+    $this->date = new \Datetime();
+    $this->myWordsWordCount = 0;
+    $this->wordWarsWordCount = 0;
   }
 
 
@@ -197,28 +193,4 @@ class MyDailyStats
   {
       return $this->wordWarsWordCount;
   }
-
-    /**
-     * Set countsForNano
-     *
-     * @param boolean $countsForNano
-     *
-     * @return MyDailyStats
-     */
-    public function setCountsForNano($countsForNano)
-    {
-        $this->countsForNano = $countsForNano;
-
-        return $this;
-    }
-
-    /**
-     * Get countsForNano
-     *
-     * @return boolean
-     */
-    public function getCountsForNano()
-    {
-        return $this->countsForNano;
-    }
 }

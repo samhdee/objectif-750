@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use WordWarsBundle\Entity\WordWar;
-use WordWarsBundle\Entity\MyWordWar;
+use MyWordsBundle\Entity\DailyWords;
 use MyStatsBundle\Entity\MyDailyStats;
 use WordWarsBundle\Form\Type\WordWarType;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -68,9 +68,9 @@ class WordWarsController extends Controller
       return $this->redirectToRoute('word_war_ended', array('id' => $id));
     }
 
-    // Récupération du repo my_word_war
-    $repo = $manager->getRepository('WordWarsBundle:MyWordWar');
-    $my_word_war = $repo->findByWWId($id, $user);
+    // Récupération du repo daily_words
+    $repo = $manager->getRepository('MyWordsBundle:DailyWords');
+    $my_word_war = $repo->findByWWId($word_war, $user);
 
     $saved_words = '';
     $word_count = 0;
@@ -81,9 +81,7 @@ class WordWarsController extends Controller
       $word_count = $my_word_war->getWordCount();
     }
     else {
-      $my_word_war = new MyWordWar($word_war, $user);
-      $my_word_war->setContent('');
-      $my_word_war->setWordCount(0);
+      $my_word_war = new DailyWords($user, 'word_war', $word_war);
       $manager->persist($my_word_war);
       $manager->flush();
     }
@@ -122,9 +120,9 @@ class WordWarsController extends Controller
         ->getManager();
 
       // Récupération des repos word_war, daily_words et stats
-      $words_repo = $manager->getRepository('WordWarsBundle:MyWordWar');
-      $daily_stats_repo = $manager->getRepository('MyStatsBundle:MyDailyStats');
       $ww_repo = $manager->getRepository('WordWarsBundle:WordWar');
+      $words_repo = $manager->getRepository('MyWordsBundle:DailyWords');
+      $daily_stats_repo = $manager->getRepository('MyStatsBundle:MyDailyStats');
 
       // Récupération des
       $word_war = $ww_repo->find($ww_id);
@@ -133,7 +131,7 @@ class WordWarsController extends Controller
 
       // Si ce sont les premiers mots de la journée, on crée la ligne du jour
       if(null === $ww_words) {
-        $ww_words = new MyWordWar($word_war, $user);
+        $ww_words = new DailyWords($user, 'word_war', $word_war);
         $manager->persist($ww_words);
       }
 
@@ -147,9 +145,17 @@ class WordWarsController extends Controller
       $ww_words->setWordCount($word_count);
 
       // Mise à jour des stats relatives aux mots du jour
+      $ww_word_count = 0;
+
+      $all_ww_words = $words_repo->findAllWWCount($user);
+
+      foreach ($all_ww_words as $ww) {
+        $ww_word_count+= $ww->getWordCount();
+      }
+
       $stats->setDate(new \Datetime());
       $stats->setDaysGoal($user->getUserPreferences()->getWordCountGoal());
-      $stats->setMyWordsWordCount($word_count);
+      $stats->setWordWarsWordCount($ww_word_count);
 
       // Sauvegarde en base
       $manager->flush();
@@ -178,7 +184,7 @@ class WordWarsController extends Controller
     $word_war = $ww_repo->find($id);
 
     if(null !== $word_war) {
-      $mww_repo = $manager->getRepository('WordWarsBundle:MyWordWar');
+      $mww_repo = $manager->getRepository('MyWordsBundle:DailyWords');
       $all_results = $mww_repo->findWWParticipants($word_war);
 
       if(null !== $all_results) {

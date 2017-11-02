@@ -45,26 +45,13 @@ class ArchivesController extends Controller
 
     $contents = array();
 
-    if(null === $inactive_filters || !in_array('solo', $inactive_filters)) {
-      $my_words_repo = $manager->getRepository('MyWordsBundle:DailyWords');
-      $my_words = $my_words_repo->findBy(array('user' => $user));
+    $my_words_repo = $manager->getRepository('MyWordsBundle:DailyWords');
+    $my_words = $my_words_repo->findWordsByFilters($user, $inactive_filters);
 
-      foreach ($my_words as $my_word) {
-        $date_words = $my_word->getDate();
-        $temp = array('content' => html_entity_decode($my_word->getContent()), 'type' => 'solo');
-        $contents[$date_words->format('Y-m-d')][] = $temp;
-      }
-    }
-
-    if(null === $inactive_filters || !in_array('ww', $inactive_filters)) {
-      $my_word_war_repo = $manager->getRepository('WordWarsBundle:MyWordWar');
-      $my_word_wars = $my_word_war_repo->findBy(array('user' => $user));
-
-      foreach ($my_word_wars as $my_ww) {
-        $date_ww = $my_ww->getWordWar()->getStart();
-        $temp = array('content' => html_entity_decode($my_ww->getContent()), 'type' => 'ww');
-        $contents[$date_ww->format('Y-m-d')][] = $temp;
-      }
+    foreach ($my_words as $my_word) {
+      $date_words = $my_word->getDate();
+      $temp = array('content' => html_entity_decode($my_word->getContent()), 'type' => $my_word->getType());
+      $contents[$date_words->format('Y-m-d')][] = $temp;
     }
 
     krsort($contents);

@@ -1,11 +1,16 @@
 {% extends "MyWordsBundle::layout.html.twig" %}
 
-{% block title_page %}My Words{% endblock %}
+{% block title %}Suivi journalier{% endblock %}
+
+{% block title_page %}Objectif du jour :
+  {% if 0 < todays_goal %}{{ todays_goal }} mots
+  {% else %}<i>à définir</i>{% endif %}
+{% endblock %}
 
 {% block mywords_body %}
-  <p>Cet espace est dédié à votre imagination. Il vous permet de saisir votre texte et possède un compteur de mots pour garder un oeil sur votre progression. Vos écrits sont sauvegardés pour vos yeux, et vos yeux seulement. Vous pourrez les retrouver bientôt dans <a href="{{ path('my_stats_daily') }}">votre espace statistiques</a>.</p>
-
   <div id="daily_words_wrapper" class="content_wrapper">
+    <p>Cet espace est dédié à votre imagination. Il vous permet de saisir votre texte et possède un compteur de mots pour garder un oeil sur votre progression. Vos écrits sont sauvegardés pour vos yeux, et vos yeux seulement. Vous pourrez ensuite les retrouver dans <a href="{{ path('my_stats_archives') }}">votre espace archives</a>.</p>
+
     <div id="words_header">
       <input type="hidden" id="todays_goal" value="{{ todays_goal }}">
       <span id="word_counter"{% if word_count >= todays_goal and word_count > 0 %} class="quota_reached" title="Félicitations ! Vous avez atteint votre quota journalier. Mais vous pouvez continuer sur votre lancée si vous voulez."{% endif %}>

@@ -2,10 +2,6 @@ my_stats:
     resource: "@MyStatsBundle/Resources/config/routing.yml"
     prefix:   /
 
-export:
-    resource: "@ExportBundle/Resources/config/routing.yml"
-    prefix:   /
-
 word_wars:
     resource: "@WordWarsBundle/Resources/config/routing.yml"
     prefix:   /

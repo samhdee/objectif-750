@@ -47,10 +47,11 @@ class DaysStatsController extends Controller
       $nb_days_in_month = cal_days_in_month(CAL_GREGORIAN, $todays_month, $todays_year);
 
       // Modif du word goal quotidien pour coller à l'objectif mensuel
+      // (on omet les mots du jour volontairement)
       $remaining_words = 50000 - $total_nano_words;
       $remaining_days = $nb_days_in_month - ($todays_day-1);
       $todays_word_goal = (0 !== $remaining_days) ? ceil($remaining_words / $remaining_days) : $remaining_words;
-      $todays_percent = (0 !== $todays_word_goal) ? floor($todays_word_count / $todays_word_goal) : 0;
+      $todays_percent = (0 !== $todays_word_goal) ? ceil($todays_word_count / $todays_word_goal) : 0;
       $percent_nano_accomplished = floor($todays_word_count * 100 / 50000);
 
       // Stockage des stats mensuelles
