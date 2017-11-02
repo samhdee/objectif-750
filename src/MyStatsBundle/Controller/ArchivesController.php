@@ -50,7 +50,11 @@ class ArchivesController extends Controller
 
     foreach ($my_words as $my_word) {
       $date_words = $my_word->getDate();
-      $temp = array('content' => html_entity_decode($my_word->getContent()), 'type' => $my_word->getType());
+      $temp = array(
+        'content' => html_entity_decode($my_word->getContent()),
+        'type' => $my_word->getType(),
+        'id' => $my_word->getId()
+      );
       $contents[$date_words->format('Y-m-d')][] = $temp;
     }
 

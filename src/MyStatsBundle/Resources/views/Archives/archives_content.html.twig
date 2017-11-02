@@ -5,7 +5,10 @@
     {% for days_content in days_contents %}
       <div class="archive_content_wrapper">
         <div class="content_type {{ days_content.type|lower }}">{{ days_content.type }}</div>
-        <div class="archive_content {{ days_content.type|lower }}">{{ days_content.content }}</div>
+        <div id="{{ days_content.id }}" class="archive_content {{ days_content.type|lower }}">
+          {{ days_content.content }}
+          <div class="show_more">plus...</div>
+        </div>
       </div>
     {% endfor %}
   </div>
