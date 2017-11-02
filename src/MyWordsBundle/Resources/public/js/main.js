@@ -75,23 +75,16 @@
                 .delay(2000)
                 .fadeOut('slow');
 
-              if(
-                $('.percent_days_accomplished .percentage').length > 0 &&
-                'undefined' !== typeof data.total_word_count) {
-                update_percentage(data.total_word_count);
+              if(null !== data.days_progress) {
+                update_percentage(data.days_progress);
               }
             }
           });
       }
     };
 
-    var update_percentage = function(total_word_count) {
-      var word_goal =  $('.percent_days_accomplished .days_word_count .word_goal').html();
-      var percentage = total_word_count * 100 / word_goal;
-
-      // Mise à jour du pourcentage et du WC du jour
-      $('.days_word_count .current_days_word_count').html(total_word_count);
-      $('.percent_days_accomplished .percentage').css('width', percentage + '%');
+    var update_percentage = function(days_progress) {
+      $('#left_column').html(days_progress);
     }
 
     var count_my_words = function() {

@@ -20,7 +20,7 @@
         <p class="nano_word_count">Mois : <span class="current_nano_word_count">{{ progress.nano_stats.total_nano_words|number_format(0,',',' ') }}</span>/{{ progress.nano_stats.nano_word_goal|number_format(0,',',' ') }} mots</span></p>
         <div class="percent_nano_accomplished">
           <div class="percentage" style="width:{{ progress.nano_stats.percent_nano_accomplished }}%">&nbsp;</div>
-          <div class="percent_number">{{ progress.days_stats.todays_percent_accomplished }}%</div>
+          <div class="percent_number">{{ progress.nano_stats.percent_nano_accomplished }}%</div>
         </div>
       </div>
     {% endif %}

@@ -80,6 +80,9 @@ class DailyWordsRepository extends \Doctrine\ORM\EntityRepository
     $query->where('words.user = :user')
           ->setParameter('user', $user);
 
+    $query->andWhere('words.wordCount > :wc')
+          ->setParameter('wc', '0');
+
     if(!empty($filters)) {
       $query->andWhere('words.type NOT IN (:type)')
             ->setParameter('type', $filters);

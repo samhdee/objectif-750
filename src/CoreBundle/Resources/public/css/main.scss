@@ -4,7 +4,6 @@
 }
 
 body {
-  // background-image: url("../images/paper.png");
   background-color: #F1F1F1;
   font-family: 'Lato';
   font-size: 15px;
@@ -171,7 +170,7 @@ body {
               position: relative;
               margin: 0;
               margin-right: -5px;
-              vertical-align: top;
+              min-width: 100px;
               font-size: 16px;
 
               a {
@@ -256,7 +255,7 @@ body {
       .percent_days_accomplished {
         position: relative;
         margin: 0 0 10px;
-        // border: 1px solid #333333;
+        overflow: hidden;
         height: 25px;
         background: #555;
         -moz-border-radius: 25px;
@@ -348,7 +347,7 @@ body {
       }
 
       .content_wrapper {
-        margin-top: 20px;
+        margin-top: 40px;
 
         .well {
           background-color: transparent;
@@ -377,13 +376,5 @@ body {
     #content.col-md-10 {
       position: inherit;
     }
-  }
-
-  footer {
-    background-color: #2E3136;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
   }
 }

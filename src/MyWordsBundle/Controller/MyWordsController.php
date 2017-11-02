@@ -17,12 +17,33 @@ class MyWordsController extends Controller
     // Récupération du user en cours et goal du jour
     $user = $this->getUser();
     $user_pref = $user->getUserPreferences();
-    $todays_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
-
-    // Récupération du repo words
     $manager = $this
       ->getDoctrine()
       ->getManager();
+    $todays_goal = (null !== $user_pref) ? $user_pref->getWordCountGoal() : 0;
+
+    if(null !== $user_pref && $user_pref->getNanoMode()) {
+      $repo_my_stats = $manager->getRepository('MyStatsBundle:MyDailyStats');
+      $this_months_stats = $repo_my_stats->findThisMonthsStats($user);
+
+      $total_nano_words = 0;
+
+      // Calcul du nombre de mots écrits ce mois-ci, WW et quota confondus
+      if(null !== $this_months_stats) {
+        foreach ($this_months_stats as $stat) {
+          $total_nano_words+= $stat->getMyWordsWordCount() + $stat->getWordWarsWordCount();
+        }
+      }
+
+      $now = new \DateTime();
+      $nb_days_in_month = cal_days_in_month(CAL_GREGORIAN, $now->format('m'), $now->format('Y'));
+
+      $remaining_words = 50000 - $total_nano_words;
+      $remaining_days = $nb_days_in_month - ($now->format('d') - 1);
+      $todays_goal = (0 !== $remaining_days) ? ceil($remaining_words / $remaining_days) : $remaining_words;
+    }
+
+    // Récupération du repo words
     $repo = $manager->getRepository('MyWordsBundle:DailyWords');
     $words = $repo->findTodaysWords($user);
 
@@ -100,10 +121,12 @@ class MyWordsController extends Controller
       // Sauvegarde en base
       $manager->flush();
 
+      $days_progress = $this->forward('MyStatsBundle:DaysStats:daysProgress');
+
       $response = new JsonResponse(array(
         'status' => 'ok',
         'message' => 'progression sauvegardée',
-        'total_word_count' => $word_count + $stats->getWordWarsWordCount()
+        'days_progress' => $days_progress->getContent()
       ));
     }
     else {

@@ -40,14 +40,14 @@
 		{% endif %}
 
 		<div class="container">
-			{% for status in app.session.flashbag.get('status') %}
-				<p class="message status_message">{{ status }}</p>
-			{% endfor %}
-			{% for error in app.session.flashbag.get('error') %}
-				<p class="message error_message">{{ error }}</p>
-			{% endfor %}
-
       <div id="content" class="col-md-10 col-lg-offset-1">
+				{% for status in app.session.flashbag.get('status') %}
+					<p class="message status_message">{{ status }}</p>
+				{% endfor %}
+				{% for error in app.session.flashbag.get('error') %}
+					<p class="message error_message">{{ error }}</p>
+				{% endfor %}
+
 				{% block body %}
 				{% endblock %}
 			</div>

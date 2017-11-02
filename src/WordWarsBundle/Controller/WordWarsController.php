@@ -160,9 +160,12 @@ class WordWarsController extends Controller
       // Sauvegarde en base
       $manager->flush();
 
+      $days_progress = $this->forward('MyStatsBundle:DaysStats:daysProgress');
+
       $response = new JsonResponse(array(
         'status' => 'ok',
-        'message' => 'progression sauvegardée'));
+        'message' => 'progression sauvegardée',
+        'days_progress' => $days_progress->getContent()));
     }
     else {
       $response = new JsonResponse(array(
