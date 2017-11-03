@@ -1,6 +1,7 @@
 <?php
 
 namespace MyWordsBundle\Repository;
+use MyWordsBundle\Entity\DailyWords;
 
 /**
  * DailyWordsRepository
@@ -74,7 +75,7 @@ class DailyWordsRepository extends \Doctrine\ORM\EntityRepository
     return $query->getQuery()->getResult();
   }
 
-  public function findWordsByFilters($user, $filters) {
+  public function findWordsByFilters($user, $filters, $page) {
     $query = $this->createQueryBuilder('words');
 
     $query->where('words.user = :user')
@@ -88,6 +89,31 @@ class DailyWordsRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('type', $filters);
     }
 
+    $query->setMaxResults(DailyWords::NUM_ENTRIES);
+
+    if($page > 1) {
+      $query->setFirstResult(($page - 1) * DailyWords::NUM_ENTRIES);
+    }
+
     return $query->getQuery()->getResult();
+  }
+
+  public function getTotalNbEntriesWithFilters($user, $filters) {
+    $query = $this->createQueryBuilder('words');
+
+    $query->select('count(words.id)');
+
+    $query->where('words.user = :user')
+          ->setParameter('user', $user);
+
+    $query->andWhere('words.wordCount > :wc')
+          ->setParameter('wc', '0');
+
+    if(!empty($filters)) {
+      $query->andWhere('words.type NOT IN (:type)')
+            ->setParameter('type', $filters);
+    }
+
+    return $query->getQuery()->getSingleScalarResult();
   }
 }

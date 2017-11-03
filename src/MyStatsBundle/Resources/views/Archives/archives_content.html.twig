@@ -13,3 +13,15 @@
     {% endfor %}
   </div>
 {% endfor %}
+
+{% if nb_pages > 1 %}
+  <div class="pages">
+    {% for i in 1..nb_pages %}
+      {% if i == current_page %}
+        <span class="current_page">{{ i }}</span>
+      {% else %}
+        <a href="{{ path('my_stats_archives', {page: i}) }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

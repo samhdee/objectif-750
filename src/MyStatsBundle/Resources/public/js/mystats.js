@@ -17,6 +17,11 @@ var crop_texts = function() {
   $(document).ready(function() {
     $('#archives_filters .btn_filter').on('click', function() {
       var url = Routing.generate('my_stats_filter_archives');
+
+      if(!$(this).hasClass('inactive') && 1 == $('.btn_filter.inactive').length) {
+        $('.btn_filter.inactive').removeClass('inactive');
+      }
+
       $(this).toggleClass('inactive');
 
       var types = [];

@@ -175,6 +175,22 @@
           }
         }
       }
+
+      .pages {
+        text-align: center;
+
+        .current_page {
+          font-weight: bold;
+          font-size: 18px;
+        }
+
+        a,
+        .current_page {
+          display: inline-block;
+          margin: 10px 5px;
+          padding: 2px 5px;
+        }
+      }
     }
   }
 }

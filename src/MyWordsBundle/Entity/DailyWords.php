@@ -14,6 +14,8 @@ use WordWarsBundle\Entity\WordWar;
  */
 class DailyWords
 {
+  const NUM_ENTRIES = 10;
+
   /**
    * @var int
    *

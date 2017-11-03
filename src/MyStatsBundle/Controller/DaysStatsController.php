@@ -52,7 +52,8 @@ class DaysStatsController extends Controller
       $remaining_days = $nb_days_in_month - ($todays_day-1);
       $todays_word_goal = (0 !== $remaining_days) ? ceil($remaining_words / $remaining_days) : $remaining_words;
       $todays_percent = (0 !== $todays_word_goal) ? ceil($todays_word_count * 100 / $todays_word_goal) : 0;
-      $percent_nano_accomplished = floor($todays_word_count * 100 / 50000);
+      // $total_nano_words = $total_nano_words + $todays_word_count;
+      $percent_nano_accomplished = ceil(($total_nano_words + $todays_word_count) * 100 / 50000);
 
       // Stockage des stats mensuelles
       $progress['nano_stats']['total_nano_words'] = ($total_nano_words + $todays_word_count);
