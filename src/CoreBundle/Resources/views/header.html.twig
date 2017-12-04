@@ -1,7 +1,23 @@
 {% trans_default_domain 'header' %}
+{% set locale = app.request.attributes.get('_locale') %}
+{% set route = app.request.attributes.get('_route') %}
+{% if locale == 'fr' %}
+  {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'en'}) %}
+  {% set switch_to = 'en' %}
+{% else %}
+  {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'fr'}) %}
+  {% set switch_to = 'fr' %}
+{% endif %}
 
 <header id="header" class="jumbotron">
   <div id="header_wrapper">
+    <div id="switch_languages" class="container">
+      <a id="current" href="#">{{ locale }}
+        &nbsp;<span class="downward_arrow">&#9660;</span>
+        <span class="upward_arrow">&#9650;</span>
+      </a>
+      <a id="switch_to" href="{{ path(route, params) }}">{{ switch_to }}</a>
+    </div>
     <h1><a href="{{ path('my_words_homepage') }}">Objectif 750</a></h1>
 
     <div id="menu_bar">
@@ -9,7 +25,7 @@
         {# User ribbon si connecté #}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
           <div id="user_ribbon">
-            {{ 'connected_as'|trans }} <a href="{{path('fos_user_profile_show')}}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a>
+            {{ 'connected_as'|trans }} <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a>
           </div>
 
         {# User ribbon si déconnecté #}
