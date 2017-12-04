@@ -1,3 +1,5 @@
+{% trans_default_domain 'header' %}
+
 <header id="header" class="jumbotron">
   <div id="header_wrapper">
     <h1><a href="{{ path('my_words_homepage') }}">Objectif 750</a></h1>
@@ -7,15 +9,15 @@
         {# User ribbon si connecté #}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
           <div id="user_ribbon">
-            connecté en tant que <a href="{{path('fos_user_profile_show')}}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">déconnexion</a>
+            {{ 'connected_as'|trans }} <a href="{{path('fos_user_profile_show')}}">{{ app.user.username }}</a> - <a href="{{ path('fos_user_security_logout') }}">{% trans %}logout{% endtrans %}</a>
           </div>
 
         {# User ribbon si déconnecté #}
         {% else %}
           <div id="user_ribbon">
-            <a href="{{ path('fos_user_security_login') }}">connexion</a>
+            <a href="{{ path('fos_user_security_login') }}">{% trans %}connexion{% endtrans %}</a>
             &nbsp;
-            <a href="{{ path('fos_user_registration_register') }}">inscription</a>
+            <a href="{{ path('fos_user_registration_register') }}">{% trans %}inscription{% endtrans %}</a>
           </div>
         {% endif %}
 

@@ -1,10 +1,14 @@
+{% trans_default_domain 'header' %}
+
 {% set current = app.request.requestUri %}
 
 <nav class="navbar">
   <ul id="main_menu" class="inline_list">
     <li class="first_level
         {% if path('my_words_homepage') in current %} active{% endif %}">
-      <a class="first_level_link" href="{{ path('my_words_homepage') }}">suivi journalier</a>
+      <a class="first_level_link" href="{{ path('my_words_homepage') }}">
+        {% trans %}suivi journalier{% endtrans %}
+      </a>
     </li>
     <li class="first_level
         {% if path('word_wars_new') in current %} active{% endif %}">

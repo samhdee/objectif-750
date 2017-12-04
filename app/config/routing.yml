@@ -1,10 +1,14 @@
 my_stats:
     resource: "@MyStatsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: fr|en
 
 word_wars:
     resource: "@WordWarsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: fr|en
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
@@ -12,30 +16,47 @@ user:
 
 my_words:
     resource: "@MyWordsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: fr|en
 
 core:
     resource: "@CoreBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: fr|en
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /{_locale}
+    requirements:
+        _locale: fr|en
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+    prefix: /{_locale}/profile
+    requirements:
+        _locale: fr|en
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix: /{_locale}/register
+    requirements:
+        _locale: fr|en
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix: /{_locale}/resetting
+    requirements:
+        _locale: fr|en
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+    prefix: /{_locale}/profile
+    requirements:
+        _locale: fr|en
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

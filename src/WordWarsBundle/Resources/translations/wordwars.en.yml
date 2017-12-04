@@ -1,0 +1,13 @@
+ww:
+    save: Launch
+    title: Title
+    start: Start
+    end: End
+    new:
+        title: Create your WW
+        intro:
+            1: A Word War (or WW for short) is a session of limited time during which you set to write as much words as possible. It typically lasts 15 to 30 minutes tops.
+            2: You can challenge either yourself or your friends and compare your word counts at the end. You just have to link your newly-created WW to your friends so that they can join you. <strong>Please note that they will need an account to participate.</strong>
+    in_progress:
+        lets_go: Let's go!
+        h: :

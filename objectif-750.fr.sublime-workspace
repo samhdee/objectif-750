@@ -1,0 +1,875 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nb_",
+				"nb_pages"
+			],
+			[
+				"my_words",
+				"my_words_repo"
+			],
+			[
+				"has",
+				"hasClass\t.hasClass()"
+			],
+			[
+				"in",
+				"inactive"
+			],
+			[
+				"fade",
+				"fadeOut\t.fadeOut()"
+			],
+			[
+				"auto",
+				"auto_height"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"border-bo",
+				"border-bottom-color"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"user",
+				"user_pref"
+			],
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"Core",
+				"CoreBundle"
+			],
+			[
+				"todays",
+				"todays_word_count"
+			],
+			[
+				"remain",
+				"remaining_words"
+			],
+			[
+				"all_ww",
+				"all_ww_words"
+			],
+			[
+				"statu",
+				"status_message"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"block",
+				"blockquote\tTag"
+			],
+			[
+				"all",
+				"all_nanos"
+			],
+			[
+				"fa",
+				"fadeIn\t.fadeIn()"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"my_wo",
+				"my_word_wars"
+			],
+			[
+				"my_",
+				"my_word_wars"
+			],
+			[
+				"my_wor",
+				"my_word_war_repo"
+			],
+			[
+				"MySta",
+				"MyStatsBundle"
+			],
+			[
+				"fir",
+				"first_level_link"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"s",
+				"solid"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"word_",
+				"word_war"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"remai",
+				"remaining_words"
+			],
+			[
+				"nb_days",
+				"nb_days_in_month"
+			],
+			[
+				"total_",
+				"total_nano_words"
+			],
+			[
+				"toda",
+				"todays_stats"
+			],
+			[
+				"this",
+				"this_months_stats"
+			],
+			[
+				"repo_my",
+				"repo_my_stats"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"nano",
+				"nano_mode"
+			],
+			[
+				"perce",
+				"percent_nano_accomplished"
+			],
+			[
+				"todays_",
+				"todays_word_goal"
+			],
+			[
+				"total",
+				"total_words_written"
+			],
+			[
+				"fi",
+				"first_level"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"border-bottom",
+				"border-bottom-right-radius"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"bord",
+				"border-bottom"
+			],
+			[
+				"paddi",
+				"padding"
+			],
+			[
+				"border-",
+				"border-radius"
+			],
+			[
+				"calen",
+				"calendar_item"
+			],
+			[
+				"temp",
+				"temp_day"
+			],
+			[
+				"tod",
+				"todays_stats"
+			],
+			[
+				"save",
+				"save_words"
+			],
+			[
+				"clear",
+				"clearInterval"
+			],
+			[
+				"count",
+				"countdown"
+			],
+			[
+				"coun",
+				"countdown"
+			],
+			[
+				"trans",
+				"trans\tSymfony2 / Twig / Tag / trans"
+			],
+			[
+				"word",
+				"word_count"
+			],
+			[
+				"end",
+				"end_date"
+			],
+			[
+				"fs",
+				"font-size"
+			],
+			[
+				"WordW",
+				"WordWarsBundle"
+			],
+			[
+				"ww",
+				"ww_id"
+			],
+			[
+				"strt",
+				"strtotime"
+			],
+			[
+				"date",
+				"date_loop"
+			],
+			[
+				"form",
+				"form_builder"
+			],
+			[
+				"join",
+				"join"
+			],
+			[
+				"daily",
+				"daily_word_count_repot"
+			],
+			[
+				"to",
+				"todays_word_count"
+			],
+			[
+				"my",
+				"mywords_repo"
+			],
+			[
+				"Wo",
+				"WordWars"
+			],
+			[
+				"Word",
+				"WordWardsBundle"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"html",
+				"html_entity_decode"
+			],
+			[
+				"backgrc",
+				"background-color"
+			],
+			[
+				"b",
+				"bold"
+			],
+			[
+				"togg",
+				"toggleClass\t.toggleClass()"
+			],
+			[
+				"d",
+				"daily_words"
+			],
+			[
+				"core",
+				"CoreBundle"
+			],
+			[
+				"ra",
+				"range"
+			],
+			[
+				"Admin",
+				"AdminBundle"
+			],
+			[
+				"post-",
+				"post-content"
+			],
+			[
+				"sele",
+				"selected_id"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"hei",
+				"height_image"
+			],
+			[
+				"di",
+				"dialog-post"
+			],
+			[
+				"over",
+				"overflow-x"
+			],
+			[
+				"v",
+				"vertical-align"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"fw",
+				"font-weight"
+			],
+			[
+				"ff",
+				"font-family"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/MyStatsBundle/Controller/DaysStatsController.php",
+			"settings":
+			{
+				"buffer_size": 3456,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "inst",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"resou",
+				"PackageResourceViewer: Open Resource"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"git ",
+			"Git "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Y/objectif-750.dev",
+		"/Y/objectif-750.dev/src",
+		"/Y/objectif-750.dev/src/MyStatsBundle",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Controller",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/public"
+	],
+	"file_history":
+	[
+		"/Y/objectif-750.dev/src/MyStatsBundle/Controller/ArchivesController.php",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/Archives/archives_content.html.twig",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/public/css/mystats.scss",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Entity/DailyWords.php",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Repository/DailyWordsRepository.php",
+		"/Y/objectif-750.dev/app/config/config.yml",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/public/js/mystats.js",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/views/WordWars/in_progress.html.twig",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/config/routing.yml",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/Archives/my_archives.html.twig",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Controller/DaysStatsController.php",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/DaysStats/days_progress.html.twig",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/views/core_layout.html.twig",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/public/css/main.scss",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/public/js/word_wars.js",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Resources/public/js/main.js",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Controller/WordWarsController.php",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Controller/MyWordsController.php",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/config/services.yml",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Entity/MyDailyStats.php",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Resources/views/MyWords/dailywords.html.twig",
+		"/Y/objectif-750.dev/src/CoreBundle/Controller/CoreController.php",
+		"/Y/objectif-750.dev/src/CoreBundle/Controller/ContactController.php",
+		"/Y/objectif-750.dev/src/UserBundle/Resources/views/Registration/register.html.twig",
+		"/Y/objectif-750.dev/src/UserBundle/Resources/public/css/user.scss",
+		"/Y/objectif-750.dev/src/UserBundle/Repository/UserRepository.php",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/views/header.html.twig",
+		"/Y/objectif-750.dev/vendor/doctrine/collections/lib/Doctrine/Common/Collections/AbstractLazyCollection.php",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Resources/public/css/mywords.scss",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/views/Core/index.html.twig",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Resources/config/routing.yml",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/views/Contact/contact.html.twig",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/views/Core/contact.html.twig",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/config/routing.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp54335/src/WordWarsBundle/Controller/WordWarsController.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp30353/src/MyStatsBundle/Repository/MyDailyStatsRepository.php",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Repository/MyDailyStatsRepository.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp38008/src/MyStatsBundle/Controller/DaysStatsController.php",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Repository/MyNanosRepository.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp34356/app/AppKernel.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp37455/app/config/routing.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp45819/app/config/config.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp34627/src/MyWordsBundle/Controller/MyWordsController.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp35518/src/MyWordsBundle/Resources/config/routing.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp34395/src/MyWordsBundle/Controller/WordStatsController.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp35208/web/app_dev.php",
+		"/C/Users/tchaymz/Desktop/db695856986.sql",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp08861/src/MyWordsBundle/Entity/DailyWords.php",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/views/menu.html.twig",
+		"/Y/objectif-750.dev/app/config/routing.yml",
+		"/Y/objectif-750.dev/app/AppKernel.php",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Repository/MyWordWarRepository.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp30300/app/config/config.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp33979/logs/access.log.current",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp33394/logs/traffic.html/10.html",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp32146/logs/forensic/lock-1508933960.log",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Entity/MyWordWar.php",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Entity/WordWar.php",
+		"/Y/objectif-750.dev/src/UserBundle/Entity/User.php",
+		"/Y/objectif-750.dev/app/Resources/TwigBundle/views/Exception/error.html.twig",
+		"/Y/objectif-750.dev/app/Resources/TwigBundle/views/Exception/error404.html.twig",
+		"/Y/objectif-750.dev/app/Resources/views/base.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp10450/web/css/b154e3a_main_1.css",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp10086/web/css/b154e3a.css",
+		"/Y/objectif-750.dev/app/Resources/TwigBundle/views/Exception/error500.html.twig",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/MyNanos/my_nanos.html.twig",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Controller/MyNanosController.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp35342/web/app.php",
+		"/Y/objectif-750.dev/sftp-config.json",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/views/WordWars/ww_ended.html.twig",
+		"/Y/objectif-750.dev/vendor/friendsofsymfony/user-bundle/Resources/views/Security/login.html.twig",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/config/routing.yml",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/public/css/word_wars.scss",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Controller/MyStatsController.php",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/MyStats/wwstats.html.twig",
+		"/Y/objectif-750.dev/src/CoreBundle/Resources/public/js/core.js",
+		"/Y/objectif-750.dev/src/UserBundle/Admin/UserAdmin.php",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Admin/WordWarsAdmin.php",
+		"/Y/objectif-750.dev/app/config/services.yml",
+		"/Y/objectif-750.dev/src/UserBundle/Resources/config/admin.yml",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/config/admin.yml",
+		"/Y/objectif-750.dev/src/UserBundle/Resources/config/services.yml",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Resources/public/css/mywords.css",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp12533/src/MyWordsBundle/Resources/public/css/mywords.css",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp11706/web/css/b4f7d0a.css",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp34297/web/css/b4f7d0a_mywords_1.css",
+		"/Y/objectif-750.dev/src/.htaccess",
+		"/Y/objectif-750.dev/src/ExportBundle/Resources/config/routing.yml",
+		"/Y/objectif-750.dev/src/ExportBundle/Controller/ExportController.php",
+		"/Y/objectif-750.dev/src/UserBundle/Entity/Avatar.php",
+		"/Y/objectif-750.dev/src/UserBundle/Resources/views/Profile/show.html.twig",
+		"/Y/objectif-750.dev/src/WordWarsBundle/Resources/views/WordWars/index.html.twig",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/MyStats/dailywordsstats.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp47667/web/app_dev.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp56782/app/config/config.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp24308/app/config/parameters.yml",
+		"/Y/objectif-750.dev/app/config/parameters.yml",
+		"/Y/objectif-750.dev/src/MyStatsBundle/Resources/views/MyStats/index.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp21094/src/MyStatsBundle/Resources/views/layout.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp20507/src/WordWarsBundle/Resources/views/layout.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp16936/.htaccess",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp15346/public_html/index.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp06903/logs/access.log.43.3",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp59954/src/MyWordsBundle/Resources/views/layout.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp02694/public_html/web/index.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp16953/public_html/.htaccess",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp53579/src/CoreBundle/Resources/views/core_layout.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp53001/src/UserBundle/Resources/views/layout.html.twig",
+		"/C/Users/tchaymz/Desktop/prod/app/config/config.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp41768/var/logs/prod.log",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp37088/web/error_log",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp41792/web/.htaccess",
+		"/C/Users/tchaymz/Desktop/fyodyjba_objectif750.sql",
+		"/C/Users/tchaymz/Desktop/prod/app/config/parameters.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp51485/public_html/app/config/parameters.yml",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp44150/public_html/app/config/config.yml",
+		"/C/Users/tchaymz/Desktop/objectif750.fr-Oct-2017",
+		"/C/Users/tchaymz/Desktop/objectif750.fr-ssl_log-Oct-2017",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp31493/mail/objectif750.fr/no-reply/dovecot.index.log",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp31046/mail/objectif750.fr/no-reply/dovecot.mailbox.log",
+		"/Y/objectif-750.dev/vendor/friendsofsymfony/user-bundle/Resources/views/ChangePassword/change_password.html.twig",
+		"/Y/objectif-750.dev/vendor/friendsofsymfony/user-bundle/Resources/views/ChangePassword/change_password_content.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp27264/public_html/src/MyWordsBundle/Resources/views/layout.html.twig",
+		"/Y/objectif-750.dev/src/MyWordsBundle/Resources/views/layout.html.twig",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp07780/public_html/web/app.php",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp12040/public_html/web/config.php",
+		"/Y/objectif-750.dev/composer.json",
+		"/C/Users/tchaymz/AppData/Local/Temp/scp41735/public_html/src/MyStatsBundle/Controller/DaysStatsController.php"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			"Y:\\objectif-750.dev\\src,*.php",
+			"Y:\\objectif-750.dev\\src\\MyStatsBundle",
+			"Y:\\objectif-750.dev\\src,*.php",
+			"D:\\Dev\\objectif-750\\src,*.twig",
+			"X:\\objectif-750.dev\\src,*.php",
+			"X:\\objectif-750.dev\\src",
+			"X:\\objectif-750.dev",
+			"X:\\objectif-750.dev\\src\\WordWarsBundle",
+			"X:\\objectif-750.dev\\src\\MyWordsBundle",
+			"X:\\objectif-750.dev\\vendor\\friendsofsymfony\\user-bundle",
+			"X:\\objectif-750.dev\\vendor\\friendsofsymfony\\user-bundle\\Resources\\config",
+			"X:\\wordpress.dev\\wp-content\\themes\\twentyfifteen,*.php",
+			"X:\\wordpress.dev\\wp-content\\themes\\twentyfifteen\\*.php"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"countsForNano",
+			"MyDailyStats",
+			"error_",
+			"head",
+			"$date->format('M Y')",
+			" / ",
+			"getAvatarPa",
+			"Raleway",
+			"col-sm-6",
+			"col-sm-2 control-label",
+			"col-sm-5",
+			"update_percentage",
+			"month",
+			"->format",
+			"daily_nanos",
+			"UserNanos",
+			"nano",
+			"update_percentage",
+			"transition",
+			"in",
+			"transition",
+			"clickm",
+			"skill_lvl_width",
+			"tablette_width",
+			"<p><span class=\"label\">",
+			"console.log",
+			"saveme",
+			"button",
+			"focus_me",
+			"ShowMa",
+			"word_war_form",
+			"{{ path('",
+			"ended",
+			"Open Sans",
+			"inline_list",
+			"inline",
+			"content",
+			"save_words",
+			"save_my_ww_words",
+			"check_ww_started",
+			"save_words",
+			"inh",
+			"FOSUserBundle",
+			"findByWWId",
+			"Myriam",
+			"->format(",
+			"redirectToRoute",
+			"wordwars",
+			"word_wars_homepage",
+			"WordWards",
+			"#main",
+			"td class=\"col-sm-3\"",
+			"div",
+			"col-sm-3",
+			"col-xs-3",
+			"col-xs-4",
+			"/td",
+			"<td",
+			"translations",
+			"tempF",
+			"bye_raptor",
+			"post-content",
+			"the_ID",
+			");\n",
+			"styl",
+			"legal-wrapper",
+			"entry-content",
+			"site-mai",
+			"dev"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$nano->getId()",
+			"col-sm-5",
+			"col-sm-2",
+			"col-sm-6",
+			"MyNanos",
+			"<p>",
+			"td",
+			"col-sm-4",
+			"col-sm-3",
+			"col-xs-3",
+			"/div",
+			"<div class=\"col-xs-4\"",
+			"<div class=\"col-xs-4",
+			"div class=\"col-xs-4",
+			"dialog-post"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/MyStatsBundle/Controller/DaysStatsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3456,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2646,
+								2684
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 441.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 67.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 118.0
+	},
+	"pinned_build_system": "Packages/SASS Build/SASS - Compressed.sublime-build",
+	"project": "objectif-750.fr.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Dev\\projects\\resume.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 652.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 238.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -49,6 +49,13 @@ class UserPreferences
      */
     private $darkMode = false;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string")
+     */
+    private $language = 'fr';
+
 
     /**
      * Get id
@@ -154,5 +161,29 @@ class UserPreferences
     public function getDarkMode()
     {
         return $this->darkMode;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return UserPreferences
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

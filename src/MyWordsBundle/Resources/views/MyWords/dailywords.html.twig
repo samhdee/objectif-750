@@ -2,18 +2,19 @@
 
 {% block title %}Suivi journalier{% endblock %}
 
-{% block title_page %}Objectif du jour :
-  {% if 0 < todays_goal %}{{ todays_goal }} mots
+{% block title_page %}{% trans %}Objectif du jour :{% endtrans %}
+  {% if 0 < todays_goal %}{{ todays_goal }} {% trans %}mots{% endtrans %}
   {% else %}<i>à définir</i>{% endif %}
 {% endblock %}
 
 {% block mywords_body %}
   {% if 0 == todays_goal %}
-    <p class="explain">Vous pouvez définir votre objectif journalier dans <a href="{{ path('fos_user_profile_edit') }}">votre profil</a>.</p>
+    <p class="explain">{{ 'mywords_intro_no_goal_set'|trans({'%link_start%': '<a href="'~path('fos_user_profile_edit')~'">', '%link_end%': '<a>'}) | raw }}</p>
   {% endif %}
 
   <div class="content_wrapper">
-    <p>Cet espace est dédié à votre imagination. Il vous permet de saisir votre texte et possède un compteur de mots pour garder un oeil sur votre progression. Vos écrits sont sauvegardés pour vos yeux, et vos yeux seulement. Vous pourrez ensuite les retrouver dans <a href="{{ path('my_stats_archives') }}">votre espace archives</a>.</p>
+    <p>{% trans %}mywords_intro{% endtrans %}</p>
+    <p>{{ 'mywords_link'|trans({'%link_start%': '<a href="'~path('my_stats_archives')~'">', '%link_end%': '</a>'}) | raw }}</p>
 
     <div id="daily_words_wrapper">
       <div id="words_header">

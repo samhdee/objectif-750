@@ -2,11 +2,11 @@
 
 {% extends "UserBundle::layout.html.twig" %}
 
-{% block title_page %}Votre profil{% endblock %}
+{% block title_page %}{% trans %}Votre profil{% endtrans %}{% endblock %}
 
 {% block fos_user_content %}
   <div class="fos_user_user_show">
-    <p><a href="{{ path('fos_user_profile_edit') }}">Modifier</a></p>
+    <p><a href="{{ path('fos_user_profile_edit') }}">{% trans %}Modifier{% endtrans %}</a></p>
     <p><span class="label">{{ 'profile.show.username'|trans }} :</span> {{ user.username }}</p>
     <p><span class="label">{{ 'profile.show.email'|trans }} :</span> {{ user.email }}</p>
     <p><span class="label">Avatar :</span>
